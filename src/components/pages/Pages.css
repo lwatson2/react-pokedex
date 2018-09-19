@@ -1,0 +1,32 @@
+.pokeButtons{
+	position: absolute;
+    left: 119px;
+    width: 150px;
+    margin-bottom: 14px;
+}
+button{
+	display: inline-block;
+}
+.rightbtn{
+	margin-left: 15px;
+    border-radius: 10px;
+    background-color: red;
+    border: none;
+    color: white;
+    height: 27px;
+    width: 50px;
+}
+.leftbtn{
+	 margin-left: 15px;
+    border-radius: 10px;
+    background-color: red;
+    border: none;
+    color: white;
+    height: 27px;
+    width: 50px;
+}
+.pokemonName{
+	position: relative;
+    left: 64px;
+    bottom: 26px;
+}

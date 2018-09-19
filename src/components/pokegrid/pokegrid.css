@@ -1,0 +1,24 @@
+.pokeList{
+	
+	
+	
+}
+.poke-picture{
+	position: relative;
+	left: 20px;
+}
+.pokeName{
+	position: relative;
+	left: 20px;
+}
+.container {
+	list-style-type: none;
+    display: grid;
+    grid-gap: .5rem;
+    grid-template-columns: repeat(2, 1fr);
+
+}
+li {
+	display: flex;
+    align-items: flex-end;
+}

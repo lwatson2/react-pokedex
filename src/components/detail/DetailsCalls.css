@@ -1,0 +1,177 @@
+/*.abilityDesc {
+	font-size: 13px;
+    background: beige;
+    width: 165px;
+    position: absolute;
+    top: 27px;
+    left: 14px;
+    padding-bottom: 10px;
+}
+*/
+
+.moveDesc{
+	width: 123px;
+    height: 130px;
+    font-size: 12px;
+    margin: 0;
+}
+.moveEffect {
+	width: 110px;
+    position: relative;
+    top: 10px;
+}
+.moveCalls{
+	height: 99px;
+    width: 110px;
+}
+.grassDesc{
+    color: white;
+    border-radius: 20px;
+    padding-right: 9px;
+    padding-left: 6px;
+    margin-right: 10px;
+    background-color: #2da01b;
+}
+.poisonDesc{
+    color: white;
+    border-radius: 20px;
+    padding-right: 9px;
+    padding-left: 6px;
+    margin-right: 10px;
+    background-color: #8a3ab2;
+}
+.fireDesc{
+    color: white;
+    border-radius: 20px;
+    padding-right: 9px;
+    padding-left: 6px;
+    margin-right: 10px;
+    background-color: #ed5f0e;
+}
+.waterDesc{
+    color: white;
+    border-radius: 20px;
+    padding-right: 9px;
+    padding-left: 6px;
+    margin-right: 10px;
+    background-color: #3549E6;
+}
+.fightingDesc{
+    color: white;
+    border-radius: 20px;
+    padding-right: 9px;
+    padding-left: 6px;
+    margin-right: 10px;
+    background-color: #BD1C44;
+}
+.flyingDesc{
+    color: white;
+    border-radius: 20px;
+    padding-right: 9px;
+    padding-left: 6px;
+    margin-right: 10px;
+    background-color: #6fb5f2;
+}
+.dragonDesc{
+    color: white;
+    border-radius: 20px;
+    padding-right: 9px;
+    padding-left: 6px;
+    margin-right: 10px;
+    background-color: #8111D6;
+}
+.normalDesc{
+    color: white;
+    border-radius: 20px;
+    padding-right: 9px;
+    padding-left: 6px;
+    margin-right: 10px;
+    background-color: #a8a878;
+}
+.fairyDesc{
+    color: white;
+    border-radius: 20px;
+    padding-right: 9px;
+    padding-left: 6px;
+    margin-right: 10px;
+    background-color: #f4b5e0;
+}
+.electricDesc{
+    color: white;
+    border-radius: 20px;
+    padding-right: 9px;
+    padding-left: 6px;
+    margin-right: 10px;
+    background-color: #EBE54D;
+}
+.groundDesc{
+    color: white;
+    border-radius: 20px;
+    padding-right: 9px;
+    padding-left: 6px;
+    margin-right: 10px;
+    background-color: #bfb547;
+}
+.fairyDesc{
+    color: white;
+    border-radius: 20px;
+    padding-right: 9px;
+    padding-left: 6px;
+    margin-right: 10px;
+    background-color: #FF309B;
+}
+.electricDesc{
+    border-radius: 20px;
+    padding-right: 9px;
+    padding-left: 6px;
+    margin-right: 10px;
+    background-color: #ffe521;
+}
+.iceDesc{
+    border-radius: 20px;
+    padding-right: 9px;
+    padding-left: 6px;
+    margin-right: 10px;
+    background-color: #38ffe1;
+}
+.darkDescDesc{
+    color: white;
+    border-radius: 20px;
+    padding-right: 9px;
+    padding-left: 6px;
+    margin-right: 10px;
+    background-color: #3a321c;
+}
+.steelDesc{
+    color: white;
+    border-radius: 20px;
+    padding-right: 9px;
+    padding-left: 6px;
+    margin-right: 10px;
+    background-color: #8f959b;
+}
+.bugDesc{
+    color: white;
+    border-radius: 20px;
+    padding-right: 9px;
+    padding-left: 6px;
+    margin-right: 10px;
+    background-color: #93ba6d;
+
+}
+.psychicDesc{
+    color: white;
+    border-radius: 20px;
+    padding-right: 9px;
+    padding-left: 6px;
+    margin-right: 10px;
+    background-color: #ff0ab1;
+}
+.rockDesc{
+    color: white;
+    border-radius: 20px;
+    padding-right: 9px;
+    padding-left: 6px;
+    margin-right: 10px;
+    background-color: #a59465;
+}
