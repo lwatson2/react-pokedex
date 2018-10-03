@@ -1,24 +1,34 @@
 .pokeList{
-	
-	
-	
+	position: relative;
+	left: 10px;
 }
 .poke-picture{
 	position: relative;
 	left: 20px;
 }
 .pokeName{
-	position: relative;
-	left: 20px;
+	display: inline-flex;
+	justify-content: center;
 }
 .container {
 	list-style-type: none;
     display: grid;
     grid-gap: .5rem;
     grid-template-columns: repeat(2, 1fr);
-
+    position: relative;
+    top: 32px;
+    padding-left: 30px;
+    width: 280px;
 }
 li {
 	display: flex;
     align-items: flex-end;
+}
+.pokeGrid{
+	background-color: #2b4859;
+	border-radius: 24%;
+	width: 120px;
+	padding: 0;
+	text-align: center;
+
 }

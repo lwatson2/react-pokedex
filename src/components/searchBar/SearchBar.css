@@ -1,8 +1,7 @@
 .searchBar{
 	text-align: center;
-    position: absolute;
-    top: 0px;
-    left: 86px;
+    position: relative;
+    top: 32px;
 }
 .submitButton{
 	 border-radius: 12px;

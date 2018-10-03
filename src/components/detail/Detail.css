@@ -9,7 +9,7 @@
 }
 .pokeDetail{
 	position: absolute;
-    top: 50px;
+    top: 105px;
     width: 311px;
    
 }
@@ -55,7 +55,7 @@
     min-height: 149px;
 }
 .ability{
-	
+	width: 187px;
 }
 .p-Abilites{
     position: relative;

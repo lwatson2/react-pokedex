@@ -1,0 +1,28 @@
+.navBarItems{
+	float: left;
+	padding-right: 25px;
+}
+.navBarList{
+	position: relative;
+    bottom: 22px;
+}
+.navButton{
+	position: relative;
+    top: 44px;
+    background: #68717f;
+    width: 47px;
+}
+.navBar{
+ 	height: 45px;
+    background: #68717f;
+}
+.navButtonClosed{
+	position: relative;
+    top: 13px;
+    background-color: #68717f;
+    width: 46px;
+}
+.navBarClosed {
+	background: #68717f;
+    width: 100%;
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PokeCalls from './pokecalls/PokeCalls'
 import SearchBar from './searchBar/SearchBar'
 import Detail from './detail/Detail'
+import NavBar from './navbar/NavBar'
 import {
   BrowserRouter,
   Route,
@@ -13,17 +14,14 @@ class App extends Component {
       constructor(props) {
       super(props);
       this.state = {
-        value: '',
+        showNav: false, }
       
       }
     
      
      
      
-    }
-    searchPoke(event, value){
-      
-  }
+    
     
     
 
@@ -31,9 +29,10 @@ class App extends Component {
    return (
       <BrowserRouter>
         <div>
+          <NavBar />
           <SearchBar />
           <Route exact path='/' component={PokeCalls} />
-          <Route exact path='/detail/:name' component={Detail}/>
+          <Route exact path='/detail/:name' component={Detail} />
         </div>
       </BrowserRouter>
     );
