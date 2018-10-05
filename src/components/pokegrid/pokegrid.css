@@ -20,7 +20,7 @@
     padding-left: 30px;
     width: 280px;
 }
-li {
+.listItem {
 	display: flex;
     align-items: flex-end;
 }

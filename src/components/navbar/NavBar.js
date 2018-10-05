@@ -5,7 +5,9 @@ import {
 } from 'react-router-dom'
 import PokeCalls from './../pokecalls/PokeCalls'
 import Detail from './../detail/Detail'
+import Generations from './../generations/Generations'
 import './NavBar.css'
+
 
 class NavBar extends Component {
 
@@ -28,16 +30,22 @@ class NavBar extends Component {
 		if(this.state.showNav){
 		return (
 			<div className='navBar'>
-				<div className='navButton'>
-				<button onClick={this.handleClick}> Click </button>
+				<div className='navBarOpen'>
+				<button className='navButton'onClick={this.handleClick}> Click </button>
 				</div>
 				<div className='navBarList'>
 				<ul>
 					<Link to={'/'} >
 						<li className='navBarItems'> Home </li>
 					</Link>
-					<li className='navBarItems'> Generations<button onClick={this.showGens}>C </button>
-					{this.state.showGen && <p>hi</p>}
+					<li className='navBarItems'> Generations
+						<button className='genButton' onClick={this.showGens}>
+							<img className={this.state.showGen ? 'dropDown' : ''} src={require("./../../images/arrowhead.png")} width='12px' height='12px' alt='arrow' />	
+						 </button>
+						 <div className='genList'>
+						 	
+							{this.state.showGen && <Generations />}
+						</div>
 					</li>
 					<li className='navBarItems'> About </li>
 				</ul>
@@ -50,7 +58,7 @@ class NavBar extends Component {
 			return (
 				<div className='navBarClosed'>
 					<div className='navButtonClosed'>
-						<button onClick={this.handleClick}>Click</button>
+						<button className='navButton' onClick={this.handleClick}>Click</button>
 					</div>
 				</div>
 				)

@@ -20,7 +20,7 @@ export default class PokeGrid extends Component {
 			  <div>
 			    	<ul className = "container">
 			   			{this.props.pokemonList.map(({name, id, sprites}) =>
-			   			<li key={id}>
+			   			<li className='listItems' key={id}>
 			   				<ul className="pokeGrid">
 			   					<Link to={`/detail/${name}`}>
 			   					<li className='pokeList'><img src={sprites.front_default} alt='pokemon' /></li>
