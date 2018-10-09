@@ -25,7 +25,7 @@ export default class PokeCalls extends Component {
   
   Api = () => {
    
-    axios.get(` http://pokeapi.salestock.net/api/v2/pokemon`)
+    axios.get(` https://pokeapi.co/api/v2/pokemon/`)
     .then(response => 
      this.setState({ pokemon: response.data.results}, this.Picture))
     .catch(error => this.setState = ({ error }))
@@ -49,7 +49,7 @@ export default class PokeCalls extends Component {
     let pokemon = this.state.pokemon;
 
     const pokePromises = pokemon.map(pokemon =>
-      axios.get(` http://pokeapi.salestock.net/api/v2/pokemon/${pokemon.name}`)
+      axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}/`)
       );
       Promise.all(pokePromises).then(all => {
         const data = all.map(result => result.data);

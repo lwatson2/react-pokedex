@@ -38,7 +38,7 @@ class Detail extends Component {
 
 			this.setState({isLoaded: false})
 			const pokeName = this.props.match.params.name
-			axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeName}`)
+			axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeName}/`)
 			.then(all => 
 				this.setState({
 					pokeData: all.data,
