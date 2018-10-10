@@ -121,6 +121,7 @@
  }
  .s-Moves{
     width: 100px;
+    padding-right: 5px;
     
  }
  .movesContainer{
@@ -295,4 +296,9 @@
     padding-right: 19px;
     margin-right: 10px;
     background-color: #a59465;
+}
+.moveButton{
+    border-radius: 12px;
+    border: none;
+    text-decoration: none;
 }

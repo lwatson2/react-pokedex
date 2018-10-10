@@ -24,7 +24,7 @@ export default class PokeGrid extends Component {
 			   				<ul className="pokeGrid">
 			   					<Link to={`/detail/${name}`}>
 			   					<li className='pokeList'><img src={sprites.front_default} alt='pokemon' /></li>
-			   					<li className='pokeName'>{name}</li>
+			   					<li className='pokeName'>{name} #{id}</li>
 			   				</Link>
 			   			</ul>
 			   		</li>

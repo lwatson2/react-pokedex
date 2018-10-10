@@ -11,21 +11,21 @@
 .navBarOpen{
 	position: relative;
     top: 44px;
-    background: #68717f;
+    background: #8B0000;
     width: 47px;
 }
 .navBar{
  	height: 63px;
-    background: #68717f;
+    background: #8B0000;
 }
 .navButtonClosed{
 	position: relative;
     top: 13px;
-    background-color: #68717f;
+    background-color: #8B0000;
    
 }
 .navBarClosed {
-	background: #68717f;
+	background: #8B0000;
     width: 100%;
     height: 33px;
 }

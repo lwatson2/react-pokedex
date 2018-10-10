@@ -4,13 +4,14 @@
     top: 32px;
 }
 .submitButton{
-	 border-radius: 12px;
+	border-radius: 12px;
     border: none;
     text-decoration: none;
+    background-color: #8B0000;
 }
 .inputField{
 	background: transparent;
     border: 0;
     outline: 0;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #8B0000;
 }

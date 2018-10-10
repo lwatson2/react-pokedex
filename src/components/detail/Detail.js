@@ -209,9 +209,14 @@ class MoveDetail extends Component{
 		return(
 			<div className='moves'>
 				<span className='s-Moves'>{this.props.name}</span>
-				<button onClick={() => {
+				<button className='moveButton' onClick={() => {
 					this.setState({ showDetail: !this.state.showDetail})}}> 
-					<img className={this.state.showDetail ? 'arrow' : ''} src={require("./../../images/arrowhead.png")} width='12px' height='12px' alt='arrow' />
+					<img 
+					className={this.state.showDetail ? 'arrow' : ''} 
+					src={require("./../../images/arrowhead.png")} 
+					width='12px' 
+					height='12px' 
+					alt='arrow' />
 				</button>
 				<div className='movesCalls'>
 					{this.state.showDetail ? <DetailsCalls moveUrl={this.props.url} /> : ''}
@@ -234,7 +239,7 @@ class AbilityDetail extends Component {
 		return(
 			<div className='ability'>
 								<span key={this.props.name}className='s-Ability'> {this.props.name} </span>
-								<button  onClick={() => this.setState({ showAbility: !this.state.showAbility})}>
+								<button className='moveButton' onClick={() => this.setState({ showAbility: !this.state.showAbility})}>
 								<img className={this.state.showAbility ? 'arrow' : ''} src={require("./../../images/arrowhead.png")} width='12px' height='12px' alt='arrow' />
 								</button>
 								<div className='callsContainer'>
