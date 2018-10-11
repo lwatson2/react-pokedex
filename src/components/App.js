@@ -30,6 +30,7 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <NavBar />
+          
           <SearchBar />
           <Route exact path='/' component={PokeCalls} />
           <Route exact path='/detail/:name' component={Detail} />

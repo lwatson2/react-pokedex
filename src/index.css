@@ -7,7 +7,7 @@ body {
 }
 a{
 	text-decoration: none;
-	color: white;
+	color: #DADAD9;;
 }
 a:hover{
 	text-decoration: none;
@@ -15,4 +15,14 @@ a:hover{
 }
 li{
 	list-style: none;
+	color: #DADAD9;
+}
+p{
+	color: #DADAD9;
+}
+span{
+	color: #DADAD9;
+}
+h3{
+	color: #DADAD9;
 }

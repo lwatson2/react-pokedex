@@ -2,7 +2,9 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import './Detail.css'
 import DetailsCalls from './DetailsCalls'
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
 import Loading from './../loading/Loading'
+
 
 
 
@@ -128,7 +130,7 @@ class Detail extends Component {
 		return (
 
 			<div className='pokeDetail'>
-			<div className='pokeId'>#{pokeData.id}</div>
+			<div className='pokeId'><p>#{pokeData.id}</p></div>
 			<div className='pokePicture'>
 				<img src={pokeData.sprites.front_default} alt='pokemon icon' />
 			</div>
@@ -211,12 +213,9 @@ class MoveDetail extends Component{
 				<span className='s-Moves'>{this.props.name}</span>
 				<button className='moveButton' onClick={() => {
 					this.setState({ showDetail: !this.state.showDetail})}}> 
-					<img 
-					className={this.state.showDetail ? 'arrow' : ''} 
-					src={require("./../../images/arrowhead.png")} 
-					width='12px' 
-					height='12px' 
-					alt='arrow' />
+				<KeyboardArrowRight 
+				style={{ fontSize: 17}}
+				 />
 				</button>
 				<div className='movesCalls'>
 					{this.state.showDetail ? <DetailsCalls moveUrl={this.props.url} /> : ''}

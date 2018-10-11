@@ -84,8 +84,8 @@
 }
 .pokeId{
     position: relative;
-    top: 111px;
-    left: 183px;
+    top: 127px;
+    left: 174px;
     width: 60px;
 }
 .s-Ability{
@@ -141,7 +141,7 @@
     background-color: #B3B3B3;
  }
  .statBar {
-    background-color: #6F5AB0;
+    background-color: #ff206e;
  }
  .typeContainer{
     position: relative;
