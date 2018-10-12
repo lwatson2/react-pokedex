@@ -4,6 +4,7 @@ import {
   Route,
   Link,
 } from 'react-router-dom'
+import Search from '@material-ui/icons/Search'
 import './SearchBar.css'
 
 class SearchBar extends Component{
@@ -41,7 +42,11 @@ class SearchBar extends Component{
 				onChange={this.handleChange}
 				className='inputField'
 				 />
-				<button className='submitButton'><Link to={`/detail/${this.state.searchQuery}`}> Submit </Link></button>
+				<button className='submitButton'><Link to={`/detail/${this.state.searchQuery}`}> 
+				<Search 
+				style={{ fontSize: 20}}
+				/>
+				</Link></button>
 				</form>
 
 

@@ -3,7 +3,9 @@ import axios from 'axios'
 import './Detail.css'
 import DetailsCalls from './DetailsCalls'
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
+import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown'
 import Loading from './../loading/Loading'
+import ErrorMessage from './../errorMessage/ErrorMessage'
 
 
 
@@ -23,12 +25,16 @@ class Detail extends Component {
 		}
 		componentDidMount = () => {
 			const pokeName = this.props.match.params.name
-			axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeName}/`)
+			const lowerCasePokeName = pokeName.toLowerCase()
+			axios.get(`https://pokeapi.co/api/v2/pokemon/${lowerCasePokeName}/`)
 			.then(all => 
 				this.setState({
 					pokeData: all.data, 
 					isLoaded: true
 				}, this.Change))
+			.catch(error => {
+				<ErrorMessage />
+			})
 	}
 
 		componentDidUpdate = (prevState, prevProps) => {
@@ -40,12 +46,16 @@ class Detail extends Component {
 
 			this.setState({isLoaded: false})
 			const pokeName = this.props.match.params.name
-			axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeName}/`)
+			const lowerCasePokeName = pokeName.toLowerCase()
+			axios.get(`https://pokeapi.co/api/v2/pokemon/${lowerCasePokeName}/`)
 			.then(all => 
 				this.setState({
 					pokeData: all.data,
 					isLoaded: true, 
 				}))
+			.catch(error => {
+				return (<ErrorMessage />)
+			})
 			
 		}
 		Change = () => {
@@ -213,10 +223,15 @@ class MoveDetail extends Component{
 				<span className='s-Moves'>{this.props.name}</span>
 				<button className='moveButton' onClick={() => {
 					this.setState({ showDetail: !this.state.showDetail})}}> 
-				<KeyboardArrowRight 
+				{this.state.showDetail ?	
+				<KeyboardArrowDown 
 				style={{ fontSize: 17}}
-				 />
+				 /> : 
+				 <KeyboardArrowRight 
+				 style={{ fontSize: 17}} 
+				 />}
 				</button>
+
 				<div className='movesCalls'>
 					{this.state.showDetail ? <DetailsCalls moveUrl={this.props.url} /> : ''}
 				</div>
@@ -239,7 +254,13 @@ class AbilityDetail extends Component {
 			<div className='ability'>
 								<span key={this.props.name}className='s-Ability'> {this.props.name} </span>
 								<button className='moveButton' onClick={() => this.setState({ showAbility: !this.state.showAbility})}>
-								<img className={this.state.showAbility ? 'arrow' : ''} src={require("./../../images/arrowhead.png")} width='12px' height='12px' alt='arrow' />
+								{this.state.showAbility ?	
+									<KeyboardArrowDown 
+										style={{ fontSize: 17}}
+										 /> : 
+									<KeyboardArrowRight 
+										 style={{ fontSize: 17}} 
+									/>}
 								</button>
 								<div className='callsContainer'>
 									{this.state.showAbility ? <DetailsCalls abilityUrl={this.props.url} /> : ''}
