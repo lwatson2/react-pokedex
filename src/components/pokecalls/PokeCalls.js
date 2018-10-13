@@ -3,6 +3,7 @@ import Pages from './../pages/Pages'
 import React, { Component } from 'react'
 import axios from 'axios'
 import Loading from './../loading/Loading'
+import ErrorMessage from './../errorMessage/ErrorMessage'
 import './PokeCalls.css'
 
 export default class PokeCalls extends Component {
@@ -14,6 +15,7 @@ export default class PokeCalls extends Component {
     loading: false, 
     sorted: false,
     offset: 0,
+    error: null,
 
   }
   }
@@ -28,7 +30,10 @@ export default class PokeCalls extends Component {
     axios.get(` https://pokeapi.co/api/v2/pokemon/`)
     .then(response => 
      this.setState({ pokemon: response.data.results}, this.Picture))
-    .catch(error => this.setState = ({ error }))
+    .catch((error) => this.setState({ 
+      error: error.errorMessage,
+      sorted: true, 
+     }))
   }
   handlePagesClick = (direction) => {
     let nextPage = this.state.offset
@@ -70,6 +75,7 @@ export default class PokeCalls extends Component {
      this.setState({
       sorted: true, 
       pokemonList: newPoke1, 
+      
      })
    }
    
@@ -98,14 +104,19 @@ export default class PokeCalls extends Component {
 
 
    render(){
-    const { pokemonList, sorted, offset } = this.state
+    const { pokemonList, sorted, offset, error } = this.state
     
       if(!sorted){
         return <div className='Loading'> <Loading
         width = '64px'
         height = '64px'
          /> </div>
-        } else {
+        } 
+        if(error){
+          return 
+            <div className='error'>{error}</div>
+            
+        }
           return(
             <div>
                <PokeGrid 
@@ -116,6 +127,6 @@ export default class PokeCalls extends Component {
                />
             </div>
           )
-        }
+        
       }
   }

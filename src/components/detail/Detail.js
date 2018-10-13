@@ -21,9 +21,11 @@ class Detail extends Component {
 				weight: '',
 				moveUrl: '',
 				key: '',
+				error: false,
 			}
 		}
 		componentDidMount = () => {
+			this.setState({ isLoaded: false})
 			const pokeName = this.props.match.params.name
 			const lowerCasePokeName = pokeName.toLowerCase()
 			axios.get(`https://pokeapi.co/api/v2/pokemon/${lowerCasePokeName}/`)
@@ -32,9 +34,11 @@ class Detail extends Component {
 					pokeData: all.data, 
 					isLoaded: true
 				}, this.Change))
-			.catch(error => {
-				<ErrorMessage />
-			})
+			.catch((error) => this.setState({
+				error: true,
+				isLoaded: true
+				})
+			)
 	}
 
 		componentDidUpdate = (prevState, prevProps) => {
@@ -44,7 +48,10 @@ class Detail extends Component {
 			}
 		fetchPokeName = () => {
 
-			this.setState({isLoaded: false})
+			this.setState({ 
+				isLoaded: false, 
+				error: false
+			})
 			const pokeName = this.props.match.params.name
 			const lowerCasePokeName = pokeName.toLowerCase()
 			axios.get(`https://pokeapi.co/api/v2/pokemon/${lowerCasePokeName}/`)
@@ -53,9 +60,11 @@ class Detail extends Component {
 					pokeData: all.data,
 					isLoaded: true, 
 				}))
-			.catch(error => {
-				return (<ErrorMessage />)
-			})
+			.catch((error) => this.setState({
+				error: true,
+				isLoaded: true,
+				})	
+			)
 			
 		}
 		Change = () => {
@@ -121,22 +130,28 @@ class Detail extends Component {
 		
 		render(){
 			
-			const {pokeData, isLoaded, weight} = this.state
+			const {pokeData, isLoaded, weight, error } = this.state
 			let moveOneContainer = []
 			let moveTwoContainer = []
 			
 			console.log(pokeData)
 		
 		if(!isLoaded){
-			return (
+			return ( 
 				<div className='loadingContainer'>
 				<Loading 
 				height = '64px'
 				width = '64px'
 				 />
 				</div>
-				)
-		}else 
+			)	
+		}
+		if(error){
+			return  ( 
+				<div className='detailError'><ErrorMessage /></div>
+			)	
+		} 
+		if(isLoaded){
 		return (
 
 			<div className='pokeDetail'>
@@ -204,6 +219,7 @@ class Detail extends Component {
 		</div>
 			)
 
+	}	
 }
 }
 export default Detail

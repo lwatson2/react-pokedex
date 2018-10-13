@@ -6,7 +6,9 @@ import NavBar from './navbar/NavBar'
 import {
   BrowserRouter,
   Route,
+  Switch,
 } from 'react-router-dom'
+import ErrorMessage from './errorMessage/ErrorMessage'
 
 
 
@@ -32,8 +34,12 @@ class App extends Component {
           <NavBar />
           
           <SearchBar />
+          <Switch>
           <Route exact path='/' component={PokeCalls} />
           <Route exact path='/detail/:name' component={Detail} />
+
+          <Route component={ErrorMessage} />
+          </Switch>
         </div>
       </BrowserRouter>
     );
