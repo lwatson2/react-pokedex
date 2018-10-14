@@ -22,23 +22,11 @@ class Detail extends Component {
 				moveUrl: '',
 				key: '',
 				error: false,
+				errorCode: null,
 			}
 		}
 		componentDidMount = () => {
-			this.setState({ isLoaded: false})
-			const pokeName = this.props.match.params.name
-			const lowerCasePokeName = pokeName.toLowerCase()
-			axios.get(`https://pokeapi.co/api/v2/pokemon/${lowerCasePokeName}/`)
-			.then(all => 
-				this.setState({
-					pokeData: all.data, 
-					isLoaded: true
-				}, this.Change))
-			.catch((error) => this.setState({
-				error: true,
-				isLoaded: true
-				})
-			)
+			this.fetchPokeName()
 	}
 
 		componentDidUpdate = (prevState, prevProps) => {
@@ -60,10 +48,13 @@ class Detail extends Component {
 					pokeData: all.data,
 					isLoaded: true, 
 				}))
-			.catch((error) => this.setState({
-				error: true,
-				isLoaded: true,
-				})	
+			.catch(err => 
+				this.setState({ 
+					errorCode: err.message,
+					error: true,
+					isLoaded: true  
+
+				})
 			)
 			
 		}
@@ -130,11 +121,11 @@ class Detail extends Component {
 		
 		render(){
 			
-			const {pokeData, isLoaded, weight, error } = this.state
+			const {pokeData, isLoaded, weight, error, errorCode } = this.state
 			let moveOneContainer = []
 			let moveTwoContainer = []
 			
-			console.log(pokeData)
+			console.log(errorCode)
 		
 		if(!isLoaded){
 			return ( 
@@ -148,7 +139,7 @@ class Detail extends Component {
 		}
 		if(error){
 			return  ( 
-				<div className='detailError'><ErrorMessage /></div>
+				<div className='detailError'><ErrorMessage errorCode={errorCode} pokeNames={this.props.match.params.name}/></div>
 			)	
 		} 
 		if(isLoaded){
