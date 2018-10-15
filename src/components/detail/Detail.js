@@ -48,13 +48,15 @@ class Detail extends Component {
 					pokeData: all.data,
 					isLoaded: true, 
 				}))
-			.catch(err => 
+			.catch((error) => {
 				this.setState({ 
-					errorCode: err.message,
+					errorCode: error.request.status,
 					error: true,
 					isLoaded: true  
 
 				})
+			}
+				
 			)
 			
 		}
@@ -125,7 +127,7 @@ class Detail extends Component {
 			let moveOneContainer = []
 			let moveTwoContainer = []
 			
-			console.log(errorCode)
+			
 		
 		if(!isLoaded){
 			return ( 
