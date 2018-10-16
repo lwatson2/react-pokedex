@@ -1,5 +1,7 @@
+@media screen and (max-width: 479px){
 .errorMessage{
 	position: relative;
     top: 64px;
     left: 21px;
+}
 }

@@ -6,6 +6,8 @@ import {
 import PokeCalls from './../pokecalls/PokeCalls'
 import Detail from './../detail/Detail'
 import Generations from './../generations/Generations'
+import KeyboardArrowUp from '@material-ui/icons/KeyboardArrowUp'
+import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown'
 import './NavBar.css'
 
 
@@ -19,9 +21,7 @@ class NavBar extends Component {
 		}
 		
 	}
-	showGens = () => {
-		this.setState({ showGen: !this.state.showGen})
-	}
+	
 	handleClick = () => {
 		this.setState({ showNav: !this.state.showNav })
 	}
@@ -31,22 +31,22 @@ class NavBar extends Component {
 		return (
 			<div className='navBar'>
 				<div className='navBarOpen'>
-				<button className='navButton'onClick={this.handleClick}> Click </button>
+				<button className='navButton'onClick={this.handleClick}>
+				{this.state.showNav ?
+					<KeyboardArrowUp
+					style={{fontSize: 17}} 
+					/> :
+					<KeyboardArrowDown
+					style={{fontSize: 17}} 
+						/> }
+				 </button>
+				
 				</div>
 				<div className='navBarList'>
 				<ul>
 					<Link to={'/'} >
 						<li className='navBarItems'> Home </li>
 					</Link>
-					<li className='navBarItems'> Generations
-						<button className='genButton' onClick={this.showGens}>
-							<img className={this.state.showGen ? 'dropDown' : ''} src={require("./../../images/arrowhead.png")} width='12px' height='12px' alt='arrow' />	
-						 </button>
-						 <div className='genList'>
-						 	
-							{this.state.showGen && <Generations />}
-						</div>
-					</li>
 					<li className='navBarItems'> About </li>
 				</ul>
 				
@@ -58,7 +58,15 @@ class NavBar extends Component {
 			return (
 				<div className='navBarClosed'>
 					<div className='navButtonClosed'>
-						<button className='navButton' onClick={this.handleClick}>Click</button>
+						<button className='navButton' onClick={this.handleClick}>
+							{this.state.showNav ?
+								<KeyboardArrowUp
+									style={{fontSize: 17}} 
+								/> :
+								<KeyboardArrowDown
+									style={{fontSize: 17}} 
+								/> }
+						</button>
 					</div>
 				</div>
 				)

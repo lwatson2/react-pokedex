@@ -1,14 +1,4 @@
-/*.abilityDesc {
-	font-size: 13px;
-    background: beige;
-    width: 165px;
-    position: absolute;
-    top: 27px;
-    left: 14px;
-    padding-bottom: 10px;
-}
-*/
-
+@media only screen and (min-width: 270px) and (max-width: 479px){
 .moveDesc{
 	width: 123px;
     height: 130px;
@@ -25,7 +15,7 @@
     width: 110px;
 }
 .grassDesc{
-    color: white;
+    color: #040405;
     border-radius: 20px;
     padding-right: 9px;
     padding-left: 6px;
@@ -33,7 +23,7 @@
     background-color: #2da01b;
 }
 .poisonDesc{
-    color: white;
+    color: #040405;
     border-radius: 20px;
     padding-right: 9px;
     padding-left: 6px;
@@ -41,7 +31,7 @@
     background-color: #8a3ab2;
 }
 .fireDesc{
-    color: white;
+    color: #040405;
     border-radius: 20px;
     padding-right: 9px;
     padding-left: 6px;
@@ -49,7 +39,7 @@
     background-color: #ed5f0e;
 }
 .waterDesc{
-    color: white;
+    color: #040405;
     border-radius: 20px;
     padding-right: 9px;
     padding-left: 6px;
@@ -57,7 +47,7 @@
     background-color: #3549E6;
 }
 .fightingDesc{
-    color: white;
+    color: #040405;
     border-radius: 20px;
     padding-right: 9px;
     padding-left: 6px;
@@ -65,7 +55,7 @@
     background-color: #BD1C44;
 }
 .flyingDesc{
-    color: white;
+    color: #040405;
     border-radius: 20px;
     padding-right: 9px;
     padding-left: 6px;
@@ -73,7 +63,7 @@
     background-color: #6fb5f2;
 }
 .dragonDesc{
-    color: white;
+    color: #040405;
     border-radius: 20px;
     padding-right: 9px;
     padding-left: 6px;
@@ -81,7 +71,7 @@
     background-color: #8111D6;
 }
 .normalDesc{
-    color: white;
+    color: #040405;
     border-radius: 20px;
     padding-right: 9px;
     padding-left: 6px;
@@ -89,7 +79,7 @@
     background-color: #a8a878;
 }
 .fairyDesc{
-    color: white;
+    color: #040405;
     border-radius: 20px;
     padding-right: 9px;
     padding-left: 6px;
@@ -104,7 +94,7 @@
     background-color: #EBE54D;
 }
 .groundDesc{
-    color: white;
+    color: #040405;
     border-radius: 20px;
     padding-right: 9px;
     padding-left: 6px;
@@ -112,7 +102,7 @@
     background-color: #bfb547;
 }
 .fairyDesc{
-    color: white;
+    color: #040405;
     border-radius: 20px;
     padding-right: 9px;
     padding-left: 6px;
@@ -120,6 +110,7 @@
     background-color: #FF309B;
 }
 .electricDesc{
+    color: #040405;
     border-radius: 20px;
     padding-right: 9px;
     padding-left: 6px;
@@ -134,7 +125,7 @@
     background-color: #38ffe1;
 }
 .darkDescDesc{
-    color: white;
+    color: #040405;
     border-radius: 20px;
     padding-right: 9px;
     padding-left: 6px;
@@ -142,7 +133,7 @@
     background-color: #3a321c;
 }
 .steelDesc{
-    color: white;
+    color: #040405;
     border-radius: 20px;
     padding-right: 9px;
     padding-left: 6px;
@@ -150,7 +141,7 @@
     background-color: #8f959b;
 }
 .bugDesc{
-    color: white;
+    color: #040405;
     border-radius: 20px;
     padding-right: 9px;
     padding-left: 6px;
@@ -159,7 +150,7 @@
 
 }
 .psychicDesc{
-    color: white;
+    color: #040405;
     border-radius: 20px;
     padding-right: 9px;
     padding-left: 6px;
@@ -167,10 +158,22 @@
     background-color: #ff0ab1;
 }
 .rockDesc{
-    color: white;
+    color: #040405;
     border-radius: 20px;
     padding-right: 9px;
     padding-left: 6px;
     margin-right: 10px;
     background-color: #a59465;
+}
+.ghostDesc{
+    color: #040405;
+    border-radius: 20px;
+    padding-right: 9px;
+    padding-left: 6px;
+    margin-right: 10px;
+    background-color: #622882;
+}
+}
+@media only screen and (min-width: 480px) and (max-width: 767px){
+
 }

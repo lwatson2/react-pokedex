@@ -1,4 +1,7 @@
-
+.statBar{
+    background-color: black;
+}
+@media only screen and (min-width: 270px) and (max-width: 479px){
 .loadingContainer {
     position: relative;
     top: 115px;
@@ -159,6 +162,7 @@
  .s-Type{
     position: relative;
     left: 8px;
+    color: #040405;
  }
 .weightContainer{
     position: relative;
@@ -168,63 +172,54 @@
     width: 60px;
 }
 .grass{
-    color: white;
     border-radius: 20px;
     padding-right: 19px;
     margin-right: 10px;
     background-color: #2da01b;
 }
 .poison{
-    color: white;
     border-radius: 20px;
     padding-right: 19px;
     margin-right: 10px;
     background-color: #8a3ab2;
 }
 .fire{
-    color: white;
     border-radius: 20px;
     padding-right: 19px;
     margin-right: 10px;
     background-color: #ed5f0e;
 }
 .water{
-    color: white;
     border-radius: 20px;
     padding-right: 19px;
     margin-right: 10px;
     background-color: #3549E6;
 }
 .fighting{
-    color: white;
     border-radius: 20px;
     padding-right: 19px;
     margin-right: 10px;
     background-color: #BD1C44;
 }
 .flying{
-    color: white;
     border-radius: 20px;
     padding-right: 19px;
     margin-right: 10px;
     background-color: #6fb5f2;
 }
 .dragon{
-    color: white;
     border-radius: 20px;
     padding-right: 19px;
     margin-right: 10px;
     background-color: #8111D6;
 }
 .normal{
-    color: white;
     border-radius: 20px;
     padding-right: 19px;
     margin-right: 10px;
     background-color: #a8a878;
 }
 .fairy{
-    color: white;
     border-radius: 20px;
     padding-right: 19px;
     margin-right: 10px;
@@ -237,14 +232,12 @@
     background-color: #EBE54D;
 }
 .ground{
-    color: white;
     border-radius: 20px;
     padding-right: 19px;
     margin-right: 10px;
     background-color: #bfb547;
 }
 .fairy{
-    color: white;
     border-radius: 20px;
     padding-right: 19px;
     margin-right: 10px;
@@ -255,7 +248,6 @@
     padding-right: 19px;
     margin-right: 10px;
     background-color: #ffe521;
-    color: black;
 }
 .ice{
     border-radius: 20px;
@@ -264,42 +256,47 @@
     background-color: #38ffe1;
 }
 .dark{
-    color: white;
     border-radius: 20px;
     padding-right: 19px;
     margin-right: 10px;
     background-color: #3a321c;
 }
 .steel{
-    color: white;
     border-radius: 20px;
     padding-right: 19px;
     margin-right: 10px;
     background-color: #8f959b;
 }
 .bug{
-    color: white;
     border-radius: 20px;
     padding-right: 19px;
     margin-right: 10px;
     background-color: #93ba6d;
 }
 .psychic{
-    color: white;
     border-radius: 20px;
     padding-right: 19px;
     margin-right: 10px;
     background-color: #ff0ab1;
 }
 .rock{
-    color: white;
     border-radius: 20px;
     padding-right: 19px;
     margin-right: 10px;
     background-color: #a59465;
 }
+.ghost{
+    border-radius: 20px;
+    padding-right: 19px;
+    margin-right: 10px;
+    background-color: #622882;
+}
 .moveButton{
     border-radius: 12px;
     border: none;
     text-decoration: none;
+}
+}
+@media only screen and (min-width: 480px) and (max-width: 767px){
+
 }

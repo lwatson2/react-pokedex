@@ -117,6 +117,8 @@ class Detail extends Component {
 					return 'psychic';
 				case 'rock':
 					return 'rock';
+				case 'ghost':
+					return 'ghost'
 
 			}
 		}

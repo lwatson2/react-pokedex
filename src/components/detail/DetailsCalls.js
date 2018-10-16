@@ -83,6 +83,9 @@ export default class DetailsCalls extends Component {
 				case 'rock':
 					return 'rockDesc';
 
+				case 'ghost':
+					return 'ghostDesc';
+
 			}
 		}
 
