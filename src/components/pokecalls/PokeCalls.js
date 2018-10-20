@@ -30,19 +30,19 @@ export default class PokeCalls extends Component {
     }
   }
   handleFilterList = () => {
-    
-    {this.state.pokemonList.map((pokemon) => {
-        {pokemon.types.map(({type}) => {
-           {this.props.filterList.map((filters) => {
-              if(type.name === filters){
-                let newFilteredList = []
-                newFilteredList.push(...pokemon)
-                console.log(newFilteredList)
-              }
-          })}
-         })}
-      })}
-        
+    const {pokemonList, newPokemonList} = this.state 
+    const filteredItems = []
+    {this.props.filterList.map((filter) => {
+      pokemonList.map((poke) => {
+        poke.types.map(({type}) => {
+          if(type.name == filter){
+            filteredItems.push(poke)
+          }
+        })
+      })
+      console.log(filteredItems)
+    })} 
+    this.setState({newPokemonList: filteredItems})  
   }
   Api = () => {
    
@@ -123,7 +123,7 @@ export default class PokeCalls extends Component {
 
 
    render(){
-    const { pokemonList, sorted, offset, error } = this.state
+    const { newPokemonList ,pokemonList, sorted, offset, error } = this.state
     console.log(this.props)
       
       if(!sorted){
@@ -136,6 +136,14 @@ export default class PokeCalls extends Component {
           return 
             <div className='error'>{error}</div>
             
+        }
+        if(newPokemonList.length > 0){
+          return(
+            <div>
+              <PokeGrid
+                pokemonList = {newPokemonList}
+                />
+            </div>)
         }
           return(
             <div>
