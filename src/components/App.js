@@ -16,11 +16,18 @@ class App extends Component {
       constructor(props) {
       super(props);
       this.state = {
-        showNav: false, }
+            typeFilters: []
+         }
       
       }
+      test = () => {
+        console.log('blah')
+      }
     
-     
+     handleFilters = (event, typeFilters) => {
+
+      this.setState({ typeFilters: typeFilters})
+    }
      
      
     
@@ -33,9 +40,9 @@ class App extends Component {
         <div>
           <NavBar />
           
-          <SearchBar />
+          <SearchBar filter={this.handleFilters} />
           <Switch>
-          <Route exact path='/' component={PokeCalls} />
+          <Route exact path='/' render={() => <PokeCalls filterList = {this.state.typeFilters} />}/>
           <Route exact path='/detail/:name' component={Detail} />
 
           <Route component={ErrorMessage} />

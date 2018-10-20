@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PokeCalls from './../pokecalls/PokeCalls'
 import './Filter.css'
 
 export default class Filter extends Component {
@@ -26,8 +27,11 @@ export default class Filter extends Component {
 		
 		console.log(this.state.filterBoxes)
 	}
-	submitFilters = () => {
-		console.log(this.state.filterBoxes)
+	submitFilters = (event) => {
+		event.preventDefault();
+		const typeFilters = this.state.filterBoxes;
+		this.props.filter(event, typeFilters)
+
 	} 
 
 	render() {
@@ -48,7 +52,7 @@ export default class Filter extends Component {
 					</label>
 
 				})}
-				<button className='doneBtn' onClick={() => this.submitFilters}> Done </button>
+				<button className='doneBtn' onClick={this.submitFilters}> Done </button>
 			</div>
 		);
 	}

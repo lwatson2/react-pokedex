@@ -58,7 +58,7 @@ class SearchBar extends Component{
 				</button>
 				</form>
 				
-				{this.state.showFilters ? <Filter /> : ''}
+				{this.state.showFilters ? <Filter filter={this.props.filter} /> : ''}
 				<Route exact path ='detail/:name' component={Detail}/>
 				</div>
 			)

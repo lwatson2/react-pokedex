@@ -16,6 +16,7 @@ export default class PokeCalls extends Component {
     sorted: false,
     offset: 0,
     error: null,
+    newPokemonList: []
 
   }
   }
@@ -23,8 +24,26 @@ export default class PokeCalls extends Component {
   this.Api()
     
   }
-  
-  
+  componentDidUpdate = (prevProps) => {
+    if(this.props.filterList !== prevProps.filterList){
+      this.handleFilterList()
+    }
+  }
+  handleFilterList = () => {
+    
+    {this.state.pokemonList.map((pokemon) => {
+        {pokemon.types.map(({type}) => {
+           {this.props.filterList.map((filters) => {
+              if(type.name === filters){
+                let newFilteredList = []
+                newFilteredList.push(...pokemon)
+                console.log(newFilteredList)
+              }
+          })}
+         })}
+      })}
+        
+  }
   Api = () => {
    
     axios.get(` https://pokeapi.co/api/v2/pokemon/`)
@@ -105,7 +124,8 @@ export default class PokeCalls extends Component {
 
    render(){
     const { pokemonList, sorted, offset, error } = this.state
-    
+    console.log(this.props)
+      
       if(!sorted){
         return <div className='Loading'> <Loading
         width = '64px'
