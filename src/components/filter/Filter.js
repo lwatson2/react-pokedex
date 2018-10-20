@@ -26,6 +26,9 @@ export default class Filter extends Component {
 		
 		console.log(this.state.filterBoxes)
 	}
+	submitFilters = () => {
+		console.log(this.state.filterBoxes)
+	} 
 
 	render() {
 		console.log(this.state.filterBoxes)
@@ -45,7 +48,7 @@ export default class Filter extends Component {
 					</label>
 
 				})}
-				<button className='doneBtn'> Done </button>
+				<button className='doneBtn' onClick={() => this.submitFilters}> Done </button>
 			</div>
 		);
 	}
