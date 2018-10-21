@@ -26,6 +26,13 @@
     }
 }
 @media only screen and (min-width: 480px) and (max-width: 767px){
+    .filterButton{
+        border-radius: 12px;
+        border: none;
+        text-decoration: none;
+        background-color: #8B0000;
+        color: #DADAD9;
+    }
     .searchBar{
         text-align: center;
         position: relative;
@@ -46,5 +53,65 @@
         border-bottom: 2px solid #8B0000;
         color: #DADAD9;
         width: 184px;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px){
+        .filterButton{
+        border-radius: 12px;
+        border: none;
+        text-decoration: none;
+        background-color: #8B0000;
+        color: #DADAD9;
+    }
+    .searchBar{
+        text-align: center;
+        position: relative;
+        top: 32px;
+        width: 281px;
+        left: 29%;
+    }
+    .submitButton{
+        border-radius: 12px;
+        border: none;
+        text-decoration: none;
+        background-color: #8B0000;
+    }
+    .inputField{
+        background: transparent;
+        border: 0;
+        outline: 0;
+        border-bottom: 2px solid #8B0000;
+        color: #DADAD9;
+        width: 184px;
+    }
+}
+@media only screen and (min-width: 992px){
+    .filterButton{
+        border-radius: 12px;
+        border: none;
+        text-decoration: none;
+        background-color: #8B0000;
+        color: #DADAD9;
+    }
+    .searchBar{
+        text-align: center;
+        position: relative;
+        top: 32px;
+        width: 281px;
+        left: 38%;
+    }
+    .submitButton{
+        border-radius: 12px;
+        border: none;
+        text-decoration: none;
+        background-color: #8B0000;
+    }
+    .inputField{
+        background: transparent;
+        border: 0;
+        outline: 0;
+        border-bottom: 2px solid #8B0000;
+        color: #DADAD9;
+        width: 208px;
     }
 }

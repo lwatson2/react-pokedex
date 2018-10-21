@@ -75,7 +75,7 @@
     bottom: 45px;
     height: 73px
 }
-.pokeContainer{
+.deContainer{
     position: relative;
     top: 48px;
     left: 21px;
@@ -88,7 +88,7 @@
 .pokeId{
     position: relative;
     top: 127px;
-    left: 174px;
+    left: 210px;
     width: 60px;
 }
 .s-Ability{
@@ -119,7 +119,7 @@
     left: 33px
  }
  .moves{
-    width: 137px;
+    width: 139px;
     padding: 6px;
  }
  .s-Moves{
@@ -298,5 +298,891 @@
 }
 }
 @media only screen and (min-width: 480px) and (max-width: 767px){
-
+    .loadingContainer {
+    position: relative;
+    top: 136px;
+    left: 250px;
+}
+.pokeStats{
+    padding: 5px;
+}
+.pokeDetail{
+    position: absolute;
+    top: 105px;
+    left: 170px;
+    width: 311px;
+   
+}
+.pokeContainer{
+    position: relative;
+    top: 48px;
+    left: 30px;
+}
+.pokePicture{
+    margin: 0;
+    width: 96px;
+    height: 96px;
+    position: relative;
+    left: 100px;
+}
+.stats{
+    width: 274px;
+    height: 269px;
+    position: relative;
+    bottom: 48px;
+}
+.p-Stats{
+    position: absolute;
+    left: 21px;
+    top: 9px;
+}
+.pokemonName{
+    position: relative;
+    left: 64px;
+    bottom: 26px;
+    width: 130px;
+}
+.pokeAbilities{
+    position: relative;
+    top: 1px;
+    left: 34px;
+    display: flex;
+    flex-flow: column wrap;
+}
+.abilityContainer{
+    position: relative;
+    bottom: 49px;
+    min-height: 149px;
+}
+.ability{
+    width: 187px;
+}
+.p-Abilites{
+    position: relative;
+    left: 20px;
+    top: 10px;
+}
+.shinySprite{
+    position: absolute;
+    right: 37px;
+    height: 96px;
+}
+.shiny{
+    position: relative;
+    bottom: 45px;
+    height: 73px
+}
+.pokeContainer{
+    position: relative;
+    top: 48px;
+    left: 21px;
+}
+.p-Shiny{
+    position: absolute;
+    left: 21px;
+    top: 20px;;
+}
+.pokeId{
+    position: relative;
+    top: 127px;
+    left: 210px;
+    width: 60px;
+}
+.s-Ability{
+    width: 100px;
+}
+.callsContainer {
+    font-size: 13px;
+    width: 138px;
+    
+    padding-bottom: 10px;
+}
+.weight {
+    position: relative;
+    bottom: 33px;
+    left: 155px;
+    width: 60px;
+}
+.p-weight{ 
+    position: relative;
+    left: 21px;
+    width: 60px;  
+ }
+ .pokeMoves{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 277px;
+    position: relative;
+    left: 33px
+ }
+ .moves{
+    width: 151px;
+    padding: 6px;
+ }
+ .s-Moves{
+    width: 100px;
+    padding-right: 5px;
+    
+ }
+ .movesContainer{
+    position: relative;
+    bottom: 15px;
+ }
+ .p-Moves{
+    position: relative;
+    left: 21px;
+    width: 60px;
+ }
+ .arrow{
+    transform: rotate(90deg);
+ }
+ .statContainer {
+    width: 255px;
+    background-color: #B3B3B3;
+ }
+ .statBar {
+    background-color: #ff206e;
+ }
+ .typeContainer{
+    position: relative;
+    bottom: 33px;
+    left: 117px;
+    display: flex;
+    width: 114px;
+ }
+ .types{
+    position: relative;
+    bottom: 28px;
+    left: 18px;
+    width: 260px
+ }
+ .s-Type{
+    position: relative;
+    left: 8px;
+    color: #040405;
+ }
+.weightContainer{
+    position: relative;
+    bottom: 20px;
+}
+.p-Types{
+    width: 60px;
+}
+.grass{
+    border-radius: 20px;
+    padding-right: 19px;
+    margin-right: 10px;
+    background-color: #2da01b;
+}
+.poison{
+    border-radius: 20px;
+    padding-right: 19px;
+    margin-right: 10px;
+    background-color: #8a3ab2;
+}
+.fire{
+    border-radius: 20px;
+    padding-right: 19px;
+    margin-right: 10px;
+    background-color: #ed5f0e;
+}
+.water{
+    border-radius: 20px;
+    padding-right: 19px;
+    margin-right: 10px;
+    background-color: #3549E6;
+}
+.fighting{
+    border-radius: 20px;
+    padding-right: 19px;
+    margin-right: 10px;
+    background-color: #BD1C44;
+}
+.flying{
+    border-radius: 20px;
+    padding-right: 19px;
+    margin-right: 10px;
+    background-color: #6fb5f2;
+}
+.dragon{
+    border-radius: 20px;
+    padding-right: 19px;
+    margin-right: 10px;
+    background-color: #8111D6;
+}
+.normal{
+    border-radius: 20px;
+    padding-right: 19px;
+    margin-right: 10px;
+    background-color: #a8a878;
+}
+.fairy{
+    border-radius: 20px;
+    padding-right: 19px;
+    margin-right: 10px;
+    background-color: #f4b5e0;
+}
+.electric{
+    border-radius: 20px;
+    padding-right: 19px;
+    margin-right: 10px;
+    background-color: #EBE54D;
+}
+.ground{
+    border-radius: 20px;
+    padding-right: 19px;
+    margin-right: 10px;
+    background-color: #bfb547;
+}
+.fairy{
+    border-radius: 20px;
+    padding-right: 19px;
+    margin-right: 10px;
+    background-color: #FF309B;
+}
+.electric{
+    border-radius: 20px;
+    padding-right: 19px;
+    margin-right: 10px;
+    background-color: #ffe521;
+}
+.ice{
+    border-radius: 20px;
+    padding-right: 19px;
+    margin-right: 10px;
+    background-color: #38ffe1;
+}
+.dark{
+    border-radius: 20px;
+    padding-right: 19px;
+    margin-right: 10px;
+    background-color: #3a321c;
+}
+.steel{
+    border-radius: 20px;
+    padding-right: 19px;
+    margin-right: 10px;
+    background-color: #8f959b;
+}
+.bug{
+    border-radius: 20px;
+    padding-right: 19px;
+    margin-right: 10px;
+    background-color: #93ba6d;
+}
+.psychic{
+    border-radius: 20px;
+    padding-right: 19px;
+    margin-right: 10px;
+    background-color: #ff0ab1;
+}
+.rock{
+    border-radius: 20px;
+    padding-right: 19px;
+    margin-right: 10px;
+    background-color: #a59465;
+}
+.ghost{
+    border-radius: 20px;
+    padding-right: 19px;
+    margin-right: 10px;
+    background-color: #622882;
+}
+.moveButton{
+    border-radius: 12px;
+    border: none;
+    text-decoration: none;
+}
+}
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    .loadingContainer {
+    position: relative;
+    top: 156px;
+    left: 350px;
+    }
+    .pokeStats{
+        padding: 5px;
+    }
+    .pokeDetail{
+        position: absolute;
+        top: 60px;
+        left: 200px;
+       
+    }
+    .pokeContainer{
+        position: relative;
+        top: 48px;
+        left: 30px;
+    }
+    .pokePicture{
+        margin: 0;
+        width: 96px;
+        height: 96px;
+        position: relative;
+        left: 100px;
+    }
+    .stats{
+        width: 274px;
+        height: 269px;
+        position: relative;
+        bottom: 48px;
+    }
+    .p-Stats{
+        position: absolute;
+        left: 21px;
+        top: 9px;
+    }
+    .pokemonName{
+        position: relative;
+        left: 64px;
+        bottom: 26px;
+        width: 130px;
+    }
+    .pokeAbilities{
+        position: relative;
+        top: 1px;
+        left: 34px;
+        display: flex;
+        flex-flow: column wrap;
+    }
+    .abilityContainer{
+        position: relative;
+        bottom: 49px;
+        min-height: 149px;
+    }
+    .ability{
+        width: 187px;
+    }
+    .p-Abilites{
+        position: relative;
+        left: 20px;
+        top: 10px;
+    }
+    .shinySprite{
+        position: absolute;
+        right: 37px;
+        height: 96px;
+    }
+    .shiny{
+        position: relative;
+        bottom: 45px;
+        height: 73px
+    }
+    .pokeContainer{
+        position: relative;
+        top: 48px;
+        left: 21px;
+    }
+    .p-Shiny{
+        position: absolute;
+        left: 21px;
+        top: 20px;;
+    }
+    .pokeId{
+        position: relative;
+        top: 127px;
+        left: 210px;
+        width: 60px;
+    }
+    .s-Ability{
+        width: 100px;
+    }
+    .callsContainer {
+        font-size: 13px;
+        width: 138px;
+        
+        padding-bottom: 10px;
+    }
+    .weight {
+        position: relative;
+        bottom: 33px;
+        left: 155px;
+        width: 60px;
+    }
+    .p-weight{ 
+        position: relative;
+        left: 21px;
+        width: 60px;  
+     }
+     .pokeMoves{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 277px;
+        position: relative;
+        left: 33px
+     }
+     .moves{
+        width: 168px;
+        padding: 6px;
+     }
+     .s-Moves{
+        width: 100px;
+        padding-right: 5px;
+        
+     }
+     .movesContainer{
+        position: relative;
+        bottom: 54px;
+     }
+     .p-Moves{
+        position: relative;
+        left: 21px;
+        width: 60px;
+     }
+     .arrow{
+        transform: rotate(90deg);
+     }
+     .statContainer {
+        width: 255px;
+        background-color: #B3B3B3;
+     }
+     .statBar {
+        background-color: #ff206e;
+     }
+     .typeContainer{
+        position: relative;
+        bottom: 33px;
+        left: 117px;
+        display: flex;
+        width: 114px;
+     }
+     .types{
+        position: relative;
+        bottom: 28px;
+        left: 18px;
+        width: 260px
+     }
+     .s-Type{
+        position: relative;
+        left: 8px;
+        color: #040405;
+     }
+    .weightContainer{
+        position: relative;
+        bottom: 20px;
+    }
+    .p-Types{
+        width: 60px;
+    }
+    .grass{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #2da01b;
+    }
+    .poison{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #8a3ab2;
+    }
+    .fire{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #ed5f0e;
+    }
+    .water{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #3549E6;
+    }
+    .fighting{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #BD1C44;
+    }
+    .flying{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #6fb5f2;
+    }
+    .dragon{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #8111D6;
+    }
+    .normal{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #a8a878;
+    }
+    .fairy{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #f4b5e0;
+    }
+    .electric{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #EBE54D;
+    }
+    .ground{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #bfb547;
+    }
+    .fairy{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #FF309B;
+    }
+    .electric{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #ffe521;
+    }
+    .ice{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #38ffe1;
+    }
+    .dark{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #3a321c;
+    }
+    .steel{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #8f959b;
+    }
+    .bug{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #93ba6d;
+    }
+    .psychic{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #ff0ab1;
+    }
+    .rock{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #a59465;
+    }
+    .ghost{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #622882;
+    }
+    .moveButton{
+        border-radius: 12px;
+        border: none;
+        text-decoration: none;
+    }
+}
+@media only screen and (min-width: 992px){
+    .loadingContainer {
+    position: relative;
+    top: 160px;
+    left: 550px;
+    }
+    .pokeStats{
+        padding: 5px;
+    }
+    .pokeDetail{
+        position: absolute;
+        top: 60px;
+        left: 478px;
+       
+    }
+    .pokeContainer{
+        position: relative;
+        top: 48px;
+        left: 30px;
+    }
+    .pokePicture{
+        margin: 0;
+        width: 96px;
+        height: 96px;
+        position: relative;
+        left: 100px;
+    }
+    .stats{
+        width: 274px;
+        height: 269px;
+        position: relative;
+        bottom: 48px;
+    }
+    .p-Stats{
+        position: absolute;
+        left: 21px;
+        top: 9px;
+    }
+    .pokemonName{
+        position: relative;
+        left: 64px;
+        bottom: 26px;
+        width: 130px;
+    }
+    .pokeAbilities{
+        position: relative;
+        top: 1px;
+        left: 34px;
+        display: flex;
+        flex-flow: column wrap;
+    }
+    .abilityContainer{
+        position: relative;
+        bottom: 49px;
+        min-height: 149px;
+    }
+    .ability{
+        width: 187px;
+    }
+    .p-Abilites{
+        position: relative;
+        left: 20px;
+        top: 10px;
+    }
+    .shinySprite{
+        position: absolute;
+        right: 37px;
+        height: 96px;
+    }
+    .shiny{
+        position: relative;
+        bottom: 45px;
+        height: 73px
+    }
+    .pokeContainer{
+        position: relative;
+        top: 48px;
+        left: 21px;
+    }
+    .p-Shiny{
+        position: absolute;
+        left: 21px;
+        top: 20px;;
+    }
+    .pokeId{
+        position: relative;
+        top: 127px;
+        left: 210px;
+        width: 60px;
+    }
+    .s-Ability{
+        width: 100px;
+    }
+    .callsContainer {
+        font-size: 13px;
+        width: 138px;
+        
+        padding-bottom: 10px;
+    }
+    .weight {
+        position: relative;
+        bottom: 33px;
+        left: 155px;
+        width: 60px;
+    }
+    .p-weight{ 
+        position: relative;
+        left: 21px;
+        width: 60px;  
+     }
+     .pokeMoves{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 277px;
+        position: relative;
+        left: 33px
+     }
+     .moves{
+        width: 168px;
+        padding: 6px;
+     }
+     .s-Moves{
+        width: 100px;
+        padding-right: 5px;
+        
+     }
+     .movesContainer{
+        position: relative;
+        bottom: 54px;
+     }
+     .p-Moves{
+        position: relative;
+        left: 21px;
+        width: 60px;
+     }
+     .arrow{
+        transform: rotate(90deg);
+     }
+     .statContainer {
+        width: 255px;
+        background-color: #B3B3B3;
+     }
+     .statBar {
+        background-color: #ff206e;
+     }
+     .typeContainer{
+        position: relative;
+        bottom: 33px;
+        left: 117px;
+        display: flex;
+        width: 114px;
+     }
+     .types{
+        position: relative;
+        bottom: 28px;
+        left: 18px;
+        width: 260px
+     }
+     .s-Type{
+        position: relative;
+        left: 8px;
+        color: #040405;
+     }
+    .weightContainer{
+        position: relative;
+        bottom: 20px;
+    }
+    .p-Types{
+        width: 60px;
+    }
+    .grass{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #2da01b;
+    }
+    .poison{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #8a3ab2;
+    }
+    .fire{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #ed5f0e;
+    }
+    .water{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #3549E6;
+    }
+    .fighting{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #BD1C44;
+    }
+    .flying{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #6fb5f2;
+    }
+    .dragon{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #8111D6;
+    }
+    .normal{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #a8a878;
+    }
+    .fairy{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #f4b5e0;
+    }
+    .electric{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #EBE54D;
+    }
+    .ground{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #bfb547;
+    }
+    .fairy{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #FF309B;
+    }
+    .electric{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #ffe521;
+    }
+    .ice{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #38ffe1;
+    }
+    .dark{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #3a321c;
+    }
+    .steel{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #8f959b;
+    }
+    .bug{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #93ba6d;
+    }
+    .psychic{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #ff0ab1;
+    }
+    .rock{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #a59465;
+    }
+    .ghost{
+        border-radius: 20px;
+        padding-right: 19px;
+        margin-right: 10px;
+        background-color: #622882;
+    }
+    .moveButton{
+        border-radius: 12px;
+        border: none;
+        text-decoration: none;
+    }
 }

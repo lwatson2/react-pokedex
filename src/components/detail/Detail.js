@@ -47,7 +47,7 @@ class Detail extends Component {
 				this.setState({
 					pokeData: all.data,
 					isLoaded: true, 
-				}))
+				}, this.Change))
 			.catch((error) => {
 				this.setState({ 
 					errorCode: error.request.status,
@@ -61,6 +61,7 @@ class Detail extends Component {
 			
 		}
 		Change = () => {
+			console.log('test')
 			let weight = this.state.pokeData.weight
 			let weight1 = weight.toString()
 			let newWeight =  weight1.slice(0, -1) + '.' + weight1.slice(-1) 
