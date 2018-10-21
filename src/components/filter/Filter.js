@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PokeCalls from './../pokecalls/PokeCalls'
 import './Filter.css'
 
 export default class Filter extends Component {
@@ -25,7 +24,7 @@ export default class Filter extends Component {
 			}
 		}
 		
-		console.log(this.state.filterBoxes)
+		
 	}
 	submitFilters = (event) => {
 		event.preventDefault();
@@ -35,16 +34,17 @@ export default class Filter extends Component {
 	} 
 
 	render() {
-		console.log(this.state.filterBoxes)
+		
 		const types = [
 			'fire', 'water', 'ice', 'dragon', 'fighting', 'flying', 'grass', 'rock', 'ground', 'fairy', 'poison', 'dark', 'ghost', 'electric', 'steel', 'bug', 'normal', 'psychic'
 		]
 		return (
 			<div className='typeList'>
-				{types.map((types) => {
+				{types.map((types, i) => {
 
 					return <label className='typeNames'>
 						<input
+							key={types}
 							type='checkbox'
 							onChange={(e) => this.onChanges(e)}
 							value={types}

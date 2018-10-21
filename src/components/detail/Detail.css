@@ -605,8 +605,12 @@
     }
     .pokeDetail{
         position: absolute;
-        top: 60px;
+        top: 113px;
         left: 200px;
+        -webkit-box-shadow: 13px 15px 8px -1px rgba(64,73,87,1);
+        -moz-box-shadow: 13px 15px 8px -1px rgba(64,73,87,1);
+        box-shadow: 13px 15px 8px -1px rgba(64,73,87,1);
+        width: 398px;
        
     }
     .pokeContainer{
@@ -901,9 +905,12 @@
     }
     .pokeDetail{
         position: absolute;
-        top: 60px;
-        left: 478px;
-       
+        top: 113px;
+        left: 400px;
+        width: 400px;
+       -webkit-box-shadow: 3px 3px 7px 11px rgba(17,23,28,1);
+-moz-box-shadow: 3px 3px 7px 11px rgba(17,23,28,1);
+box-shadow: 3px 3px 7px 11px rgba(17,23,28,1);
     }
     .pokeContainer{
         position: relative;

@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import {
-  Route,
   Link,
 } from 'react-router-dom'
-import PokeCalls from './../pokecalls/PokeCalls'
-import Detail from './../detail/Detail'
-import Generations from './../generations/Generations'
+
 import KeyboardArrowUp from '@material-ui/icons/KeyboardArrowUp'
 import KeyboardArrowDown from '@material-ui/icons/KeyboardArrowDown'
 import './NavBar.css'

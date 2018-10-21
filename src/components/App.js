@@ -20,9 +20,7 @@ class App extends Component {
          }
       
       }
-      test = () => {
-        console.log('blah')
-      }
+      
     
      handleFilters = (event, typeFilters) => {
 

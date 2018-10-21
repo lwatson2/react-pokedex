@@ -149,7 +149,7 @@ class Detail extends Component {
 		} 
 		if(isLoaded){
 		return (
-
+			<div className='boxContainer'>
 			<div className='pokeDetail'>
 			<div className='pokeId'><p>#{pokeData.id}</p></div>
 			<div className='pokePicture'>
@@ -212,6 +212,7 @@ class Detail extends Component {
 					<div className='moveTwo'>{moveTwoContainer}</div>
 					</div>
 			</div>
+		</div>
 		</div>
 			)
 
