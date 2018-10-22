@@ -26,7 +26,9 @@ class App extends Component {
 
       this.setState({ typeFilters: typeFilters})
     }
-     
+    test = () => {
+      console.log('test')
+    }     
      
     
     
