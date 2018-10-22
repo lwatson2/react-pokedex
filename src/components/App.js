@@ -4,7 +4,7 @@ import SearchBar from './searchBar/SearchBar'
 import Detail from './detail/Detail'
 import NavBar from './navbar/NavBar'
 import {
-  HashRouter,
+  BrowserRouter,
   Route,
   Switch,
 } from 'react-router-dom'
@@ -34,7 +34,7 @@ class App extends Component {
 
   render() {
    return (
-      <HashRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div>
           <NavBar />
           
@@ -46,7 +46,7 @@ class App extends Component {
           <Route component={ErrorMessage} />
           </Switch>
         </div>
-      </HashRouter>
+      </BrowserRouter>
     );
   }
   
