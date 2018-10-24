@@ -16,12 +16,14 @@ export default class PokeCalls extends Component {
     sorted: false,
     offset: 0,
     error: null,
-    newPokemonList: []
+    newPokemonList: [],
+    startNum: 1,
+    endNum: 50
 
   }
   }
   componentDidMount(){
-  this.Api()
+  this.Picture()
     
   }
   componentDidUpdate = (prevProps) => {
@@ -54,31 +56,39 @@ export default class PokeCalls extends Component {
      }))
   }
   handlePagesClick = (direction) => {
-    let nextPage = this.state.offset
+    let { endNum, startNum } = this.state 
     
     if(direction === 'next'){
-        nextPage += 20
-      }else if(nextPage === 0)
-        nextPage
-       else{
-        nextPage -= 20
+        startNum += 50
+        endNum += 50
+      }else if(direction === 'prev' && startNum == 1){
+        startNum
+        endNum
+      }
+       else {
+        startNum -= 50
+        endNum -= 50
     }
-    this.setState({ offset: nextPage,
-    pokemonList: [], sorted: false }, this.Api)
+    this.setState({ 
+      startNum: startNum, pokemonList: [], sorted: false, endNum: endNum }, this.Picture)
     }
   
     Picture = () =>{
 
-    let pokemon = this.state.pokemon;
+    let {pokemon, startNum, endNum }  = this.state;
+    let numList = []
+    for(let i = startNum; i <= endNum; i++){
+      numList.push(i)
+    }
 
-    const pokePromises = pokemon.map(pokemon =>
-      axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}/`)
+    const pokePromises = numList.map(pokemon =>
+      axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}/`)
       );
       Promise.all(pokePromises).then(all => {
         const data = all.map(result => result.data);
           this.setState(
-            { pokemonList: this.state.pokemonList.concat(data) },
-          this.Pass
+            { pokemonList: this.state.pokemonList.concat(data), sorted: true  },
+          this.Pass()
         );
       });
     }
@@ -148,6 +158,9 @@ export default class PokeCalls extends Component {
             <div>
                <PokeGrid 
                pokemonList = {pokemonList}
+               />
+               <Pages
+               handlePagesClick={this.handlePagesClick}
                />
                
             </div>
