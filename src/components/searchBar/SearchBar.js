@@ -33,18 +33,18 @@ class SearchBar extends Component {
   render() {
     return (
       <div className="searchBar">
-        <form onSubmit={this.handleSubmit}>
+        <form >
           <input
             placeholder="Search Pokemon"
             value={this.state.searchQuery}
             onChange={this.handleChange}
             className="inputField"
           />
-          <button className="submitButton">
-            <Link to={`/detail/${this.state.searchQuery}`}>
+          <Link to={`/detail/${this.state.searchQuery}`}>
+            <button className="submitButton">
               <Search style={{ fontSize: 20 }} />
-            </Link>
-          </button>
+           </button>
+          </Link>
           <button
             className="filterButton"
             onClick={() => {
