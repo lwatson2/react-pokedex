@@ -1,32 +1,32 @@
-.typeList{
-	   display: grid;
-    grid-template-columns: repeat(2, 0fr);
-    position: absolute;
-    top: 39px;
-    left: 147px;
-    z-index: 1;
-    background-color: #8B0000;
-    border-radius: 5px;
-    padding: 7px;
-    padding-bottom: 15px;
+.typeList {
+  display: grid;
+  grid-template-columns: repeat(2, 0fr);
+  position: absolute;
+  top: 39px;
+  left: 147px;
+  z-index: 1;
+  background-color: #8b0000;
+  border-radius: 5px;
+  padding: 7px;
+  padding-bottom: 15px;
 }
-.typeNames{
-	display: flex;
-	color: #DADAD9;
+.typeNames {
+  display: flex;
+  color: #dadad9;
 }
-.doneBtn{
-    position: relative;
-    left: 68px;
-    top: 178px;
-    top: 7px;
-    border-radius: 11px;
-    border: none;
+.doneBtn {
+  position: relative;
+  left: 68px;
+  top: 178px;
+  top: 7px;
+  border-radius: 11px;
+  border: none;
 }
-.typeList:after{
-	content: '';
-    position: absolute;
-    border: 10px solid transparent;
-    right: 25px;
-    bottom: 208px;
-    border-bottom: 10px solid #8B0000;
+.typeList:after {
+  content: "";
+  position: absolute;
+  border: 10px solid transparent;
+  right: 25px;
+  bottom: 208px;
+  border-bottom: 10px solid #8b0000;
 }

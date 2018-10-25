@@ -1,32 +1,141 @@
-.pokeButtons{
-	position: absolute;
-    left: 119px;
+@media only screen and (max-width: 479px) {
+  .pokeButtons {
+    position: absolute;
+    left: 38%;
     width: 150px;
-    margin-bottom: 14px;
-}
-button{
-	display: inline-block;
-}
-.rightbtn{
-	margin-left: 15px;
+    margin-top: 45px;
+  }
+  button {
+    display: inline-block;
+  }
+  .rightbtn {
+    margin-left: 15px;
     border-radius: 10px;
-    background-color: red;
+    background-color: #8b0000;
     border: none;
-    color: white;
+    color: #dadad9;
     height: 27px;
     width: 50px;
-}
-.leftbtn{
-	 margin-left: 15px;
+  }
+  .leftbtn {
+    margin-left: 15px;
     border-radius: 10px;
-    background-color: red;
+    background-color: #8b0000;
     border: none;
-    color: white;
+    color: #dadad9;
     height: 27px;
     width: 50px;
+  }
 }
-.pokemonName{
-	position: relative;
-    left: 64px;
-    bottom: 26px;
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .pokeButtons {
+    position: absolute;
+    left: 34%;
+    margin-top: 45px;
+  }
+  button {
+    display: inline-block;
+  }
+  .rightbtn {
+    margin-left: 100px;
+    border-radius: 10px;
+    background-color: #8b0000;
+    border: none;
+    color: #dadad9;
+    height: 27px;
+    width: 50px;
+  }
+  .leftbtn {
+    margin-left: 15px;
+    border-radius: 10px;
+    background-color: #8b0000;
+    border: none;
+    color: #dadad9;
+    height: 27px;
+    width: 50px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .pokeButtons {
+    position: absolute;
+    left: 34%;
+    margin-top: 45px;
+  }
+  button {
+    display: inline-block;
+  }
+  .rightbtn {
+    margin-left: 100px;
+    border-radius: 10px;
+    background-color: #8b0000;
+    border: none;
+    color: #dadad9;
+    height: 27px;
+    width: 50px;
+  }
+  .leftbtn {
+    margin-left: 15px;
+    border-radius: 10px;
+    background-color: #8b0000;
+    border: none;
+    color: #dadad9;
+    height: 27px;
+    width: 50px;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1488px) {
+  .pokeButtons {
+    position: absolute;
+    left: 41%;
+    margin-top: 45px;
+  }
+  button {
+    display: inline-block;
+  }
+  .rightbtn {
+    margin-left: 100px;
+    border-radius: 10px;
+    background-color: #8b0000;
+    border: none;
+    color: #dadad9;
+    height: 27px;
+    width: 50px;
+  }
+  .leftbtn {
+    margin-left: 15px;
+    border-radius: 10px;
+    background-color: #8b0000;
+    border: none;
+    color: #dadad9;
+    height: 27px;
+    width: 50px;
+  }
+}
+@media only screen and (min-width: 1489px) {
+  .pokeButtons {
+    position: absolute;
+    left: 41%;
+    margin-top: 45px;
+  }
+  button {
+    display: inline-block;
+  }
+  .rightbtn {
+    margin-left: 100px;
+    border-radius: 10px;
+    background-color: #8b0000;
+    border: none;
+    color: #dadad9;
+    height: 27px;
+    width: 50px;
+  }
+  .leftbtn {
+    margin-left: 15px;
+    border-radius: 10px;
+    background-color: #8b0000;
+    border: none;
+    color: #dadad9;
+    height: 27px;
+    width: 50px;
+  }
 }

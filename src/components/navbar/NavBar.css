@@ -1,226 +1,226 @@
-@media only screen and (min-width: 270px) and (max-width: 479px){
-    .navBarItems{
-        float: left;
-        padding-right: 8px;
-        margin-right: 7px;
-        padding-left: 50px;
-    }
-    .navBarList{
-    	position: relative;
-        bottom: 22px;
-    }
-    .navBarOpen{
-    	position: relative;
-        top: 41px;
-        background: #8B0000;
-        width: 47px;
-    }
-    .navBar{
-     	height: 63px;
-        background: #8B0000;
-    }
-    .navButtonClosed{
-    	position: relative;
-        top: 13px;
-        background-color: #8B0000;
-       
-    }
-    .navBarClosed {
-    	background: #8B0000;
-        width: 100%;
-        height: 33px;
-    }
-    .navButton{
-        border: none;
-        border-radius: 14px;
-        text-decoration: none;
-    }
-    .dropDown{
-        transform: rotate(90deg);
-    }
-    .genButton{
-        border: none;
-        border-radius: 9px;
-        text-decoration: none;
-        height: 17px;
-        width: 24px;border: none;
-        border-radius: 14px;
-        text-decoration: none;
-    }
-    .genList{
-        padding-left: 5px;
-        padding-right: 14px;
-        position: relative;
-        top: 9px;
-        background: #374955;
-    }
+@media only screen and (min-width: 270px) and (max-width: 479px) {
+  .navBarItems {
+    float: left;
+    padding-right: 8px;
+    margin-right: 7px;
+    padding-left: 50px;
+  }
+  .navBarList {
+    position: relative;
+    bottom: 22px;
+  }
+  .navBarOpen {
+    position: relative;
+    top: 41px;
+    background: #8b0000;
+    width: 47px;
+  }
+  .navBar {
+    height: 63px;
+    background: #8b0000;
+  }
+  .navButtonClosed {
+    position: relative;
+    top: 13px;
+    background-color: #8b0000;
+  }
+  .navBarClosed {
+    background: #8b0000;
+    width: 100%;
+    height: 33px;
+  }
+  .navButton {
+    border: none;
+    border-radius: 14px;
+    text-decoration: none;
+  }
+  .dropDown {
+    transform: rotate(90deg);
+  }
+  .genButton {
+    border: none;
+    border-radius: 9px;
+    text-decoration: none;
+    height: 17px;
+    width: 24px;
+    border: none;
+    border-radius: 14px;
+    text-decoration: none;
+  }
+  .genList {
+    padding-left: 5px;
+    padding-right: 14px;
+    position: relative;
+    top: 9px;
+    background: #374955;
+  }
 }
 
-@media only screen and (min-width: 480px) and (max-width: 767px){
-    .navBarItems{
-        float: left;
-        margin-right: 7px;
-        padding-left: 126px;
-    }
-    .navBarList{
-        position: relative;
-        bottom: 22px;
-    }
-    .navBarOpen{
-        position: relative;
-        top: 28px;
-        background: #8B0000;
-        width: 47px
-    }
-    .navBar{
-        height: 50px;
-        background: #8B0000;
-    }
-    .navButtonClosed{
-        position: relative;
-        top: 13px;
-        background-color: #8B0000;
-       
-    }
-    .navBarClosed {
-        background: #8B0000;
-        width: 100%;
-        height: 33px;
-    }
-    .navButton{
-        border: none;
-        border-radius: 14px;
-        text-decoration: none;
-    }
-    .dropDown{
-        transform: rotate(90deg);
-    }
-    .genButton{
-        border: none;
-        border-radius: 9px;
-        text-decoration: none;
-        height: 17px;
-        width: 24px;border: none;
-        border-radius: 14px;
-        text-decoration: none;
-    }
-    .genList{
-        padding-left: 5px;
-        padding-right: 14px;
-        position: relative;
-        top: 9px;
-        background: #374955;
-    }
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .navBarItems {
+    float: left;
+    margin-right: 7px;
+    padding-left: 126px;
+  }
+  .navBarList {
+    position: relative;
+    bottom: 22px;
+  }
+  .navBarOpen {
+    position: relative;
+    top: 28px;
+    background: #8b0000;
+    width: 47px;
+  }
+  .navBar {
+    height: 50px;
+    background: #8b0000;
+  }
+  .navButtonClosed {
+    position: relative;
+    top: 13px;
+    background-color: #8b0000;
+  }
+  .navBarClosed {
+    background: #8b0000;
+    width: 100%;
+    height: 33px;
+  }
+  .navButton {
+    border: none;
+    border-radius: 14px;
+    text-decoration: none;
+  }
+  .dropDown {
+    transform: rotate(90deg);
+  }
+  .genButton {
+    border: none;
+    border-radius: 9px;
+    text-decoration: none;
+    height: 17px;
+    width: 24px;
+    border: none;
+    border-radius: 14px;
+    text-decoration: none;
+  }
+  .genList {
+    padding-left: 5px;
+    padding-right: 14px;
+    position: relative;
+    top: 9px;
+    background: #374955;
+  }
 }
-@media only screen and (min-width: 768px) and (max-width: 991px){
-    .navBarItems{
-        float: left;
-        margin-right: 7px;
-        padding-left: 188px;
-    }
-    .navBarList{
-        position: relative;
-        bottom: 22px;
-    }
-    .navBarOpen{
-        position: relative;
-        top: 28px;
-        background: #8B0000;
-        width: 47px
-    }
-    .navBar{
-        height: 50px;
-        background: #8B0000;
-    }
-    .navButtonClosed{
-        position: relative;
-        top: 13px;
-        background-color: #8B0000;
-       
-    }
-    .navBarClosed {
-        background: #8B0000;
-        width: 100%;
-        height: 33px;
-    }
-    .navButton{
-        border: none;
-        border-radius: 14px;
-        text-decoration: none;
-    }
-    .dropDown{
-        transform: rotate(90deg);
-    }
-    .genButton{
-        border: none;
-        border-radius: 9px;
-        text-decoration: none;
-        height: 17px;
-        width: 24px;border: none;
-        border-radius: 14px;
-        text-decoration: none;
-    }
-    .genList{
-        padding-left: 5px;
-        padding-right: 14px;
-        position: relative;
-        top: 9px;
-        background: #374955;
-    }
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .navBarItems {
+    float: left;
+    margin-right: 7px;
+    padding-left: 188px;
+  }
+  .navBarList {
+    position: relative;
+    bottom: 22px;
+  }
+  .navBarOpen {
+    position: relative;
+    top: 28px;
+    background: #8b0000;
+    width: 47px;
+  }
+  .navBar {
+    height: 50px;
+    background: #8b0000;
+  }
+  .navButtonClosed {
+    position: relative;
+    top: 13px;
+    background-color: #8b0000;
+  }
+  .navBarClosed {
+    background: #8b0000;
+    width: 100%;
+    height: 33px;
+  }
+  .navButton {
+    border: none;
+    border-radius: 14px;
+    text-decoration: none;
+  }
+  .dropDown {
+    transform: rotate(90deg);
+  }
+  .genButton {
+    border: none;
+    border-radius: 9px;
+    text-decoration: none;
+    height: 17px;
+    width: 24px;
+    border: none;
+    border-radius: 14px;
+    text-decoration: none;
+  }
+  .genList {
+    padding-left: 5px;
+    padding-right: 14px;
+    position: relative;
+    top: 9px;
+    background: #374955;
+  }
 }
-@media only screen and (min-width: 992px){
-.navBarItems{
-        float: left;
-        margin-right: 7px;
-        padding-left: 400px;
-    }
-    .navBarList{
-        position: relative;
-        bottom: 22px;
-    }
-    .navBarOpen{
-        position: relative;
-        top: 28px;
-        background: #8B0000;
-        width: 47px
-    }
-    .navBar{
-        height: 50px;
-        background: #8B0000;
-    }
-    .navButtonClosed{
-        position: relative;
-        top: 13px;
-        background-color: #8B0000;
-       
-    }
-    .navBarClosed {
-        background: #8B0000;
-        width: 100%;
-        height: 33px;
-    }
-    .navButton{
-        border: none;
-        border-radius: 14px;
-        text-decoration: none;
-    }
-    .dropDown{
-        transform: rotate(90deg);
-    }
-    .genButton{
-        border: none;
-        border-radius: 9px;
-        text-decoration: none;
-        height: 17px;
-        width: 24px;border: none;
-        border-radius: 14px;
-        text-decoration: none;
-    }
-    .genList{
-        padding-left: 5px;
-        padding-right: 14px;
-        position: relative;
-        top: 9px;
-        background: #374955;
-    }
+@media only screen and (min-width: 992px) {
+  .navBarItems {
+    float: left;
+    margin-right: 7px;
+    padding-left: 400px;
+  }
+  .navBarList {
+    position: relative;
+    bottom: 22px;
+  }
+  .navBarOpen {
+    position: relative;
+    top: 28px;
+    background: #8b0000;
+    width: 47px;
+  }
+  .navBar {
+    height: 50px;
+    background: #8b0000;
+  }
+  .navButtonClosed {
+    position: relative;
+    top: 13px;
+    background-color: #8b0000;
+  }
+  .navBarClosed {
+    background: #8b0000;
+    width: 100%;
+    height: 33px;
+  }
+  .navButton {
+    border: none;
+    border-radius: 14px;
+    text-decoration: none;
+  }
+  .dropDown {
+    transform: rotate(90deg);
+  }
+  .genButton {
+    border: none;
+    border-radius: 9px;
+    text-decoration: none;
+    height: 17px;
+    width: 24px;
+    border: none;
+    border-radius: 14px;
+    text-decoration: none;
+  }
+  .genList {
+    padding-left: 5px;
+    padding-right: 14px;
+    position: relative;
+    top: 9px;
+    background: #374955;
+  }
 }

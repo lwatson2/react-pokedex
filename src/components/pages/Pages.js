@@ -1,18 +1,21 @@
-import React from 'react'
+import React from "react";
+import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import "./Pages.css";
 
-import './Pages.css'
+const Pages = props => {
+  const { handlePagesClick } = props;
 
-const Pages = (props) => {
-	const { handlePagesClick} = props
+  return (
+    <div className="pokeButtons">
+      <button onClick={() => handlePagesClick("prev")} className="leftbtn">
+        <KeyboardArrowLeft style={{ fontSize: 20 }} />
+      </button>
 
-	
-		return(
-		<div className='pokeButtons'>
-			<button onClick={() => handlePagesClick('prev')} className="leftbtn"><b>prev</b></button>
-			
-			<button onClick={() => handlePagesClick('next')}className="rightbtn"><b>next</b></button>
-			
-		</div>
-		)
-}
-export default Pages
+      <button onClick={() => handlePagesClick("next")} className="rightbtn">
+        <KeyboardArrowRight style={{ fontSize: 20 }} />
+      </button>
+    </div>
+  );
+};
+export default Pages;
