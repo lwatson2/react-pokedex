@@ -9,16 +9,18 @@ import "./PokeCalls.css";
 export default class PokeCalls extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = { 
       pokemon: [],
       pokemonList: [],
       loading: false,
       sorted: false,
-      offset: 0,
+      sliceNum: 0,
       error: null,
       newPokemonList: [],
       startNum: 1,
-      endNum: 50
+      endNum: 50,
+      pokeFilter: [],
+      sliceEndNum: 50
     };
   }
   componentDidMount() {
@@ -31,36 +33,65 @@ export default class PokeCalls extends Component {
     if (this.state.startNum !== prevState.startNum) {
       this.Picture();
     }
+    if(this.state.sliceNum !== prevState.sliceNum) {
+      this.fetchPokemon()
+    }
   };
   handleFilterList = () => {
-    const { pokemonList, newPokemonList } = this.state;
+    const { pokemonList, newPokemonList, pokeFilter, sorted } = this.state;
+    const { filterList } = this.props
     const filteredItems = [];
-    {
-      this.props.filterList.map(filter => {
-        pokemonList.map(poke => {
-          poke.types.map(({ type }) => {
-            if (type.name === filter) {
-              filteredItems.push(poke);
-            }
-          });
-        });
-      });
+    this.setState({sorted: false})
+    if(this.props.filterList.length < 1)
+     this.Picture()
+     filterList.map(filter => 
+        axios.get(`https://pokeapi.co/api/v2/type/${filter}/`)
+        .then(res => console.log(res.data))
+     )  
+  };
+  test = () => {
+    this.testing()
+  }
+  testing = () => {
+    let poke = this.state.pokeFilter
+    let poke1 = []
+    poke.map(pokes => pokes.map(items => poke1.push()))
+    console.log(poke1)
+  }
+  fetchPokemon = () => {
+    const { pokeFilter, sorted, sliceEndNum, sliceNum } = this.state
+    this.setState({sorted: false})
+    let newPokeList = pokeFilter[0].slice(sliceNum, sliceEndNum)
+      console.log(pokeFilter, sliceEndNum)
+      const newPromises = newPokeList.map(poke => 
+        axios.get(`https://pokeapi.co/api/v2/pokemon/${poke.pokemon.name}/`)
+    );
+    Promise.all(newPromises).then(all => {
+      const data = all.map(result => result.data);
+      this.setState({ newPokemonList: this.state.newPokemonList.concat(data), sorted: true })
+  })
+}
+  handleFilterClick = direction => {
+    let { sliceNum, sliceEndNum } = this.state
+    console.log(direction)
+
+    if(direction === 'next'){
+      sliceNum = 51
+      sliceEndNum = -1
+    } else if (direction === "prev" && sliceNum == 0){
+      sliceNum
+      sliceEndNum
+    } else {
+      sliceNum = 1
+      sliceEndNum = 50
     }
-    this.setState({ newPokemonList: filteredItems });
-  };
-  Api = () => {
-    axios
-      .get(` https://pokeapi.co/api/v2/pokemon/`)
-      .then(response =>
-        this.setState({ pokemon: response.data.results }, this.Picture)
-      )
-      .catch(error =>
-        this.setState({
-          error: error.errorMessage,
-          sorted: true
-        })
-      );
-  };
+    this.setState({
+      sliceNum,
+      sliceEndNum,
+      newPokemonList: [],
+      sorted: false
+    })
+  }
   handlePagesClick = direction => {
     let { endNum, startNum } = this.state;
 
@@ -83,7 +114,8 @@ export default class PokeCalls extends Component {
   };
 
   Picture = () => {
-    let { pokemon, startNum, endNum } = this.state;
+    let { pokemon, startNum, endNum,  } = this.state;
+    this.setState({sorted: false})
     let numList = [];
     for (let i = startNum; i <= endNum; i++) {
       numList.push(i);
@@ -95,8 +127,7 @@ export default class PokeCalls extends Component {
     Promise.all(pokePromises).then(all => {
       const data = all.map(result => result.data);
       this.setState(
-        { pokemonList: this.state.pokemonList.concat(data), sorted: true },
-        this.Pass()
+        { pokemonList: this.state.pokemonList.concat(data), sorted: true }
       );
     });
   };
@@ -151,6 +182,7 @@ export default class PokeCalls extends Component {
       return (
         <div>
           <PokeGrid pokemonList={newPokemonList} />
+          <Pages handlePagesClick={this.handleFilterClick} />
         </div>
       );
     }

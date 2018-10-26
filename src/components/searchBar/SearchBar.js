@@ -33,7 +33,7 @@ class SearchBar extends Component {
   render() {
     return (
       <div className="searchBar">
-        <form >
+        <form onSubmit={this.handleSubmit} >
           <input
             placeholder="Search Pokemon"
             value={this.state.searchQuery}
