@@ -46,39 +46,33 @@ export default class PokeCalls extends Component {
      this.Picture()
     }
      let pokeFilterList = []
-     filterList.map(filter => {
-        axios.get(`https://pokeapi.co/api/v2/type/${filter}/`)
-        .then(res => {
-          pokeFilterList.push(...res.data.pokemon)
-          this.setState({pokeFilter: pokeFilterList})
-        } 
-        )  
-      })
-     this.setState({sorted: true }, this.test())
+     let filterPromises = filterList.map(filter => 
+         axios.get(`https://pokeapi.co/api/v2/type/${filter}/`)
+     )
+       Promise.all(filterPromises).then(all => {
+        const data = all.map(result => result.data);
+        this.sortData(data)
+    }) 
+      
+     this.setState({sorted: true })
   };
-  test = () => {
+  sortData = (newData) => {
     console.log('test')
-    console.log(this.state.pokeFilter)
-    this.setState({sorted: true })
+    let testd = newData
+    let newArray = []
+    for(let i = 0; i < testd.length; i++){
+      newArray.push(...testd[i].pokemon)
+    }
+    this.setState({pokeFilter: newArray}, () => {this.fetchPokemon()})
+    
   }
-  testing = () => {
-    let poke = this.state.pokeFilter
-    let poke1 = []
-    poke.map(pokes => pokes.map(items => poke1.push()))
-    console.log(poke1)
-  }
+ 
   fetchPokemon = () => {
     console.log('testing')
     const { pokeFilter, sorted, sliceEndNum, sliceNum } = this.state
     this.setState({sorted: false})
-    const newList = []
-      
-      pokeFilter.map(poke => 
-        poke.pokemon.map(pokemon => newList.push(pokemon) )
-       
-    );
-    console.log(pokeFilter)
-    let slicedList = newList.slice(sliceNum, sliceEndNum)
+    
+    let slicedList = pokeFilter.slice(sliceNum, sliceEndNum)
     let newPromises = slicedList.map(pokemon => 
       axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.pokemon.name}/`)
       )

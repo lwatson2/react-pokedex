@@ -1,6 +1,4 @@
-.statBar {
-  background-color: black;
-}
+
 @media only screen and (max-width: 479px) {
   .loadingContainer {
     position: relative;
@@ -117,7 +115,7 @@
     left: 33px;
   }
   .moves {
-    width: 139px;
+    width: 144px;
     padding: 6px;
   }
   .s-Moves {
