@@ -42,15 +42,24 @@ export default class PokeCalls extends Component {
     const { filterList } = this.props
     const filteredItems = [];
     this.setState({sorted: false})
-    if(this.props.filterList.length < 1)
+    if(this.props.filterList.length < 1){
      this.Picture()
-     filterList.map(filter => 
+    }
+     let pokeFilterList = []
+     filterList.map(filter => {
         axios.get(`https://pokeapi.co/api/v2/type/${filter}/`)
-        .then(res => console.log(res.data))
-     )  
+        .then(res => {
+          pokeFilterList.push(...res.data.pokemon)
+          this.setState({pokeFilter: pokeFilterList})
+        } 
+        )  
+      })
+     this.setState({sorted: true }, this.test())
   };
   test = () => {
-    this.testing()
+    console.log('test')
+    console.log(this.state.pokeFilter)
+    this.setState({sorted: true })
   }
   testing = () => {
     let poke = this.state.pokeFilter
@@ -59,25 +68,32 @@ export default class PokeCalls extends Component {
     console.log(poke1)
   }
   fetchPokemon = () => {
+    console.log('testing')
     const { pokeFilter, sorted, sliceEndNum, sliceNum } = this.state
     this.setState({sorted: false})
-    let newPokeList = pokeFilter[0].slice(sliceNum, sliceEndNum)
-      console.log(pokeFilter, sliceEndNum)
-      const newPromises = newPokeList.map(poke => 
-        axios.get(`https://pokeapi.co/api/v2/pokemon/${poke.pokemon.name}/`)
+    const newList = []
+      
+      pokeFilter.map(poke => 
+        poke.pokemon.map(pokemon => newList.push(pokemon) )
+       
     );
+    console.log(pokeFilter)
+    let slicedList = newList.slice(sliceNum, sliceEndNum)
+    let newPromises = slicedList.map(pokemon => 
+      axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.pokemon.name}/`)
+      )
     Promise.all(newPromises).then(all => {
       const data = all.map(result => result.data);
       this.setState({ newPokemonList: this.state.newPokemonList.concat(data), sorted: true })
-  })
+  }) 
 }
   handleFilterClick = direction => {
     let { sliceNum, sliceEndNum } = this.state
     console.log(direction)
 
     if(direction === 'next'){
-      sliceNum = 51
-      sliceEndNum = -1
+      sliceNum += 51
+      sliceEndNum += 51
     } else if (direction === "prev" && sliceNum == 0){
       sliceNum
       sliceEndNum
