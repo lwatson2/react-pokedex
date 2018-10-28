@@ -9,7 +9,7 @@ import "./PokeCalls.css";
 export default class PokeCalls extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       pokemon: [],
       pokemonList: [],
       loading: false,
@@ -33,75 +33,76 @@ export default class PokeCalls extends Component {
     if (this.state.startNum !== prevState.startNum) {
       this.Picture();
     }
-    if(this.state.sliceNum !== prevState.sliceNum) {
-      this.fetchPokemon()
+    if (this.state.sliceNum !== prevState.sliceNum) {
+      this.fetchPokemon();
     }
   };
   handleFilterList = () => {
     const { pokemonList, newPokemonList, pokeFilter, sorted } = this.state;
-    const { filterList } = this.props
+    const { filterList } = this.props;
     const filteredItems = [];
-    this.setState({sorted: false})
-    if(this.props.filterList.length < 1){
-     this.Picture()
+    this.setState({ sorted: false });
+    if (this.props.filterList.length < 1) {
+      this.Picture();
     }
-     let pokeFilterList = []
-     let filterPromises = filterList.map(filter => 
-         axios.get(`https://pokeapi.co/api/v2/type/${filter}/`)
-     )
-       Promise.all(filterPromises).then(all => {
-        const data = all.map(result => result.data);
-        this.sortData(data)
-    }) 
-      
-     this.setState({sorted: true })
+    let pokeFilterList = [];
+    let filterPromises = filterList.map(filter =>
+      axios.get(`https://pokeapi.co/api/v2/type/${filter}/`)
+    );
+    Promise.all(filterPromises).then(all => {
+      const data = all.map(result => result.data);
+      this.sortData(data);
+    });
+
+    this.setState({ sorted: true });
   };
-  sortData = (newData) => {
-    console.log('test')
-    let testd = newData
-    let newArray = []
-    for(let i = 0; i < testd.length; i++){
-      newArray.push(...testd[i].pokemon)
+  sortData = newData => {
+    let newDatas = newData;
+    let newArray = [];
+    for (let i = 0; i < newDatas.length; i++) {
+      newArray.push(...testd[i].pokemon);
     }
-    this.setState({pokeFilter: newArray}, () => {this.fetchPokemon()})
-    
-  }
- 
+    this.setState({ pokeFilter: newArray }, () => {
+      this.fetchPokemon();
+    });
+  };
+
   fetchPokemon = () => {
-    console.log('testing')
-    const { pokeFilter, sorted, sliceEndNum, sliceNum } = this.state
-    this.setState({sorted: false})
-    
-    let slicedList = pokeFilter.slice(sliceNum, sliceEndNum)
-    let newPromises = slicedList.map(pokemon => 
+    const { pokeFilter, sorted, sliceEndNum, sliceNum } = this.state;
+    this.setState({ sorted: false });
+
+    let slicedList = pokeFilter.slice(sliceNum, sliceEndNum);
+    let newPromises = slicedList.map(pokemon =>
       axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.pokemon.name}/`)
-      )
+    );
     Promise.all(newPromises).then(all => {
       const data = all.map(result => result.data);
-      this.setState({ newPokemonList: this.state.newPokemonList.concat(data), sorted: true })
-  }) 
-}
+      this.setState({
+        newPokemonList: this.state.newPokemonList.concat(data),
+        sorted: true
+      });
+    });
+  };
   handleFilterClick = direction => {
-    let { sliceNum, sliceEndNum } = this.state
-    console.log(direction)
+    let { sliceNum, sliceEndNum } = this.state;
 
-    if(direction === 'next'){
-      sliceNum += 51
-      sliceEndNum += 51
-    } else if (direction === "prev" && sliceNum == 0){
-      sliceNum
-      sliceEndNum
+    if (direction === "next") {
+      sliceNum += 51;
+      sliceEndNum += 51;
+    } else if (direction === "prev" && sliceNum == 0) {
+      sliceNum;
+      sliceEndNum;
     } else {
-      sliceNum = 1
-      sliceEndNum = 50
+      sliceNum = 1;
+      sliceEndNum = 50;
     }
     this.setState({
       sliceNum,
       sliceEndNum,
       newPokemonList: [],
       sorted: false
-    })
-  }
+    });
+  };
   handlePagesClick = direction => {
     let { endNum, startNum } = this.state;
 
@@ -124,8 +125,8 @@ export default class PokeCalls extends Component {
   };
 
   Picture = () => {
-    let { pokemon, startNum, endNum,  } = this.state;
-    this.setState({sorted: false})
+    let { pokemon, startNum, endNum } = this.state;
+    this.setState({ sorted: false });
     let numList = [];
     for (let i = startNum; i <= endNum; i++) {
       numList.push(i);
@@ -136,9 +137,10 @@ export default class PokeCalls extends Component {
     );
     Promise.all(pokePromises).then(all => {
       const data = all.map(result => result.data);
-      this.setState(
-        { pokemonList: this.state.pokemonList.concat(data), sorted: true }
-      );
+      this.setState({
+        pokemonList: this.state.pokemonList.concat(data),
+        sorted: true
+      });
     });
   };
 

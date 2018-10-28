@@ -36,7 +36,9 @@ class NavBar extends Component {
               <Link to={"/"}>
                 <li className="navBarItems"> Home </li>
               </Link>
-              <li className="navBarItems"><a href='https://github.com/lwatson2/react-pokedex'>  About </a> </li>
+              <li className="navBarItems">
+                <a href="https://github.com/lwatson2/react-pokedex"> About </a>{" "}
+              </li>
             </ul>
           </div>
         </div>
