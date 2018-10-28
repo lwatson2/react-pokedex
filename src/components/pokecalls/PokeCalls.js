@@ -60,7 +60,7 @@ export default class PokeCalls extends Component {
     let newDatas = newData;
     let newArray = [];
     for (let i = 0; i < newDatas.length; i++) {
-      newArray.push(...testd[i].pokemon);
+      newArray.push(...newDatas[i].pokemon);
     }
     this.setState({ pokeFilter: newArray }, () => {
       this.fetchPokemon();
