@@ -89,12 +89,15 @@ export default class PokeCalls extends Component {
     if (direction === "next") {
       sliceNum += 51;
       sliceEndNum += 51;
-    } else if (direction === "prev" && sliceNum == 0) {
-      sliceNum;
-      sliceEndNum;
-    } else {
-      sliceNum = 1;
+      console.log('direction')
+    } else if (direction === "prev" && sliceNum === 0) {
+      console.log('test')
+      sliceNum = 0;
       sliceEndNum = 50;
+    } else {
+      console.log(direction)
+      sliceNum -= 1;
+      sliceEndNum -= 50;
     }
     this.setState({
       sliceNum,
@@ -109,12 +112,13 @@ export default class PokeCalls extends Component {
     if (direction === "next") {
       startNum += 50;
       endNum += 50;
-    } else if (direction === "prev" && startNum == 1) {
-      startNum;
-      endNum;
-    } else {
+    }  else if(direction === 'prev' && startNum !== 1) {
       startNum -= 50;
       endNum -= 50;
+    } else {
+      startNum = 1;
+      endNum = 50;
+      this.setState({startNum, endNum}, this.Picture())
     }
     this.setState({
       startNum: startNum,
@@ -125,6 +129,7 @@ export default class PokeCalls extends Component {
   };
 
   Picture = () => {
+    console.log('test')
     let { pokemon, startNum, endNum } = this.state;
     this.setState({ sorted: false });
     let numList = [];
