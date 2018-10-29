@@ -35,6 +35,8 @@
     text-decoration: none;
   }
   .dropDown {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
     transform: rotate(90deg);
   }
   .genButton {
@@ -92,6 +94,8 @@
     text-decoration: none;
   }
   .dropDown {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
     transform: rotate(90deg);
   }
   .genButton {
@@ -148,6 +152,8 @@
     text-decoration: none;
   }
   .dropDown {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
     transform: rotate(90deg);
   }
   .genButton {
@@ -204,6 +210,8 @@
     text-decoration: none;
   }
   .dropDown {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
     transform: rotate(90deg);
   }
   .genButton {

@@ -8,7 +8,11 @@
     left: 20px;
   }
   .pokeName {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
     display: inline-flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     font-size: 15px;
     position: relative;
@@ -16,8 +20,10 @@
   }
   .container {
     list-style-type: none;
+    display: -ms-grid;
     display: grid;
     grid-gap: 0.5rem;
+    -ms-grid-columns: (1fr) [2];
     grid-template-columns: repeat(2, 1fr);
     position: relative;
     top: 32px;
@@ -25,7 +31,11 @@
     width: 280px;
   }
   .listItem {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
     align-items: flex-end;
   }
   .pokeGrid {
@@ -72,17 +82,70 @@
     bottom: 5px;
   }
 }
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .container {
+    list-style-type: none;
+    display: -ms-grid;
+    display: grid;
+    grid-gap: 1.5em;
+    -ms-grid-columns: (1fr) [3];
+    grid-template-columns: repeat(3, 1fr);
+    position: relative;
+    top: 37px;
+  }
+  .listsItem {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+  }
+  .pokeGrid {
+    background-color: #2b4859;
+    border-radius: 24%;
+    width: 150px;
+    padding: 0;
+    text-align: center;
+  }
+  .pokeList {
+    position: relative;
+    left: 5px;
+  }
+  .poke-picture {
+    position: relative;
+    left: 20px;
+  }
+  .pokeName {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    font-size: 15px;
+    position: relative;
+    bottom: 5px;
+  }
+}
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .container {
     list-style-type: none;
+    display: -ms-grid;
     display: grid;
     grid-gap: 1.5em;
+    -ms-grid-columns: (1fr) [4];
     grid-template-columns: repeat(4, 1fr);
     position: relative;
     top: 37px;
   }
   .listsItem {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
     align-items: flex-end;
   }
   .pokeGrid {
@@ -101,7 +164,11 @@
     left: 20px;
   }
   .pokeName {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
     display: inline-flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     font-size: 15px;
     position: relative;
@@ -111,14 +178,20 @@
 @media only screen and (min-width: 992px) {
   .container {
     list-style-type: none;
+    display: -ms-grid;
     display: grid;
     grid-gap: 1.5em;
+    -ms-grid-columns: (1fr) [5];
     grid-template-columns: repeat(5, 1fr);
     position: relative;
     top: 37px;
   }
   .listsItem {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
     align-items: flex-end;
   }
   .pokeGrid {
@@ -137,7 +210,11 @@
     left: 20px;
   }
   .pokeName {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
     display: inline-flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     font-size: 15px;
     position: relative;

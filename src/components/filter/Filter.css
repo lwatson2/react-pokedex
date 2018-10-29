@@ -1,5 +1,7 @@
 .typeList {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: (0fr) [2];
   grid-template-columns: repeat(2, 0fr);
   position: absolute;
   top: 39px;
@@ -11,6 +13,8 @@
   padding-bottom: 15px;
 }
 .typeNames {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   color: #dadad9;
 }
