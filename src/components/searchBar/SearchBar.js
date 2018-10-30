@@ -29,6 +29,10 @@ class SearchBar extends Component {
       return <Detail name={value} />;
     }
   };
+  handleFilter = () => {
+    console.log('test')
+    this.setState({showFilters: false})
+  }
 
   render() {
     return (
@@ -55,7 +59,7 @@ class SearchBar extends Component {
           </button>
         </form>
 
-        {this.state.showFilters ? <Filter filter={this.props.filter} /> : ""}
+        {this.state.showFilters ? <Filter showFilter={this.handleFilter} filter={this.props.filter} /> : ""}
         <Route exact path="detail/:name" component={Detail} />
       </div>
     );

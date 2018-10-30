@@ -27,6 +27,7 @@ export default class Filter extends Component {
     event.preventDefault();
     const typeFilters = this.state.filterBoxes;
     this.props.filter(event, typeFilters);
+    this.props.showFilter()
   };
 
   render() {
