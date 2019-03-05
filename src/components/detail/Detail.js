@@ -143,37 +143,39 @@ class Detail extends Component {
       return (
         <div className="boxContainer">
           <div className="pokeDetail">
-            <div className="pokeId">
-              <p>#{pokeData.id}</p>
-            </div>
-            <div className="pokePicture">
-              <img src={pokeData.sprites.front_default} alt="pokemon icon" />
-            </div>
-            <div className="pokemonName">
-              <h3>{pokeData.name}</h3>
-            </div>
-            <div className="weightContainer">
-              <p className="p-weight"> Weight </p>
-              <div className="weight">
-                <p> {weight} kg </p>
+            <div className="topBoxWrapper">
+              <div className="pokePicture">
+                <img src={pokeData.sprites.front_default} alt="pokemon icon" />
               </div>
-            </div>
-            <div className="types">
-              <p className="p-Types"> Types </p>
-              <div className="typeContainer">
-                {pokeData.types.map(({ type }, i) => (
-                  <div className={this.renderType(type.name)}>
-                    <span className="s-Type" key={i}>
-                      {type.name}
-                    </span>
-                  </div>
-                ))}
+              <div className="pokemonName">
+                <h3 className="pokeDetailName">{pokeData.name}</h3>
+                <div className="pokeId">
+                  <p>#{pokeData.id}</p>
+                </div>
               </div>
-            </div>
-            <div className="shiny">
-              <p className="p-Shiny">Shiny Version </p>
-              <div className="shinySprite">
-                <img src={pokeData.sprites.front_shiny} alt="shiny version" />
+              <div className="weightContainer">
+                <p className="p-weight"> Weight </p>
+                <div className="weight">
+                  <p> {weight} kg </p>
+                </div>
+              </div>
+              <div className="types">
+                <p className="p-Types"> Types </p>
+                <div className="typeContainer">
+                  {pokeData.types.map(({ type }, i) => (
+                    <div className={this.renderType(type.name)}>
+                      <span className="s-Type" key={i}>
+                        {type.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="shiny">
+                <p className="p-Shiny">Shiny Version </p>
+                <div className="shinySprite">
+                  <img src={pokeData.sprites.front_shiny} alt="shiny version" />
+                </div>
               </div>
             </div>
             <div className="stats">

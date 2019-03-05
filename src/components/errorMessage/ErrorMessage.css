@@ -1,28 +1,6 @@
-@media screen and (max-width: 479px) {
-  .errorMessage {
-    position: relative;
-    top: 64px;
-    left: 21px;
-  }
-}
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-  .errorMessage {
-    position: relative;
-    top: 100px;
-    left: 150px;
-  }
-}
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .errorMessage {
-    position: relative;
-    top: 150px;
-    left: 150px;
-  }
-}
-@media only screen and (min-width: 992px) {
-  .errorMessage {
-    position: relative;
-    top: 64px;
-    left: 400px;
-  }
+.errorMessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 68vh;
 }

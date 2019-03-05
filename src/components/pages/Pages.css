@@ -1,9 +1,8 @@
 @media only screen and (max-width: 479px) {
   .pokeButtons {
-    position: absolute;
-    left: 38%;
     width: 150px;
-    margin-top: 45px;
+    margin: 0 auto;
+    margin-top: 70px;
   }
   button {
     display: inline-block;
@@ -29,9 +28,9 @@
 }
 @media only screen and (min-width: 480px) and (max-width: 767px) {
   .pokeButtons {
-    position: absolute;
-    left: 34%;
-    margin-top: 45px;
+    width: 150px;
+    margin: 0 auto;
+    margin-top: 70px;
   }
   button {
     display: inline-block;
@@ -59,13 +58,13 @@
   .pokeButtons {
     position: absolute;
     left: 34%;
-    margin-top: 45px;
+    margin-top: 70px;
   }
   button {
     display: inline-block;
   }
   .rightbtn {
-    margin-left: 100px;
+    margin-left: 15px;
     border-radius: 10px;
     background-color: #8b0000;
     border: none;
@@ -85,15 +84,15 @@
 }
 @media only screen and (min-width: 992px) and (max-width: 1488px) {
   .pokeButtons {
-    position: absolute;
-    left: 41%;
-    margin-top: 45px;
+    width: 150px;
+    margin: 0 auto;
+    margin-top: 70;
   }
   button {
     display: inline-block;
   }
   .rightbtn {
-    margin-left: 100px;
+    margin-left: 15px;
     border-radius: 10px;
     background-color: #8b0000;
     border: none;
@@ -113,15 +112,15 @@
 }
 @media only screen and (min-width: 1489px) {
   .pokeButtons {
-    position: absolute;
-    left: 41%;
-    margin-top: 45px;
+    width: 150px;
+    margin: 0 auto;
+    margin-top: 70px;
   }
   button {
     display: inline-block;
   }
   .rightbtn {
-    margin-left: 100px;
+    margin-left: 15px;
     border-radius: 10px;
     background-color: #8b0000;
     border: none;

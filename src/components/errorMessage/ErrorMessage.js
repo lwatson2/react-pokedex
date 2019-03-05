@@ -3,7 +3,7 @@ import "./ErrorMessage.css";
 
 export default class ErrorMessage extends Component {
   render() {
-    if (this.props.errorCode == "0")
+    if (this.props.errorCode == "404")
       return (
         <div className="errorMessage">
           <h3>

@@ -30,14 +30,14 @@ class SearchBar extends Component {
     }
   };
   handleFilter = () => {
-    console.log('test')
-    this.setState({showFilters: false})
-  }
+    console.log("test");
+    this.setState({ showFilters: false });
+  };
 
   render() {
     return (
       <div className="searchBar">
-        <form onSubmit={this.handleSubmit} >
+        <form onSubmit={this.handleSubmit}>
           <input
             placeholder="Search Pokemon"
             value={this.state.searchQuery}
@@ -46,8 +46,8 @@ class SearchBar extends Component {
           />
           <Link to={`/detail/${this.state.searchQuery}`}>
             <button className="submitButton">
-              <Search style={{ fontSize: 20 }} />
-           </button>
+              <Search style={{ fontSize: 13 }} />
+            </button>
           </Link>
           <button
             className="filterButton"
@@ -59,7 +59,11 @@ class SearchBar extends Component {
           </button>
         </form>
 
-        {this.state.showFilters ? <Filter showFilter={this.handleFilter} filter={this.props.filter} /> : ""}
+        {this.state.showFilters ? (
+          <Filter showFilter={this.handleFilter} filter={this.props.filter} />
+        ) : (
+          ""
+        )}
         <Route exact path="detail/:name" component={Detail} />
       </div>
     );

@@ -18,11 +18,9 @@
     left: 30px;
   }
   .pokePicture {
-    margin: 0;
     width: 96px;
     height: 96px;
-    position: relative;
-    left: 100px;
+    margin: 0 auto;
   }
   .stats {
     width: 274px;
@@ -37,9 +35,17 @@
   }
   .pokemonName {
     position: relative;
-    left: 64px;
-    bottom: 26px;
-    width: 130px;
+    display: -ms-flexbox;
+    display: flex;
+    bottom: 14px;
+    width: 100%;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  .pokeDetailName {
+    flex: 0 0 45%;
   }
   .pokeAbilities {
     position: relative;
@@ -86,12 +92,6 @@
     left: 21px;
     top: 20px;
   }
-  .pokeId {
-    position: relative;
-    top: 127px;
-    left: 210px;
-    width: 60px;
-  }
   .s-Ability {
     width: 100px;
   }
@@ -101,20 +101,16 @@
 
     padding-bottom: 10px;
   }
-  .weight {
-    position: relative;
-    bottom: 33px;
-    left: 155px;
-  }
+
   .p-weight {
     position: relative;
     left: 21px;
     width: 60px;
+    flex: 0 0 59%;
   }
   .pokeMoves {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (1fr) [2];
     grid-template-columns: repeat(2, 1fr);
     width: 277px;
     position: relative;
@@ -139,7 +135,6 @@
   }
   .arrow {
     -webkit-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
     transform: rotate(90deg);
   }
   .statContainer {
@@ -150,19 +145,18 @@
     background-color: #ff206e;
   }
   .typeContainer {
-    position: relative;
-    bottom: 33px;
-    left: 117px;
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    width: 114px;
+    align-items: center;
+    position: relative;
+    left: 40px;
   }
   .types {
     position: relative;
     bottom: 28px;
-    left: 18px;
-    width: 260px;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
   }
   .s-Type {
     position: relative;
@@ -172,6 +166,8 @@
   .weightContainer {
     position: relative;
     bottom: 20px;
+    display: flex;
+    justify-content: space-around;
   }
   .p-Types {
     width: 60px;
@@ -323,11 +319,9 @@
     left: 30px;
   }
   .pokePicture {
-    margin: 0;
     width: 96px;
     height: 96px;
-    position: relative;
-    left: 100px;
+    margin: 0 auto;
   }
   .stats {
     width: 274px;
@@ -342,9 +336,17 @@
   }
   .pokemonName {
     position: relative;
-    left: 64px;
-    bottom: 26px;
-    width: 130px;
+    display: -ms-flexbox;
+    display: flex;
+    bottom: 14px;
+    width: 100%;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  .pokeDetailName {
+    flex: 0 0 45%;
   }
   .pokeAbilities {
     position: relative;
@@ -391,12 +393,6 @@
     left: 21px;
     top: 20px;
   }
-  .pokeId {
-    position: relative;
-    top: 127px;
-    left: 210px;
-    width: 60px;
-  }
   .s-Ability {
     width: 100px;
   }
@@ -406,22 +402,17 @@
 
     padding-bottom: 10px;
   }
-  .weight {
-    position: relative;
-    bottom: 33px;
-    left: 155px;
-  }
+
   .p-weight {
     position: relative;
     left: 21px;
     width: 60px;
+    flex: 0 0 59%;
   }
   .pokeMoves {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (1fr) [2];
     grid-template-columns: repeat(2, 1fr);
-    width: 277px;
     position: relative;
     left: 33px;
   }
@@ -444,7 +435,6 @@
   }
   .arrow {
     -webkit-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
     transform: rotate(90deg);
   }
   .statContainer {
@@ -455,19 +445,18 @@
     background-color: #ff206e;
   }
   .typeContainer {
-    position: relative;
-    bottom: 33px;
-    left: 117px;
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    width: 114px;
+    align-items: center;
+    position: relative;
+    left: 40px;
   }
   .types {
     position: relative;
     bottom: 28px;
-    left: 18px;
-    width: 260px;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
   }
   .s-Type {
     position: relative;
@@ -477,6 +466,8 @@
   .weightContainer {
     position: relative;
     bottom: 20px;
+    display: flex;
+    justify-content: space-around;
   }
   .p-Types {
     width: 60px;
@@ -629,11 +620,9 @@
     left: 30px;
   }
   .pokePicture {
-    margin: 0;
     width: 96px;
     height: 96px;
-    position: relative;
-    left: 100px;
+    margin: 0 auto;
   }
   .stats {
     width: 274px;
@@ -648,9 +637,17 @@
   }
   .pokemonName {
     position: relative;
-    left: 64px;
-    bottom: 26px;
-    width: 130px;
+    display: -ms-flexbox;
+    display: flex;
+    bottom: 14px;
+    width: 100%;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  .pokeDetailName {
+    flex: 0 0 45%;
   }
   .pokeAbilities {
     position: relative;
@@ -697,12 +694,6 @@
     left: 21px;
     top: 20px;
   }
-  .pokeId {
-    position: relative;
-    top: 127px;
-    left: 210px;
-    width: 60px;
-  }
   .s-Ability {
     width: 100px;
   }
@@ -712,22 +703,17 @@
 
     padding-bottom: 10px;
   }
-  .weight {
-    position: relative;
-    bottom: 33px;
-    left: 155px;
-  }
+
   .p-weight {
     position: relative;
     left: 21px;
     width: 60px;
+    flex: 0 0 59%;
   }
   .pokeMoves {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (1fr) [2];
     grid-template-columns: repeat(2, 1fr);
-    width: 277px;
     position: relative;
     left: 33px;
   }
@@ -750,7 +736,6 @@
   }
   .arrow {
     -webkit-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
     transform: rotate(90deg);
   }
   .statContainer {
@@ -761,19 +746,18 @@
     background-color: #ff206e;
   }
   .typeContainer {
-    position: relative;
-    bottom: 33px;
-    left: 117px;
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    width: 114px;
+    align-items: center;
+    position: relative;
+    left: 40px;
   }
   .types {
     position: relative;
     bottom: 28px;
-    left: 18px;
-    width: 260px;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
   }
   .s-Type {
     position: relative;
@@ -783,6 +767,8 @@
   .weightContainer {
     position: relative;
     bottom: 20px;
+    display: flex;
+    justify-content: space-around;
   }
   .p-Types {
     width: 60px;
@@ -936,11 +922,9 @@
     left: 30px;
   }
   .pokePicture {
-    margin: 0;
     width: 96px;
     height: 96px;
-    position: relative;
-    left: 100px;
+    margin: 0 auto;
   }
   .stats {
     width: 274px;
@@ -955,9 +939,17 @@
   }
   .pokemonName {
     position: relative;
-    left: 64px;
-    bottom: 26px;
-    width: 130px;
+    display: -ms-flexbox;
+    display: flex;
+    bottom: 14px;
+    width: 100%;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  .pokeDetailName {
+    flex: 0 0 45%;
   }
   .pokeAbilities {
     position: relative;
@@ -1004,12 +996,7 @@
     left: 21px;
     top: 20px;
   }
-  .pokeId {
-    position: relative;
-    top: 127px;
-    left: 210px;
-    width: 60px;
-  }
+
   .s-Ability {
     width: 100px;
   }
@@ -1019,22 +1006,16 @@
 
     padding-bottom: 10px;
   }
-  .weight {
-    position: relative;
-    bottom: 33px;
-    left: 155px;
-  }
   .p-weight {
     position: relative;
     left: 21px;
     width: 60px;
+    flex: 0 0 59%;
   }
   .pokeMoves {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (1fr) [2];
     grid-template-columns: repeat(2, 1fr);
-    width: 277px;
     position: relative;
     left: 33px;
   }
@@ -1057,7 +1038,6 @@
   }
   .arrow {
     -webkit-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
     transform: rotate(90deg);
   }
   .statContainer {
@@ -1068,19 +1048,18 @@
     background-color: #ff206e;
   }
   .typeContainer {
-    position: relative;
-    bottom: 33px;
-    left: 117px;
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    width: 114px;
+    align-items: center;
+    position: relative;
+    left: 40px;
   }
   .types {
     position: relative;
     bottom: 28px;
-    left: 18px;
-    width: 260px;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
   }
   .s-Type {
     position: relative;
@@ -1090,6 +1069,8 @@
   .weightContainer {
     position: relative;
     bottom: 20px;
+    display: flex;
+    justify-content: space-around;
   }
   .p-Types {
     width: 60px;
@@ -1243,11 +1224,9 @@
     left: 30px;
   }
   .pokePicture {
-    margin: 0;
     width: 96px;
     height: 96px;
-    position: relative;
-    left: 100px;
+    margin: 0 auto;
   }
   .stats {
     width: 274px;
@@ -1262,9 +1241,17 @@
   }
   .pokemonName {
     position: relative;
-    left: 64px;
-    bottom: 26px;
-    width: 130px;
+    display: -ms-flexbox;
+    display: flex;
+    bottom: 14px;
+    width: 100%;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  .pokeDetailName {
+    flex: 0 0 45%;
   }
   .pokeAbilities {
     position: relative;
@@ -1311,12 +1298,7 @@
     left: 21px;
     top: 20px;
   }
-  .pokeId {
-    position: relative;
-    top: 127px;
-    left: 210px;
-    width: 60px;
-  }
+
   .s-Ability {
     width: 100px;
   }
@@ -1326,22 +1308,17 @@
 
     padding-bottom: 10px;
   }
-  .weight {
-    position: relative;
-    bottom: 33px;
-    left: 155px;
-  }
+
   .p-weight {
     position: relative;
     left: 21px;
     width: 60px;
+    flex: 0 0 59%;
   }
   .pokeMoves {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (1fr) [2];
     grid-template-columns: repeat(2, 1fr);
-    width: 277px;
     position: relative;
     left: 33px;
   }
@@ -1364,7 +1341,6 @@
   }
   .arrow {
     -webkit-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
     transform: rotate(90deg);
   }
   .statContainer {
@@ -1376,18 +1352,20 @@
   }
   .typeContainer {
     position: relative;
-    bottom: 33px;
-    left: 117px;
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    width: 114px;
+    align-items: center;
+    position: relative;
+    left: 40px;
+    position: relative;
+    left: 35px;
   }
   .types {
     position: relative;
     bottom: 28px;
-    left: 18px;
-    width: 260px;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
   }
   .s-Type {
     position: relative;
@@ -1397,6 +1375,8 @@
   .weightContainer {
     position: relative;
     bottom: 20px;
+    display: flex;
+    justify-content: space-around;
   }
   .p-Types {
     width: 60px;
