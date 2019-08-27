@@ -35,7 +35,6 @@ class SearchBar extends Component {
   };
 
   render() {
-    console.log(this.props);
     const { searchQuery, showFilters } = this.state;
     return (
       <div className="searchBar">
