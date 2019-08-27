@@ -125,8 +125,7 @@ class PokeCalls extends Component {
       currentPageNum = 1;
     }
     currentUrlParams.set("page", currentPageNum);
-    console.log(window.location.pathname);
-    this.props.history.push(`?${currentUrlParams}`);
+    this.props.history.push(`${window.location.pathname}?${currentUrlParams}`);
     this.setState(
       {
         pokemonList: [],
