@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.rightbtn {
+.paginationBtn {
   margin-left: 15px;
   border-radius: 10px;
   background-color: #8b0000;
@@ -12,13 +12,5 @@
   color: #dadad9;
   height: 27px;
   width: 50px;
-}
-.leftbtn {
-  margin-left: 15px;
-  border-radius: 10px;
-  background-color: #8b0000;
-  border: none;
-  color: #dadad9;
-  height: 27px;
-  width: 50px;
+  cursor: pointer;
 }

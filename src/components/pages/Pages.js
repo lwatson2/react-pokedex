@@ -8,11 +8,11 @@ const Pages = props => {
 
   return (
     <div className="pokeButtons">
-      <button onClick={() => handlePagesClick("prev")} className="leftbtn">
+      <button onClick={() => handlePagesClick("prev")} className="paginationBtn">
         <KeyboardArrowLeft style={{ fontSize: 20 }} />
       </button>
 
-      <button onClick={() => handlePagesClick("next")} className="rightbtn">
+      <button onClick={() => handlePagesClick("next")} className="paginationBtn">
         <KeyboardArrowRight style={{ fontSize: 20 }} />
       </button>
     </div>

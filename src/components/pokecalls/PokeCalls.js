@@ -112,36 +112,46 @@ class PokeCalls extends Component {
     });
   };
   handlePagesClick = direction => {
-    let { endNum, startNum } = this.state;
     let currentUrlParams = new URLSearchParams(window.location.search);
     let currentPageNum = currentUrlParams.get("page");
     currentPageNum = parseInt(currentPageNum);
+    if (!currentPageNum) {
+      currentPageNum = 1;
+    }
     if (direction === "next") {
       currentPageNum = currentPageNum + 1;
-    } else if (direction === "prev" && startNum !== 1) {
+    } else if (direction === "prev" && currentPageNum !== 1) {
       currentPageNum = currentPageNum - 1;
     } else {
       currentPageNum = 1;
-      this.setState({ startNum, endNum }, this.Picture());
     }
-    console.log(currentPageNum);
     currentUrlParams.set("page", currentPageNum);
     this.props.history.push(`${window.location.pathname}?${currentUrlParams}`);
-    this.setState({
-      startNum: startNum,
-      pokemonList: [],
-      sorted: false,
-      endNum: endNum,
-      pageNum: currentPageNum
-    });
+    this.setState(
+      {
+        pokemonList: [],
+        sorted: false
+      },
+
+      this.Picture()
+    );
   };
 
   Picture = () => {
+    let endNum;
+    let startNum;
     let currentUrlParams = new URLSearchParams(window.location.search);
     let currentPageNum = currentUrlParams.get("page");
-    let endNum = currentPageNum * 30;
-    let startNum = endNum - 29;
-    console.log(startNum, endNum);
+    if (currentPageNum > 26) {
+      this.props.history.push("/404");
+    }
+    if (!currentPageNum) {
+      endNum = 30;
+      startNum = 1;
+    } else {
+      endNum = currentPageNum * 30;
+      startNum = endNum - 29;
+    }
     this.setState({ sorted: false, pokemonList: [] });
     let numList = [];
     for (let i = startNum; i <= endNum; i++) {
