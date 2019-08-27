@@ -4,9 +4,10 @@ import React, { Component } from "react";
 import axios from "axios";
 import Loading from "./../loading/Loading";
 import ErrorMessage from "./../errorMessage/ErrorMessage";
+import { withRouter } from "react-router";
 import "./PokeCalls.css";
 
-export default class PokeCalls extends Component {
+class PokeCalls extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +21,8 @@ export default class PokeCalls extends Component {
       startNum: 1,
       endNum: 50,
       pokeFilter: [],
-      sliceEndNum: 50
+      sliceEndNum: 50,
+      pageNum: 1
     };
   }
   componentDidMount() {
@@ -41,8 +43,12 @@ export default class PokeCalls extends Component {
     const { pokemonList, newPokemonList, pokeFilter, sorted } = this.state;
     const { filterList } = this.props;
     const filteredItems = [];
-    console.log('test')
-    this.setState({ sorted: false, newPokemonList: [], sliceNum: 0, sliceEndNum: 50 });
+    this.setState({
+      sorted: false,
+      newPokemonList: [],
+      sliceNum: 0,
+      sliceEndNum: 50
+    });
     if (this.props.filterList.length < 1) {
       this.Picture();
     }
@@ -90,17 +96,14 @@ export default class PokeCalls extends Component {
     if (direction === "next") {
       sliceNum += 51;
       sliceEndNum += 51;
-    } else if (direction === 'prev' && sliceNum !== 0){
+    } else if (direction === "prev" && sliceNum !== 0) {
       sliceNum -= 51;
       sliceEndNum -= 51;
-      console.log('ubs')
-    }
-     else{
-       console.log('blah')
+    } else {
       sliceNum = 0;
       sliceEndNum = 50;
-      this.setState({sliceNum, sliceEndNum}, this.handleFilterList())
-     }
+      this.setState({ sliceNum, sliceEndNum }, this.handleFilterList());
+    }
     this.setState({
       sliceNum,
       sliceEndNum,
@@ -110,28 +113,35 @@ export default class PokeCalls extends Component {
   };
   handlePagesClick = direction => {
     let { endNum, startNum } = this.state;
-
+    let currentUrlParams = new URLSearchParams(window.location.search);
+    let currentPageNum = currentUrlParams.get("page");
+    currentPageNum = parseInt(currentPageNum);
     if (direction === "next") {
-      startNum += 50;
-      endNum += 50;
-    }  else if(direction === 'prev' && startNum !== 1) {
-      startNum -= 50;
-      endNum -= 50;
+      currentPageNum = currentPageNum + 1;
+    } else if (direction === "prev" && startNum !== 1) {
+      currentPageNum = currentPageNum - 1;
     } else {
-      startNum = 1;
-      endNum = 50;
-      this.setState({startNum, endNum}, this.Picture())
+      currentPageNum = 1;
+      this.setState({ startNum, endNum }, this.Picture());
     }
+    console.log(currentPageNum);
+    currentUrlParams.set("page", currentPageNum);
+    this.props.history.push(`${window.location.pathname}?${currentUrlParams}`);
     this.setState({
       startNum: startNum,
       pokemonList: [],
       sorted: false,
-      endNum: endNum
+      endNum: endNum,
+      pageNum: currentPageNum
     });
   };
 
   Picture = () => {
-    let { pokemon, startNum, endNum } = this.state;
+    let currentUrlParams = new URLSearchParams(window.location.search);
+    let currentPageNum = currentUrlParams.get("page");
+    let endNum = currentPageNum * 30;
+    let startNum = endNum - 29;
+    console.log(startNum, endNum);
     this.setState({ sorted: false, pokemonList: [] });
     let numList = [];
     for (let i = startNum; i <= endNum; i++) {
@@ -212,3 +222,4 @@ export default class PokeCalls extends Component {
     );
   }
 }
+export default withRouter(PokeCalls);

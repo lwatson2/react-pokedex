@@ -1,141 +1,24 @@
-@media only screen and (max-width: 479px) {
-  .pokeButtons {
-    width: 150px;
-    margin: 70px auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-  button {
-    display: inline-block;
-  }
-  .rightbtn {
-    margin-left: 15px;
-    border-radius: 10px;
-    background-color: #8b0000;
-    border: none;
-    color: #dadad9;
-    height: 27px;
-    width: 50px;
-  }
-  .leftbtn {
-    margin-left: 15px;
-    border-radius: 10px;
-    background-color: #8b0000;
-    border: none;
-    color: #dadad9;
-    height: 27px;
-    width: 50px;
-  }
+.pokeButtons {
+  width: 150px;
+  margin: 70px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-  .pokeButtons {
-    width: 150px;
-    margin: 0 auto;
-    margin-top: 70px;
-  }
-  button {
-    display: inline-block;
-  }
-  .rightbtn {
-    margin-left: 100px;
-    border-radius: 10px;
-    background-color: #8b0000;
-    border: none;
-    color: #dadad9;
-    height: 27px;
-    width: 50px;
-  }
-  .leftbtn {
-    margin-left: 15px;
-    border-radius: 10px;
-    background-color: #8b0000;
-    border: none;
-    color: #dadad9;
-    height: 27px;
-    width: 50px;
-  }
+.rightbtn {
+  margin-left: 15px;
+  border-radius: 10px;
+  background-color: #8b0000;
+  border: none;
+  color: #dadad9;
+  height: 27px;
+  width: 50px;
 }
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .pokeButtons {
-    position: absolute;
-    left: 34%;
-    margin-top: 70px;
-  }
-  button {
-    display: inline-block;
-  }
-  .rightbtn {
-    margin-left: 15px;
-    border-radius: 10px;
-    background-color: #8b0000;
-    border: none;
-    color: #dadad9;
-    height: 27px;
-    width: 50px;
-  }
-  .leftbtn {
-    margin-left: 15px;
-    border-radius: 10px;
-    background-color: #8b0000;
-    border: none;
-    color: #dadad9;
-    height: 27px;
-    width: 50px;
-  }
-}
-@media only screen and (min-width: 992px) and (max-width: 1488px) {
-  .pokeButtons {
-    width: 150px;
-    margin: 0 auto;
-    margin-top: 70;
-  }
-  button {
-    display: inline-block;
-  }
-  .rightbtn {
-    margin-left: 15px;
-    border-radius: 10px;
-    background-color: #8b0000;
-    border: none;
-    color: #dadad9;
-    height: 27px;
-    width: 50px;
-  }
-  .leftbtn {
-    margin-left: 15px;
-    border-radius: 10px;
-    background-color: #8b0000;
-    border: none;
-    color: #dadad9;
-    height: 27px;
-    width: 50px;
-  }
-}
-@media only screen and (min-width: 1489px) {
-  .pokeButtons {
-    width: 150px;
-    margin: 0 auto;
-    margin-top: 70px;
-  }
-  button {
-    display: inline-block;
-  }
-  .rightbtn {
-    margin-left: 15px;
-    border-radius: 10px;
-    background-color: #8b0000;
-    border: none;
-    color: #dadad9;
-    height: 27px;
-    width: 50px;
-  }
-  .leftbtn {
-    margin-left: 15px;
-    border-radius: 10px;
-    background-color: #8b0000;
-    border: none;
-    color: #dadad9;
-    height: 27px;
-    width: 50px;
-  }
+.leftbtn {
+  margin-left: 15px;
+  border-radius: 10px;
+  background-color: #8b0000;
+  border: none;
+  color: #dadad9;
+  height: 27px;
+  width: 50px;
 }
