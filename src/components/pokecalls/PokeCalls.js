@@ -40,7 +40,6 @@ class PokeCalls extends Component {
     }
   };
   handleFilterList = () => {
-    const { pokemonList, newPokemonList, pokeFilter, sorted } = this.state;
     const { filterList } = this.props;
     const filteredItems = [];
     this.setState({
