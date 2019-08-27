@@ -1,16 +1,24 @@
 .typeList {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (0fr) [2];
-  grid-template-columns: repeat(2, 0fr);
   position: absolute;
-  top: 39px;
-  left: 147px;
+  top: 110px;
   z-index: 1;
   background-color: #8b0000;
   border-radius: 5px;
   padding: 7px;
-  padding-bottom: 15px;
+  padding-bottom: 7px;
+  padding: 15px 7px;
+  width: 200px;
+  -ms-flex-item-align: end;
+      align-self: end;
+  margin-left: 31px;
+}
+.typesContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  grid-gap: 4px;
 }
 .typeNames {
   display: -webkit-box;
@@ -30,7 +38,8 @@
   content: "";
   position: absolute;
   border: 10px solid transparent;
-  right: 25px;
-  bottom: 208px;
+  left: 88%;
+  border: 10px solid transparent;
   border-bottom: 10px solid #8b0000;
+  bottom: 99%;
 }

@@ -1,121 +1,37 @@
-@media only screen and (min-width: 270px) and (max-width: 479px) {
-  .searchBar {
-    text-align: center;
-    position: relative;
-    top: 32px;
-  }
-  .submitButton {
-    border-radius: 12px;
-    border: none;
-    text-decoration: none;
-    background-color: #8b0000;
-    color: #dadad9;
-  }
-  .inputField {
-    background: transparent;
-    border: 0;
-    outline: 0;
-    border-bottom: 2px solid #8b0000;
-    color: #dadad9;
-  }
-  .filterButton {
-    border-radius: 12px;
-    border: none;
-    text-decoration: none;
-    background-color: #8b0000;
-    color: #dadad9;
-  }
+.searchBar {
+  width: 245px;
+  margin: 40px auto;
+  color: #dadad9;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-  .filterButton {
-    border-radius: 12px;
-    border: none;
-    text-decoration: none;
-    background-color: #8b0000;
-    color: #dadad9;
-  }
-  .searchBar {
-    text-align: center;
-    position: relative;
-    top: 32px;
-    width: 281px;
-    left: 29%;
-  }
-  .submitButton {
-    border-radius: 12px;
-    border: none;
-    text-decoration: none;
-    background-color: #8b0000;
-    color: #dadad9;
-  }
-  .inputField {
-    background: transparent;
-    border: 0;
-    outline: 0;
-    border-bottom: 2px solid #8b0000;
-    color: #dadad9;
-    width: 184px;
-  }
+.searchForm {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5px;
 }
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .filterButton {
-    border-radius: 12px;
-    border: none;
-    text-decoration: none;
-    background-color: #8b0000;
-    color: #dadad9;
-  }
-  .searchBar {
-    text-align: center;
-    position: relative;
-    top: 32px;
-    width: 281px;
-    left: 29%;
-  }
-  .submitButton {
-    border-radius: 12px;
-    border: none;
-    text-decoration: none;
-    background-color: #8b0000;
-    color: #dadad9;
-  }
-  .inputField {
-    background: transparent;
-    border: 0;
-    outline: 0;
-    border-bottom: 2px solid #8b0000;
-    color: #dadad9;
-    width: 184px;
-  }
+.submitButton {
+  border-radius: 12px;
+  border: none;
+  text-decoration: none;
+  background-color: #8b0000;
+  cursor: pointer;
+  color: #dadad9;
+  font-size: 16px;
 }
-@media only screen and (min-width: 992px) {
-  .filterButton {
-    border-radius: 12px;
-    border: none;
-    text-decoration: none;
-    background-color: #8b0000;
-    color: #dadad9;
-  }
-  .searchBar {
-    text-align: center;
-    position: relative;
-    top: 32px;
-    width: 300px;
-    left: 38%;
-  }
-  .submitButton {
-    border-radius: 12px;
-    border: none;
-    text-decoration: none;
-    background-color: #8b0000;
-    color: #dadad9;
-  }
-  .inputField {
-    background: transparent;
-    border: 0;
-    outline: 0;
-    border-bottom: 2px solid #8b0000;
-    color: #dadad9;
-    width: 208px;
-  }
+.inputField {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  border-bottom: 2px solid #8b0000;
+  color: #dadad9;
+}
+.filterButton {
+  border-radius: 12px;
+  border: none;
+  text-decoration: none;
+  background-color: #8b0000;
+  cursor: pointer;
+  color: #dadad9;
 }

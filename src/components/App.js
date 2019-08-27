@@ -14,7 +14,7 @@ class App extends Component {
     };
   }
 
-  handleFilters = (event, typeFilters) => {
+  handleFilters = typeFilters => {
     this.setState({ typeFilters: typeFilters });
   };
 

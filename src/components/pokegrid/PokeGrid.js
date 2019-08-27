@@ -6,23 +6,17 @@ import Detail from "./../detail/Detail";
 export default class PokeGrid extends Component {
   render() {
     return (
-      <div>
-        <ul className="container">
-          {this.props.pokemonList.map(({ name, id, sprites }) => (
-            <li className="listItems" key={id}>
-              <ul className="pokeGrid">
-                <Link to={`/detail/${name}`}>
-                  <li className="pokeList">
-                    <img src={sprites.front_default} alt="pokemon" />
-                  </li>
-                  <li className="pokeName">
-                    {name} #{id}
-                  </li>
-                </Link>
-              </ul>
-            </li>
-          ))}
-        </ul>
+      <div className="pokeGridContainer">
+        {this.props.pokemonList.map(({ name, id, sprites }) => (
+          <Link to={`/detail/${name}`}>
+            <div className="pokeGridItemContainer" key={id}>
+              <img src={sprites.front_default} alt="pokemon" />
+              <span className="pokeName">
+                {name} #{id}
+              </span>
+            </div>
+          </Link>
+        ))}
         <Route exact path="detail/:name" component={Detail} />
       </div>
     );

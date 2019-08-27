@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Detail from "./../detail/Detail";
 import { Route, Link } from "react-router-dom";
 import Filter from "./../filter/Filter";
+import { withRouter } from "react-router";
 import Search from "@material-ui/icons/Search";
 import "./SearchBar.css";
 
@@ -30,43 +31,43 @@ class SearchBar extends Component {
     }
   };
   handleFilter = () => {
-    console.log("test");
     this.setState({ showFilters: false });
   };
 
   render() {
+    console.log(this.props);
+    const { searchQuery, showFilters } = this.state;
     return (
       <div className="searchBar">
-        <form onSubmit={this.handleSubmit}>
+        <form className="searchForm" onSubmit={this.handleSubmit}>
           <input
             placeholder="Search Pokemon"
-            value={this.state.searchQuery}
+            value={searchQuery}
             onChange={this.handleChange}
             className="inputField"
           />
-          <Link to={`/detail/${this.state.searchQuery}`}>
+          <Link to={`/detail/${searchQuery}`}>
             <button className="submitButton">
               <Search style={{ fontSize: 13 }} />
             </button>
           </Link>
+        </form>
+        {this.props.location.pathname === "/" && (
           <button
             className="filterButton"
             onClick={() => {
-              this.setState({ showFilters: !this.state.showFilters });
+              this.setState({ showFilters: !showFilters });
             }}
           >
             Filter
           </button>
-        </form>
-
-        {this.state.showFilters ? (
+        )}
+        {showFilters && (
           <Filter showFilter={this.handleFilter} filter={this.props.filter} />
-        ) : (
-          ""
         )}
         <Route exact path="detail/:name" component={Detail} />
       </div>
     );
   }
 }
-export default SearchBar;
+export default withRouter(SearchBar);

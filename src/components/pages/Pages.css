@@ -1,8 +1,9 @@
 @media only screen and (max-width: 479px) {
   .pokeButtons {
     width: 150px;
-    margin: 0 auto;
-    margin-top: 70px;
+    margin: 70px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
   button {
     display: inline-block;

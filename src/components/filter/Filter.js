@@ -1,76 +1,96 @@
-import React, { Component } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./Filter.css";
 
-export default class Filter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      filterBoxes: []
+const Filter = props => {
+  const [filterBoxes, setFilterBoxes] = useState([]);
+  const node = useRef();
+  const handleClickOutside = e => {
+    if (node.current.contains(e.target)) {
+      // inside click
+      return;
+    }
+    // outside click
+    props.showFilter();
+  };
+  useEffect(() => {
+    if (props.showFilter) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
     };
-  }
-  onChanges = event => {
+  }, []);
+  const onChanges = event => {
     const newv = event.target;
+    const value = newv.value;
+    console.log(filterBoxes);
+    console.log(value);
     if (newv.checked === true) {
-      if (!this.state.filterBoxes.includes(newv.value)) {
-        this.setState({ filterBoxes: [...this.state.filterBoxes, newv.value] });
+      if (!filterBoxes.includes(value)) {
+        setFilterBoxes([...filterBoxes, value]);
       }
     }
     if (newv.checked === false) {
-      if (this.state.filterBoxes.includes(newv.value)) {
-        let newArray = this.state.filterBoxes;
-        let filtered = newArray.filter(e => e !== newv.value);
-        this.setState({ filterBoxes: filtered });
+      if (filterBoxes.includes(newv.value)) {
+        let newArray = filterBoxes;
+        let filtered = newArray.filter(e => e !== value);
+        setFilterBoxes(filtered);
       }
     }
+    console.log(filterBoxes);
   };
-  submitFilters = event => {
+  const submitFilters = event => {
     event.preventDefault();
-    const typeFilters = this.state.filterBoxes;
-    this.props.filter(event, typeFilters);
-    this.props.showFilter()
+    const typeFilters = filterBoxes;
+    props.filter(typeFilters);
+    props.showFilter();
   };
 
-  render() {
-    const types = [
-      "fire",
-      "water",
-      "ice",
-      "dragon",
-      "fighting",
-      "flying",
-      "grass",
-      "rock",
-      "ground",
-      "fairy",
-      "poison",
-      "dark",
-      "ghost",
-      "electric",
-      "steel",
-      "bug",
-      "normal",
-      "psychic"
-    ];
-    return (
-      <div className="typeList">
+  const types = [
+    "fire",
+    "water",
+    "ice",
+    "dragon",
+    "fighting",
+    "flying",
+    "grass",
+    "rock",
+    "ground",
+    "fairy",
+    "poison",
+    "dark",
+    "ghost",
+    "electric",
+    "steel",
+    "bug",
+    "normal",
+    "psychic"
+  ];
+  return (
+    <div ref={node} className="typeList">
+      <div className="typesContainer">
         {types.map((types, i) => {
           return (
-            <label className="typeNames">
+            <label key={types} className="typeNames">
               <input
-                key={types}
                 type="checkbox"
-                onChange={e => this.onChanges(e)}
+                onChange={e => onChanges(e)}
                 value={types}
               />{" "}
               {types}
             </label>
           );
         })}
-        <button className="doneBtn" onClick={this.submitFilters}>
-          {" "}
-          Done{" "}
-        </button>
       </div>
-    );
-  }
-}
+      <button className="doneBtn" onClick={submitFilters}>
+        {" "}
+        Done{" "}
+      </button>
+    </div>
+  );
+};
+
+export default Filter;
