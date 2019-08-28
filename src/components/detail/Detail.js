@@ -123,11 +123,7 @@ class Detail extends Component {
     let moveTwoContainer = [];
 
     if (!isLoaded) {
-      return (
-        <div className="loadingContainer">
-          <Loading height="64px" width="64px" />
-        </div>
-      );
+      return <Loading />;
     }
     if (error) {
       return (

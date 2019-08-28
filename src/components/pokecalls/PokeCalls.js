@@ -201,12 +201,7 @@ class PokeCalls extends Component {
     const { newPokemonList, pokemonList, sorted, error } = this.state;
 
     if (!sorted) {
-      return (
-        <div className="Loading">
-          {" "}
-          <Loading width="64px" height="64px" />{" "}
-        </div>
-      );
+      return <Loading />;
     }
     if (error) {
       return (

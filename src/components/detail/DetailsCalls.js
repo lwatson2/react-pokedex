@@ -95,12 +95,7 @@ export default class DetailsCalls extends Component {
     console.log(movesList);
 
     if (!isLoaded) {
-      return (
-        <div className="loadingDesc">
-          {" "}
-          <Loading width="12px" height="12px" />{" "}
-        </div>
-      );
+      return <Loading />;
     }
     if (this.props.abilityUrl) {
       return (

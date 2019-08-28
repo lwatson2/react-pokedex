@@ -3,8 +3,11 @@ import "./Loading.css";
 
 class Loading extends Component {
   render() {
-    const { width, height } = this.props;
-    return <div className="loading" style={{ width, height }} />;
+    return (
+      <div className="loadingContainer">
+        <div className="loading" />
+      </div>
+    );
   }
 }
 export default Loading;
