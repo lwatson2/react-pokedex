@@ -4,12 +4,13 @@ import KeyboardArrowDown from "@material-ui/icons/KeyboardArrowDown";
 import Loading from "./../loading/Loading";
 import DetailsCalls from "../detail/DetailsCalls";
 
-const MoveDetail = move => {
+const MoveDetail = ({ move }) => {
   const [showDetail, setShowDetail] = useState(false);
-  console.log(this.move);
+  const { name, url } = move;
+  console.log(name);
   return (
     <div className="moves">
-      <span className="s-Moves">{this.move.name}</span>
+      <span className="s-Moves">{name}</span>
       <button
         className="moveButton"
         onClick={() => {
@@ -24,7 +25,7 @@ const MoveDetail = move => {
       </button>
 
       <div className="movesCalls">
-        {showDetail ? <DetailsCalls moveUrl={this.move.url} /> : ""}
+        {showDetail ? <DetailsCalls moveUrl={url} /> : ""}
       </div>
     </div>
   );

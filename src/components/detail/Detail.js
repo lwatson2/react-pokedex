@@ -175,6 +175,18 @@ class Detail extends Component {
                   <img src={pokeData.sprites.front_shiny} alt="shiny version" />
                 </div>
               </div>
+              <div className="abilityContainer">
+                <p className="p-Abilites">Abilities</p>
+                <div className="pokeAbilities">
+                  {pokeData.abilities.map(({ ability, slot }, i) => (
+                    <AbilityDetail
+                      key={i}
+                      name={ability.name}
+                      url={ability.url}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
             <div className="stats">
               <p className="p-Stats"> Stats </p>
@@ -188,26 +200,6 @@ class Detail extends Component {
                       </div>
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
-            <div className="abilityContainer">
-              <p className="p-Abilites">Abilities</p>
-              <div className="pokeAbilities">
-                {pokeData.abilities.map(({ ability, slot }, i) => (
-                  <AbilityDetail
-                    key={i}
-                    name={ability.name}
-                    url={ability.url}
-                  />
-                ))}
-              </div>
-            </div>
-            <div className="movesContainer">
-              <p className="p-Moves"> Moves </p>
-              <div className="pokeMoves">
-                {pokeData.moves.map(({ move, i }) => (
-                  <MoveDetail move={move} />
                 ))}
               </div>
             </div>
