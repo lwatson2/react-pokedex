@@ -15,6 +15,9 @@ class App extends Component {
   }
 
   handleFilters = typeFilters => {
+    if (!typeFilters) {
+      this.setState({ typeFilters: [] });
+    }
     this.setState({ typeFilters: typeFilters });
   };
 

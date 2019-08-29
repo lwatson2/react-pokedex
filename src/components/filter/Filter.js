@@ -85,10 +85,13 @@ const Filter = props => {
           );
         })}
       </div>
-      <button className="doneBtn" onClick={submitFilters}>
-        {" "}
-        Done{" "}
-      </button>
+      <div className="filter-btn-container">
+        <button className="doneBtn" onClick={submitFilters}>
+          {" "}
+          Done{" "}
+        </button>
+        <button onClick={submitFilters}>Clear</button>
+      </div>
     </div>
   );
 };

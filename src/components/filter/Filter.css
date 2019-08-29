@@ -9,7 +9,7 @@
   padding: 15px 7px;
   width: 200px;
   -ms-flex-item-align: end;
-      align-self: end;
+  align-self: end;
   margin-left: 31px;
 }
 .typesContainer {
@@ -26,11 +26,16 @@
   display: flex;
   color: #dadad9;
 }
+.filter-btn-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-top: 10px;
+}
 .doneBtn {
-  position: relative;
-  left: 68px;
-  top: 178px;
-  top: 7px;
   border-radius: 11px;
   border: none;
 }
@@ -42,4 +47,9 @@
   border: 10px solid transparent;
   border-bottom: 10px solid #8b0000;
   bottom: 99%;
+}
+@media only screen and (min-width: 700px) {
+  .typeList {
+    top: 125px;
+  }
 }
