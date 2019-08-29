@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./Detail.css";
-import DetailsCalls from "./DetailsCalls";
-import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
-import KeyboardArrowDown from "@material-ui/icons/KeyboardArrowDown";
+import AbilityDetail from "../abilityDetail/AbilityDetails";
 import Loading from "./../loading/Loading";
 import ErrorMessage from "./../errorMessage/ErrorMessage";
+import MoveDetail from "../moveDetail/MoveDetail";
 
 class Detail extends Component {
   constructor(props) {
@@ -119,11 +118,14 @@ class Detail extends Component {
 
   render() {
     const { pokeData, isLoaded, weight, error, errorCode } = this.state;
-    let moveOneContainer = [];
-    let moveTwoContainer = [];
+    console.log(pokeData);
 
     if (!isLoaded) {
-      return <Loading />;
+      return (
+        <div className="loadingContainer">
+          <Loading />;
+        </div>
+      );
     }
     if (error) {
       return (
@@ -204,24 +206,9 @@ class Detail extends Component {
             <div className="movesContainer">
               <p className="p-Moves"> Moves </p>
               <div className="pokeMoves">
-                {pokeData.moves.map(({ move }, i) => {
-                  {
-                    i % 2 !== 0
-                      ? moveOneContainer.push(
-                          <MoveDetail key={i} name={move.name} url={move.url} />
-                        )
-                      : "";
-                  }
-                  {
-                    i % 2 === 0
-                      ? moveTwoContainer.push(
-                          <MoveDetail key={i} name={move.name} url={move.url} />
-                        )
-                      : "";
-                  }
-                })}
-                <div className="moveOne">{moveOneContainer}</div>
-                <div className="moveTwo">{moveTwoContainer}</div>
+                {pokeData.moves.map(({ move, i }) => (
+                  <MoveDetail move={move} />
+                ))}
               </div>
             </div>
           </div>
@@ -231,80 +218,3 @@ class Detail extends Component {
   }
 }
 export default Detail;
-class MoveDetail extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      showDetail: false
-    };
-  }
-
-  render() {
-    return (
-      <div className="moves">
-        <span className="s-Moves">{this.props.name}</span>
-        <button
-          className="moveButton"
-          onClick={() => {
-            this.setState({ showDetail: !this.state.showDetail });
-          }}
-        >
-          {this.state.showDetail ? (
-            <KeyboardArrowDown style={{ fontSize: 17 }} />
-          ) : (
-            <KeyboardArrowRight style={{ fontSize: 17 }} />
-          )}
-        </button>
-
-        <div className="movesCalls">
-          {this.state.showDetail ? (
-            <DetailsCalls moveUrl={this.props.url} />
-          ) : (
-            ""
-          )}
-        </div>
-      </div>
-    );
-  }
-}
-
-class AbilityDetail extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      showAbility: false
-    };
-  }
-
-  render() {
-    return (
-      <div className="ability">
-        <span key={this.props.name} className="s-Ability">
-          {" "}
-          {this.props.name}{" "}
-        </span>
-        <button
-          className="moveButton"
-          onClick={() =>
-            this.setState({ showAbility: !this.state.showAbility })
-          }
-        >
-          {this.state.showAbility ? (
-            <KeyboardArrowDown style={{ fontSize: 17 }} />
-          ) : (
-            <KeyboardArrowRight style={{ fontSize: 17 }} />
-          )}
-        </button>
-        <div className="callsContainer">
-          {this.state.showAbility ? (
-            <DetailsCalls abilityUrl={this.props.url} />
-          ) : (
-            ""
-          )}
-        </div>
-      </div>
-    );
-  }
-}

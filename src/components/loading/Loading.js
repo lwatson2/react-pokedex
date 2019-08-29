@@ -3,11 +3,7 @@ import "./Loading.css";
 
 class Loading extends Component {
   render() {
-    return (
-      <div className="loadingContainer">
-        <div className="loading" />
-      </div>
-    );
+    return <div className="loading" />;
   }
 }
 export default Loading;
