@@ -6,7 +6,6 @@ body {
 }
 a {
   text-decoration: none;
-  color: #dadad9;
 }
 a:hover {
   text-decoration: none;
@@ -14,20 +13,16 @@ a:hover {
 }
 li {
   list-style: none;
-  color: #dadad9;
 }
 p {
-  color: #dadad9;
   padding: 0;
   margin: 0;
 }
 span {
-  color: #dadad9;
   padding: 0;
   margin: 0;
 }
 h3 {
-  color: #dadad9;
   padding: 0;
   margin: 0;
 }

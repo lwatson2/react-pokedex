@@ -22,6 +22,10 @@
   transition: all 0.5s ease;
   grid-gap: 20px;
 }
+.main-nav a {
+  color: #dadad9;
+}
+
 .nav-links {
   margin-bottom: 10px;
   background: transparent;

@@ -23,7 +23,7 @@
   width: 60px;
   height: 30px;
   background-color: red;
-  border-bottom: 4px solid;
+  border-bottom: 4px solid #000000;
   top: -4px;
 }
 

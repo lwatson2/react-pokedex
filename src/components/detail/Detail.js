@@ -123,7 +123,7 @@ class Detail extends Component {
     if (!isLoaded) {
       return (
         <div className="loadingContainer">
-          <Loading />;
+          <Loading />
         </div>
       );
     }
