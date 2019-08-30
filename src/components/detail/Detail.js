@@ -139,69 +139,63 @@ class Detail extends Component {
     }
     if (isLoaded) {
       return (
-        <div className="boxContainer">
-          <div className="pokeDetail">
-            <div className="topBoxWrapper">
-              <div className="pokePicture">
-                <img src={pokeData.sprites.front_default} alt="pokemon icon" />
-              </div>
-              <div className="pokemonName">
-                <h3 className="pokeDetailName">{pokeData.name}</h3>
-                <div className="pokeId">
-                  <p>#{pokeData.id}</p>
-                </div>
-              </div>
-              <div className="weightContainer">
-                <p className="p-weight"> Weight </p>
-                <div className="weight">
-                  <p> {weight} kg </p>
-                </div>
-              </div>
-              <div className="types">
-                <p className="p-Types"> Types </p>
-                <div className="typeContainer">
-                  {pokeData.types.map(({ type }, i) => (
-                    <div className={this.renderType(type.name)}>
-                      <span className="s-Type" key={i}>
-                        {type.name}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="shiny">
-                <p className="p-Shiny">Shiny Version </p>
-                <div className="shinySprite">
-                  <img src={pokeData.sprites.front_shiny} alt="shiny version" />
-                </div>
-              </div>
-              <div className="abilityContainer">
-                <p className="p-Abilites">Abilities</p>
-                <div className="pokeAbilities">
-                  {pokeData.abilities.map(({ ability, slot }, i) => (
-                    <AbilityDetail
-                      key={i}
-                      name={ability.name}
-                      url={ability.url}
-                    />
-                  ))}
-                </div>
+        <div className="pokeDetail">
+          <div className="topBoxWrapper">
+            <div className="pokePicture">
+              <img src={pokeData.sprites.front_default} alt="pokemon icon" />
+            </div>
+            <div className="pokemonName">
+              <h3 className="pokeDetailName">{pokeData.name}</h3>
+              <div className="pokeId">
+                <p>#{pokeData.id}</p>
               </div>
             </div>
-            <div className="stats">
-              <p className="p-Stats"> Stats </p>
-              <div className="pokeContainer">
-                {pokeData.stats.map(({ base_stat, stat }, i) => (
-                  <div>
-                    <span key={i}> {stat.name} </span>
-                    <div className="statContainer">
-                      <div style={{ width: base_stat }} className="statBar">
-                        <span>{base_stat}</span>
-                      </div>
-                    </div>
+            <div className="weightContainer">
+              <p className="p-weight"> Weight </p>
+              <div className="weight">
+                <p> {weight} kg </p>
+              </div>
+            </div>
+            <div className="types">
+              <p className="p-Types"> Types </p>
+              <div className="typeContainer">
+                {pokeData.types.map(({ type }, i) => (
+                  <div className={this.renderType(type.name)}>
+                    <span className="s-Type" key={i}>
+                      {type.name}
+                    </span>
                   </div>
                 ))}
               </div>
+            </div>
+            <div className="shiny">
+              <p className="p-Shiny">Shiny Version </p>
+              <div className="shinySprite">
+                <img src={pokeData.sprites.front_shiny} alt="shiny version" />
+              </div>
+            </div>
+          </div>
+          <div className="abilityContainer">
+            <p className="p-Abilites">Abilities</p>
+            <div className="pokeAbilities">
+              {pokeData.abilities.map(({ ability, slot }, i) => (
+                <AbilityDetail key={i} name={ability.name} url={ability.url} />
+              ))}
+            </div>
+          </div>
+          <div className="stats">
+            <p className="p-Stats"> Stats </p>
+            <div className="pokeContainer">
+              {pokeData.stats.map(({ base_stat, stat }, i) => (
+                <div>
+                  <span key={i}> {stat.name} </span>
+                  <div className="statContainer">
+                    <div style={{ width: base_stat }} className="statBar">
+                      <span>{base_stat}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
