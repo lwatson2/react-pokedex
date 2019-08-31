@@ -142,13 +142,11 @@ class Detail extends Component {
         <div className="pokeDetail">
           <div className="topBoxWrapper">
             <div className="pokePicture">
-              <img src={pokeData.sprites.front_default} alt="pokemon icon" />
-            </div>
-            <div className="pokemonName">
-              <h3 className="pokeDetailName">{pokeData.name}</h3>
-              <div className="pokeId">
+              <div className="pokeNameContainer">
+                <h3 className="pokeDetailName">{pokeData.name}</h3>
                 <p>#{pokeData.id}</p>
               </div>
+              <img src={pokeData.sprites.front_default} alt="pokemon icon" />
             </div>
             <div className="weightContainer">
               <p className="p-weight"> Weight </p>
@@ -176,7 +174,7 @@ class Detail extends Component {
             </div>
           </div>
           <div className="abilityContainer">
-            <p className="p-Abilites">Abilities</p>
+            <h3 className="p-Abilites">Abilities</h3>
             <div className="pokeAbilities">
               {pokeData.abilities.map(({ ability, slot }, i) => (
                 <AbilityDetail key={i} name={ability.name} url={ability.url} />
@@ -184,11 +182,14 @@ class Detail extends Component {
             </div>
           </div>
           <div className="stats">
-            <p className="p-Stats"> Stats </p>
+            <h3 className="p-Stats"> Stats </h3>
             <div className="pokeContainer">
               {pokeData.stats.map(({ base_stat, stat }, i) => (
                 <div>
-                  <span key={i}> {stat.name} </span>
+                  <span className="statName" key={i}>
+                    {" "}
+                    {stat.name}{" "}
+                  </span>
                   <div className="statContainer">
                     <div style={{ width: base_stat }} className="statBar">
                       <span>{base_stat}</span>

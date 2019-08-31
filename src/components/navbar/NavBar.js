@@ -32,10 +32,18 @@ class NavBar extends Component {
         )}
         <div className={showNav ? "main-nav show-main-nav" : "main-nav"}>
           <Link to={"/"}>
-            <button className="nav-links">Home</button>
+            <button
+              className="nav-links"
+              onClick={() => this.setState({ showNav: !showNav })}
+            >
+              Home
+            </button>
           </Link>
 
-          <button className="nav-links">
+          <button
+            className="nav-links"
+            onClick={() => this.setState({ showNav: !showNav })}
+          >
             <a href="https://github.com/lwatson2/react-pokedex"> About </a>
           </button>
         </div>

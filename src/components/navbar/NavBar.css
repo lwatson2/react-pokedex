@@ -18,8 +18,8 @@
   -webkit-box-align: center;
   align-items: center;
   height: 100%;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  -webkit-transition: visibility 300ms linear, max-height 600ms linear;
+  transition: visibility 300ms linear, max-height 600ms linear;
   grid-gap: 20px;
 }
 .main-nav a {
