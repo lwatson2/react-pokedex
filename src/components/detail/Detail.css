@@ -6,8 +6,8 @@
   transform: translate(-50%, -50%);
 }
 .pokeDetail {
-  background: #3a015c;
-  color: #deded3;
+  background: hsl(209, 18%, 30%);
+  color: hsl(214, 33%, 97%);
   border-radius: 10px;
   max-width: 350px;
   margin: 20px auto;
@@ -25,6 +25,8 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-shadow: 0 15px 35px hsla(0, 0%, 0%, 0.2);
+  box-shadow: 0 15px 35px hsla(0, 0%, 0%, 0.2);
 }
 .pokeDetailName {
   text-transform: capitalize;
@@ -66,6 +68,13 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
 }
 .typeContainer div {
   display: -webkit-box;
@@ -157,6 +166,8 @@
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
   margin-top: 30px;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 .s-Ability {
   text-transform: capitalize;
@@ -167,7 +178,7 @@
   padding-top: 10px;
 }
 .ability {
-  padding: 0 10px;
+  padding: 10px;
 }
 .grass {
   background-color: #2da01b;
@@ -381,14 +392,6 @@
   .movesContainer {
     position: relative;
     bottom: 15px;
-  }
-  .typeContainer {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
   }
   .types {
     display: grid;

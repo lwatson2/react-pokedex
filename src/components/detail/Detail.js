@@ -154,17 +154,14 @@ class Detail extends Component {
                 <p> {weight} kg </p>
               </div>
             </div>
-            <div className="types">
-              <p className="p-Types"> Types </p>
-              <div className="typeContainer">
-                {pokeData.types.map(({ type }, i) => (
-                  <div className={this.renderType(type.name)}>
-                    <span className="s-Type" key={i}>
-                      {type.name}
-                    </span>
-                  </div>
-                ))}
-              </div>
+            <div className="typeContainer">
+              {pokeData.types.map(({ type }, i) => (
+                <div className={this.renderType(type.name)}>
+                  <span className="s-Type" key={i}>
+                    {type.name}
+                  </span>
+                </div>
+              ))}
             </div>
             <div className="shiny">
               <p className="p-Shiny">Shiny Version </p>

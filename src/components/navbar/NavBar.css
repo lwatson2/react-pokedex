@@ -80,6 +80,5 @@
     max-height: 60px;
     visibility: visible;
     grid-template-columns: repeat(2, 1fr);
-    padding: 5px;
   }
 }
