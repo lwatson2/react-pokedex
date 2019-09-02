@@ -23,11 +23,12 @@ class SearchBar extends Component {
     if (!inputValue) return "";
   };
   handleSubmit = event => {
+    const { searchQuery } = this.state;
     event.preventDefault();
     const value = this.state.searchQuery;
     this.setState({ searchQuery: "" });
     if (value) {
-      return <Detail name={value} />;
+      return this.props.history.push(`/detail/${searchQuery}`);
     }
   };
   handleFilter = () => {
@@ -45,11 +46,10 @@ class SearchBar extends Component {
             onChange={this.handleChange}
             className="inputField"
           />
-          <Link to={`/detail/${searchQuery}`}>
-            <button className="submitButton">
-              <Search style={{ fontSize: 13 }} />
-            </button>
-          </Link>
+
+          <button className="submitButton">
+            <Search style={{ fontSize: 13 }} />
+          </button>
         </form>
         {this.props.location.pathname === "/" && (
           <button

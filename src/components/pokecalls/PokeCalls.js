@@ -136,7 +136,7 @@ class PokeCalls extends Component {
     );
   };
 
-  Picture = () => {
+  Picture = async () => {
     let endNum;
     let startNum;
     let currentUrlParams = new URLSearchParams(window.location.search);
@@ -203,7 +203,7 @@ class PokeCalls extends Component {
     if (!sorted) {
       return (
         <div className="loadingContainer">
-          <Loading />;
+          <Loading />
         </div>
       );
     }

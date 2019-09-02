@@ -92,7 +92,6 @@ export default class DetailsCalls extends Component {
 
   render() {
     const { abilitesList, movesList, isLoaded } = this.state;
-    console.log(movesList);
 
     if (!isLoaded) {
       return <Loading />;

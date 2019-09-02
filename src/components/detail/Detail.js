@@ -118,7 +118,6 @@ class Detail extends Component {
 
   render() {
     const { pokeData, isLoaded, weight, error, errorCode } = this.state;
-    console.log(pokeData);
 
     if (!isLoaded) {
       return (

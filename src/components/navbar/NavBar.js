@@ -31,21 +31,56 @@ class NavBar extends Component {
           </button>
         )}
         <div className={showNav ? "main-nav show-main-nav" : "main-nav"}>
-          <Link to={"/"}>
-            <button
-              className="nav-links"
-              onClick={() => this.setState({ showNav: !showNav })}
-            >
-              Home
-            </button>
-          </Link>
-
-          <button
-            className="nav-links"
-            onClick={() => this.setState({ showNav: !showNav })}
+          <ul
+            className={
+              showNav ? "main-nav-list show-main-nav" : "main-nav-list"
+            }
           >
-            <a href="https://github.com/lwatson2/react-pokedex"> About </a>
-          </button>
+            <li>
+              <Link to={"/"}>
+                <button
+                  className="nav-links"
+                  onClick={() => this.setState({ showNav: !showNav })}
+                >
+                  Home
+                </button>
+              </Link>
+            </li>
+            <li className="generationsListItem">
+              <button className="nav-links">Generations</button>
+              <ul className="generationsListContainer">
+                <Link to="/generations/1">
+                  <li>Generation 1</li>
+                </Link>
+                <Link to="/generations/2">
+                  <li>Generation 2</li>
+                </Link>
+                <Link to="/generations/3">
+                  <li>Generation 3</li>
+                </Link>
+                <Link to="/generations/4">
+                  <li>Generation 4</li>
+                </Link>
+                <Link to="/generations/5">
+                  <li>Generation 5</li>
+                </Link>
+                <Link to="/generations/6">
+                  <li>Generation 6</li>
+                </Link>
+                <Link to="/generations/7">
+                  <li>Generation 7</li>
+                </Link>
+              </ul>
+            </li>
+            <li>
+              <button
+                className="nav-links"
+                onClick={() => this.setState({ showNav: !showNav })}
+              >
+                <a href="https://github.com/lwatson2/react-pokedex"> About </a>
+              </button>
+            </li>
+          </ul>
         </div>
       </nav>
     );
