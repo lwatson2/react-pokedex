@@ -126,17 +126,10 @@ class PokeCalls extends Component {
     }
     currentUrlParams.set("page", currentPageNum);
     this.props.history.push(`?page=${currentPageNum}`);
-    this.setState(
-      {
-        pokemonList: [],
-        sorted: false
-      },
-
-      this.Picture()
-    );
+    this.setState({ pokemonList: [], sorted: false }, this.Picture());
   };
 
-  Picture = async () => {
+  Picture = () => {
     let endNum;
     let startNum;
     let currentUrlParams = new URLSearchParams(window.location.search);

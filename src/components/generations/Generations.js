@@ -1,18 +1,122 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
+import { withRouter } from "react-router";
+import Loading from "../loading/Loading";
+import PokeGrid from "../pokegrid/PokeGrid";
+import Pages from "../pages/Pages";
 
-const Generations = () => {
+const Generations = props => {
   const [data, setData] = useState();
+  const [genPokemonList, setGenPokemonList] = useState();
+  const [loaded, setLoaded] = useState(false);
+  const [startNum, setStartNum] = useState(0);
+  const [arrayLength, setarrayLength] = useState(0);
+
+  const generationId = props.match.params.num;
   useEffect(() => {
-    const fetchdata = async () => {
-      const res = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon-species/248/"
-      );
-      setData(res.data);
-    };
-    fetchdata();
+    fetchGenerationData()
   }, []);
-  return <div>COMING SOON TO A POKEGYM NEAR YOU!</div>;
+  useEffect(() => {
+    fetchGenerationData()
+  }, [generationId])
+  const fetchGenerationData = async () => {
+    setLoaded(false);
+    const res = await axios.get(
+      `https://pokeapi.co/api/v2/generation/${generationId}`
+    );
+    let pokeData = res.data.pokemon_species;
+    setarrayLength(pokeData.length);
+    const sortedPokemon = pokeData.sort(sortPokemons);
+    setGenPokemonList(sortedPokemon);
+    FetchGenPokemon(sortedPokemon);
+  }
+  const sortPokemons = (a, b) => {
+    let regexPat = /\/pokemon-species\/(\d+)\//;
+    let Aid = a.url.match(regexPat)[1];
+    let Bid = b.url.match(regexPat)[1];
+    let comparison = 0;
+    if (Aid > Bid) {
+      comparison = 1;
+    } else if (Aid < Bid) {
+      comparison = -1;
+    }
+    return comparison;
+  };
+  const FetchGenPokemon = async pokemon => {
+    let regexPat = /\/pokemon-species\/(\d+)\//;
+    let endNum;
+    let startNum;
+    let cutPokemon;
+    let currentUrlParams = new URLSearchParams(window.location.search);
+    let currentPageNum = currentUrlParams.get("page");
+    if (currentPageNum > 4) {
+      this.props.history.push("/404");
+    }
+    if (!currentPageNum) {
+      endNum = 30;
+      startNum = 0;
+    } else {
+      endNum = currentPageNum * 30;
+      startNum = endNum - 29;
+    }
+    if (pokemon) {
+      cutPokemon = pokemon.slice(startNum, endNum);
+    } else {
+      cutPokemon = genPokemonList.slice(startNum, endNum);
+    }
+    console.log(cutPokemon);
+    const pokePromises = cutPokemon.map(pokemon => {
+      let id = pokemon.url.match(regexPat)[1];
+      return axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`);
+    });
+
+    const res = await Promise.all(pokePromises);
+    const pokemonList = res.map(pokemon => {
+      return pokemon.data;
+    });
+    setData(pokemonList);
+    setLoaded(true);
+  };
+  const handlePageClick = direction => {
+    let currentUrlParams = new URLSearchParams(window.location.search);
+    let currentPageNum = currentUrlParams.get("page");
+    let stopNum = currentPageNum * 30;
+    currentPageNum = parseInt(currentPageNum);
+    if (!currentPageNum || (stopNum > arrayLength && direction === "next")) {
+      console.log("mooo");
+      currentPageNum = 1;
+    }
+    if (direction === "next" && stopNum < arrayLength) {
+      console.log("object");
+      currentPageNum = currentPageNum + 1;
+    } else if (
+      direction === "prev" &&
+      currentPageNum !== 1 &&
+      stopNum < arrayLength
+    ) {
+      currentPageNum = currentPageNum - 1;
+    } else {
+      currentPageNum = 1;
+    }
+    currentUrlParams.set("page", currentPageNum);
+    props.history.push(`?page=${currentPageNum}`);
+    setLoaded(false);
+    FetchGenPokemon();
+  };
+  if (!loaded) {
+    return (
+      <div className="loadingContainer">
+        {" "}
+        <Loading />
+      </div>
+    );
+  }
+  return (
+    <Fragment>
+      <PokeGrid pokemonList={data} />
+      <Pages handlePagesClick={handlePageClick} />
+    </Fragment>
+  );
 };
 
-export default Generations;
+export default withRouter(Generations);

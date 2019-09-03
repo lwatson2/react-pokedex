@@ -50,25 +50,39 @@ class NavBar extends Component {
               <button className="nav-links">Generations</button>
               <ul className="generationsListContainer">
                 <Link to="/generations/1">
-                  <li>Generation 1</li>
+                  <li onClick={() => this.setState({ showNav: !showNav })}>
+                    Generation 1
+                  </li>
                 </Link>
                 <Link to="/generations/2">
-                  <li>Generation 2</li>
+                  <li onClick={() => this.setState({ showNav: !showNav })}>
+                    Generation 2
+                  </li>
                 </Link>
                 <Link to="/generations/3">
-                  <li>Generation 3</li>
+                  <li onClick={() => this.setState({ showNav: !showNav })}>
+                    Generation 3
+                  </li>
                 </Link>
                 <Link to="/generations/4">
-                  <li>Generation 4</li>
+                  <li onClick={() => this.setState({ showNav: !showNav })}>
+                    Generation 4
+                  </li>
                 </Link>
                 <Link to="/generations/5">
-                  <li>Generation 5</li>
+                  <li onClick={() => this.setState({ showNav: !showNav })}>
+                    Generation 5
+                  </li>
                 </Link>
                 <Link to="/generations/6">
-                  <li>Generation 6</li>
+                  <li onClick={() => this.setState({ showNav: !showNav })}>
+                    Generation 6
+                  </li>
                 </Link>
                 <Link to="/generations/7">
-                  <li>Generation 7</li>
+                  <li onClick={() => this.setState({ showNav: !showNav })}>
+                    Generation 7
+                  </li>
                 </Link>
               </ul>
             </li>
