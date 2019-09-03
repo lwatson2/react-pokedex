@@ -4,7 +4,6 @@ import "./Detail.css";
 import AbilityDetail from "../abilityDetail/AbilityDetails";
 import Loading from "./../loading/Loading";
 import ErrorMessage from "./../errorMessage/ErrorMessage";
-import MoveDetail from "../moveDetail/MoveDetail";
 
 class Detail extends Component {
   constructor(props) {

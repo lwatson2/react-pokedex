@@ -373,26 +373,6 @@
   .shinySprite img {
     height: 142px;
   }
-  .pokeMoves {
-    display: -ms-grid;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    width: 277px;
-    position: relative;
-    left: 33px;
-  }
-  .moves {
-    width: 144px;
-    padding: 6px;
-  }
-  .s-Moves {
-    width: 100px;
-    padding-right: 5px;
-  }
-  .movesContainer {
-    position: relative;
-    bottom: 15px;
-  }
   .types {
     display: grid;
     justify-items: center;

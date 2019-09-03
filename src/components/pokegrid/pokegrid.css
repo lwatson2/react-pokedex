@@ -41,5 +41,14 @@
   width: 200px;
   color: #dadad9;
   -webkit-box-shadow: 0 5px 15px hsla(0, 0%, 0%, 0.2);
-          box-shadow: 0 5px 15px hsla(0, 0%, 0%, 0.2);
+  box-shadow: 0 5px 15px hsla(0, 0%, 0%, 0.2);
+  -webkit-transition: -webkit-transform 300ms ease;
+  transition: -webkit-transform 300ms ease;
+  transition: transform 300ms ease;
+  transition: transform 300ms ease, -webkit-transform 300ms ease;
+}
+.pokeGridItemContainer:hover,
+.pokeGridItemContainer:focus-within {
+  -webkit-transform: translateY(-20px);
+  transform: translateY(-20px);
 }

@@ -51,7 +51,6 @@ class PokeCalls extends Component {
     if (this.props.filterList.length < 1) {
       this.Picture();
     }
-    let pokeFilterList = [];
     let filterPromises = filterList.map(filter =>
       axios.get(`https://pokeapi.co/api/v2/type/${filter}/`)
     );
@@ -160,34 +159,6 @@ class PokeCalls extends Component {
         sorted: true
       });
     });
-  };
-
-  Pass = () => {
-    let poke1 = this.state.pokemonList;
-
-    if (poke1.length >= 20) {
-      let newPoke1 = poke1.sort(this.PokeSort);
-
-      this.setState({
-        sorted: true,
-        pokemonList: newPoke1
-      });
-    }
-
-    return this.setState({ loading: true });
-  };
-
-  PokeSort = (a, b) => {
-    const Aid = a.id;
-    const Bid = b.id;
-
-    let comparison = 0;
-    if (Aid > Bid) {
-      comparison = 1;
-    } else if (Aid < Bid) {
-      comparison = -1;
-    }
-    return comparison;
   };
 
   render() {

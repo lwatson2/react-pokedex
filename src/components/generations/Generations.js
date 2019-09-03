@@ -14,11 +14,11 @@ const Generations = props => {
 
   const generationId = props.match.params.num;
   useEffect(() => {
-    fetchGenerationData()
+    fetchGenerationData();
   }, []);
   useEffect(() => {
-    fetchGenerationData()
-  }, [generationId])
+    fetchGenerationData();
+  }, [generationId]);
   const fetchGenerationData = async () => {
     setLoaded(false);
     const res = await axios.get(
@@ -29,18 +29,12 @@ const Generations = props => {
     const sortedPokemon = pokeData.sort(sortPokemons);
     setGenPokemonList(sortedPokemon);
     FetchGenPokemon(sortedPokemon);
-  }
+  };
   const sortPokemons = (a, b) => {
     let regexPat = /\/pokemon-species\/(\d+)\//;
     let Aid = a.url.match(regexPat)[1];
     let Bid = b.url.match(regexPat)[1];
-    let comparison = 0;
-    if (Aid > Bid) {
-      comparison = 1;
-    } else if (Aid < Bid) {
-      comparison = -1;
-    }
-    return comparison;
+    return Aid - Bid;
   };
   const FetchGenPokemon = async pokemon => {
     let regexPat = /\/pokemon-species\/(\d+)\//;
@@ -49,22 +43,21 @@ const Generations = props => {
     let cutPokemon;
     let currentUrlParams = new URLSearchParams(window.location.search);
     let currentPageNum = currentUrlParams.get("page");
-    if (currentPageNum > 4) {
-      this.props.history.push("/404");
+    if (currentPageNum > 6) {
+      props.history.push("/404");
     }
     if (!currentPageNum) {
-      endNum = 30;
+      endNum = 31;
       startNum = 0;
     } else {
-      endNum = currentPageNum * 30;
-      startNum = endNum - 29;
+      endNum = currentPageNum * 31;
+      startNum = endNum - 30;
     }
     if (pokemon) {
       cutPokemon = pokemon.slice(startNum, endNum);
     } else {
       cutPokemon = genPokemonList.slice(startNum, endNum);
     }
-    console.log(cutPokemon);
     const pokePromises = cutPokemon.map(pokemon => {
       let id = pokemon.url.match(regexPat)[1];
       return axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`);
@@ -80,7 +73,7 @@ const Generations = props => {
   const handlePageClick = direction => {
     let currentUrlParams = new URLSearchParams(window.location.search);
     let currentPageNum = currentUrlParams.get("page");
-    let stopNum = currentPageNum * 30;
+    let stopNum = currentPageNum * 31;
     currentPageNum = parseInt(currentPageNum);
     if (!currentPageNum || (stopNum > arrayLength && direction === "next")) {
       console.log("mooo");

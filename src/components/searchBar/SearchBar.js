@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Detail from "./../detail/Detail";
-import { Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Filter from "./../filter/Filter";
 import { withRouter } from "react-router";
 import Search from "@material-ui/icons/Search";
