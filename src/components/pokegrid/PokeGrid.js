@@ -7,10 +7,13 @@ export default class PokeGrid extends Component {
   render() {
     return (
       <div className="pokeGridContainer">
-        {this.props.pokemonList.map(({ name, id, sprites }) => (
+        {this.props.pokemonList.map(({ name, id }) => (
           <Link key={id} to={`/detail/${name}`}>
             <div className="pokeGridItemContainer" key={id}>
-              <img src={sprites.front_default} alt="pokemon" />
+              <img
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
+                alt="pokemon"
+              />
               <span className="pokeName">
                 {name} #{id}
               </span>

@@ -175,7 +175,7 @@
 .callsContainer {
   font-size: 13px;
   width: 138px;
-  padding-top: 10px;
+  padding: 10px 0;
 }
 .ability {
   padding: 10px;

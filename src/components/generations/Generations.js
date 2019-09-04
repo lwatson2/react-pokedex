@@ -51,23 +51,19 @@ const Generations = props => {
       startNum = 0;
     } else {
       endNum = currentPageNum * 31;
-      startNum = endNum - 30;
+      startNum = endNum - 31;
     }
     if (pokemon) {
       cutPokemon = pokemon.slice(startNum, endNum);
     } else {
       cutPokemon = genPokemonList.slice(startNum, endNum);
     }
-    const pokePromises = cutPokemon.map(pokemon => {
+    cutPokemon.map(pokemon => {
       let id = pokemon.url.match(regexPat)[1];
-      return axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`);
+      pokemon["id"] = id;
     });
 
-    const res = await Promise.all(pokePromises);
-    const pokemonList = res.map(pokemon => {
-      return pokemon.data;
-    });
-    setData(pokemonList);
+    setData(cutPokemon);
     setLoaded(true);
   };
   const handlePageClick = direction => {
@@ -76,17 +72,11 @@ const Generations = props => {
     let stopNum = currentPageNum * 31;
     currentPageNum = parseInt(currentPageNum);
     if (!currentPageNum || (stopNum > arrayLength && direction === "next")) {
-      console.log("mooo");
       currentPageNum = 1;
     }
     if (direction === "next" && stopNum < arrayLength) {
-      console.log("object");
       currentPageNum = currentPageNum + 1;
-    } else if (
-      direction === "prev" &&
-      currentPageNum !== 1 &&
-      stopNum < arrayLength
-    ) {
+    } else if (direction === "prev" && currentPageNum !== 1) {
       currentPageNum = currentPageNum - 1;
     } else {
       currentPageNum = 1;

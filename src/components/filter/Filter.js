@@ -26,8 +26,6 @@ const Filter = props => {
   const onChanges = event => {
     const newv = event.target;
     const value = newv.value;
-    console.log(filterBoxes);
-    console.log(value);
     if (newv.checked === true) {
       if (!filterBoxes.includes(value)) {
         setFilterBoxes([...filterBoxes, value]);
@@ -40,7 +38,6 @@ const Filter = props => {
         setFilterBoxes(filtered);
       }
     }
-    console.log(filterBoxes);
   };
   const submitFilters = event => {
     event.preventDefault();
@@ -86,11 +83,13 @@ const Filter = props => {
         })}
       </div>
       <div className="filter-btn-container">
-        <button className="doneBtn" onClick={submitFilters}>
+        <button className="filter-btn" onClick={submitFilters}>
           {" "}
           Done{" "}
         </button>
-        <button onClick={submitFilters}>Clear</button>
+        <button className="filter-btn" onClick={submitFilters}>
+          Clear
+        </button>
       </div>
     </div>
   );

@@ -31,13 +31,24 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
   margin-top: 10px;
 }
-.doneBtn {
-  border-radius: 11px;
+.filter-btn {
   border: none;
+  background: hsl(211, 33%, 44%);
+  color: hsl(214, 33%, 97%);
+  width: 70px;
+  border-radius: 6px;
+  height: 26px;
+  -webkit-transition: all 300ms linear;
+  transition: all 300ms linear;
+  cursor: pointer;
+}
+.filter-btn:hover {
+  background: hsl(214, 33%, 97%);
+  color: hsl(211, 33%, 44%);
 }
 .typeList:after {
   content: "";

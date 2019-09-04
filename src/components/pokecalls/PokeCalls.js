@@ -18,8 +18,7 @@ class PokeCalls extends Component {
       sliceNum: 0,
       error: null,
       newPokemonList: [],
-      startNum: 1,
-      endNum: 50,
+      offset: 0,
       pokeFilter: [],
       sliceEndNum: 50,
       pageNum: 1
@@ -39,82 +38,54 @@ class PokeCalls extends Component {
       this.fetchPokemon();
     }
   };
-  handleFilterList = () => {
+  handleFilterList = async () => {
+    let regexPat = /\/pokemon\/(\d+)\//;
+    let endNum;
+    let startNum;
+    let currentUrlParams = new URLSearchParams(window.location.search);
+    let currentPageNum = currentUrlParams.get("page");
+    currentPageNum = parseInt(currentPageNum);
+    let pokeList = [];
     const { filterList } = this.props;
-    const filteredItems = [];
     this.setState({
       sorted: false,
-      newPokemonList: [],
-      sliceNum: 0,
-      sliceEndNum: 50
+      newPokemonList: []
     });
+
     if (this.props.filterList.length < 1) {
       this.Picture();
+    }
+    if (!currentPageNum) {
+      endNum = 31;
+      startNum = 0;
+    } else {
+      endNum = currentPageNum * 31;
+      startNum = endNum - 31;
     }
     let filterPromises = filterList.map(filter =>
       axios.get(`https://pokeapi.co/api/v2/type/${filter}/`)
     );
-    Promise.all(filterPromises).then(all => {
-      const data = all.map(result => result.data);
-      this.sortData(data);
+    await Promise.all(filterPromises).then(all => {
+      const data = all.map(result => result.data.pokemon);
+      data.forEach(poke => poke.map(pokemon => pokeList.push(pokemon.pokemon)));
     });
 
-    this.setState({ sorted: true });
-  };
-  sortData = newData => {
-    let newDatas = newData;
-    let newArray = [];
-    for (let i = 0; i < newDatas.length; i++) {
-      newArray.push(...newDatas[i].pokemon);
-    }
-    this.setState({ pokeFilter: newArray }, () => {
-      this.fetchPokemon();
+    pokeList.map(poke => {
+      let id = poke.url.match(regexPat)[1];
+      poke["id"] = id;
     });
+    let cutPokemon = pokeList.slice(startNum, endNum);
+    this.setState({ newPokemonList: cutPokemon, sorted: true });
   };
 
-  fetchPokemon = () => {
-    const { pokeFilter, sorted, sliceEndNum, sliceNum } = this.state;
-    this.setState({ sorted: false });
-
-    let slicedList = pokeFilter.slice(sliceNum, sliceEndNum);
-    let newPromises = slicedList.map(pokemon =>
-      axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.pokemon.name}/`)
-    );
-    Promise.all(newPromises).then(all => {
-      const data = all.map(result => result.data);
-      this.setState({
-        newPokemonList: this.state.newPokemonList.concat(data),
-        sorted: true
-      });
-    });
-  };
-  handleFilterClick = direction => {
-    let { sliceNum, sliceEndNum } = this.state;
-
-    if (direction === "next") {
-      sliceNum += 51;
-      sliceEndNum += 51;
-    } else if (direction === "prev" && sliceNum !== 0) {
-      sliceNum -= 51;
-      sliceEndNum -= 51;
-    } else {
-      sliceNum = 0;
-      sliceEndNum = 50;
-      this.setState({ sliceNum, sliceEndNum }, this.handleFilterList());
-    }
-    this.setState({
-      sliceNum,
-      sliceEndNum,
-      newPokemonList: [],
-      sorted: false
-    });
-  };
   handlePagesClick = direction => {
+    this.setState({ sorted: false });
     let currentUrlParams = new URLSearchParams(window.location.search);
     let currentPageNum = currentUrlParams.get("page");
     currentPageNum = parseInt(currentPageNum);
     if (!currentPageNum) {
       currentPageNum = 1;
+      this.setState({ offset: 0 });
     }
     if (direction === "next") {
       currentPageNum = currentPageNum + 1;
@@ -125,40 +96,36 @@ class PokeCalls extends Component {
     }
     currentUrlParams.set("page", currentPageNum);
     this.props.history.push(`?page=${currentPageNum}`);
-    this.setState({ pokemonList: [], sorted: false }, this.Picture());
+    if (this.props.filterList.length < 1) {
+      this.Picture();
+    } else {
+      this.handleFilterList();
+    }
   };
 
-  Picture = () => {
-    let endNum;
-    let startNum;
+  Picture = async () => {
+    let offsetNum = 0;
+    let regexPat = /\/pokemon\/(\d+)\//;
     let currentUrlParams = new URLSearchParams(window.location.search);
     let currentPageNum = currentUrlParams.get("page");
     if (currentPageNum > 26) {
       this.props.history.push("/404");
     }
     if (!currentPageNum) {
-      endNum = 30;
-      startNum = 1;
+      offsetNum = 0;
     } else {
-      endNum = currentPageNum * 30;
-      startNum = endNum - 29;
+      offsetNum = currentPageNum * 30 - 30;
     }
     this.setState({ sorted: false, pokemonList: [] });
-    let numList = [];
-    for (let i = startNum; i <= endNum; i++) {
-      numList.push(i);
-    }
-
-    const pokePromises = numList.map(pokemon =>
-      axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}/`)
+    const res = await axios.get(
+      `https://pokeapi.co/api/v2/pokemon/?limit=30&offset=${offsetNum}`
     );
-    Promise.all(pokePromises).then(all => {
-      const data = all.map(result => result.data);
-      this.setState({
-        pokemonList: this.state.pokemonList.concat(data),
-        sorted: true
-      });
+    let pokemon = res.data.results;
+    pokemon.map(pokemon => {
+      let id = pokemon.url.match(regexPat)[1];
+      pokemon["id"] = id;
     });
+    this.setState({ pokemonList: pokemon, sorted: true });
   };
 
   render() {
@@ -182,7 +149,7 @@ class PokeCalls extends Component {
       return (
         <div>
           <PokeGrid pokemonList={newPokemonList} />
-          <Pages handlePagesClick={this.handleFilterClick} />
+          <Pages handlePagesClick={this.handlePagesClick} />
         </div>
       );
     }
