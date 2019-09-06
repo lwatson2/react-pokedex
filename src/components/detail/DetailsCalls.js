@@ -36,6 +36,7 @@ export default class DetailsCalls extends Component {
     }
   }
   effectSort = () => {
+    //Adds percentage value to effect chance
     const { movesList } = this.state;
     const effect = movesList.effect_entries;
     if (movesList.effect_chance) {

@@ -44,7 +44,7 @@ class Detail extends Component {
             pokeData: all.data,
             isLoaded: true
           },
-          this.Change
+          this.handleWeightChange()
         )
       )
       .catch(error => {
@@ -55,7 +55,8 @@ class Detail extends Component {
         });
       });
   };
-  Change = () => {
+  handleWeightChange = () => {
+    //Fixes weight to better show weight
     let weight = this.state.pokeData.weight;
     let weight1 = weight.toString();
     let newWeight = weight1.slice(0, -1) + "." + weight1.slice(-1);
@@ -171,7 +172,7 @@ class Detail extends Component {
           <div className="abilityContainer">
             <h3 className="p-Abilites">Abilities</h3>
             <div className="pokeAbilities">
-              {pokeData.abilities.map(({ ability, slot }, i) => (
+              {pokeData.abilities.map(({ ability }, i) => (
                 <AbilityDetail key={i} name={ability.name} url={ability.url} />
               ))}
             </div>

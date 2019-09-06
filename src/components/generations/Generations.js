@@ -9,7 +9,6 @@ const Generations = props => {
   const [data, setData] = useState();
   const [genPokemonList, setGenPokemonList] = useState();
   const [loaded, setLoaded] = useState(false);
-  const [startNum, setStartNum] = useState(0);
   const [arrayLength, setarrayLength] = useState(0);
 
   const generationId = props.match.params.num;
@@ -60,7 +59,7 @@ const Generations = props => {
     }
     cutPokemon.map(pokemon => {
       let id = pokemon.url.match(regexPat)[1];
-      pokemon["id"] = id;
+      return (pokemon["id"] = id);
     });
 
     setData(cutPokemon);

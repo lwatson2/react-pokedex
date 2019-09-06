@@ -6,7 +6,7 @@ import Detail from "./../detail/Detail";
 export default class PokeGrid extends Component {
   render() {
     return (
-      <div className="pokeGridContainer">
+      <section className="pokeGridContainer">
         {this.props.pokemonList.map(({ name, id }) => (
           <Link key={id} to={`/detail/${name}`}>
             <div className="pokeGridItemContainer" key={id}>
@@ -21,7 +21,7 @@ export default class PokeGrid extends Component {
           </Link>
         ))}
         <Route exact path="detail/:name" component={Detail} />
-      </div>
+      </section>
     );
   }
 }

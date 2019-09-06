@@ -18,21 +18,20 @@ class PokeCalls extends Component {
       sliceNum: 0,
       error: null,
       newPokemonList: [],
-      offset: 0,
       pokeFilter: [],
       sliceEndNum: 50,
       pageNum: 1
     };
   }
   componentDidMount() {
-    this.Picture();
+    this.fetchPokemon();
   }
   componentDidUpdate = (prevProps, prevState) => {
     if (this.props.filterList !== prevProps.filterList) {
       this.handleFilterList();
     }
     if (this.state.startNum !== prevState.startNum) {
-      this.Picture();
+      this.fetchPokemon();
     }
     if (this.state.sliceNum !== prevState.sliceNum) {
       this.fetchPokemon();
@@ -53,7 +52,7 @@ class PokeCalls extends Component {
     });
 
     if (this.props.filterList.length < 1) {
-      this.Picture();
+      this.fetchPokemon();
     }
     if (!currentPageNum) {
       endNum = 31;
@@ -62,6 +61,7 @@ class PokeCalls extends Component {
       endNum = currentPageNum * 31;
       startNum = endNum - 31;
     }
+    //Gathers filter data from pokeapi
     let filterPromises = filterList.map(filter =>
       axios.get(`https://pokeapi.co/api/v2/type/${filter}/`)
     );
@@ -69,11 +69,12 @@ class PokeCalls extends Component {
       const data = all.map(result => result.data.pokemon);
       data.forEach(poke => poke.map(pokemon => pokeList.push(pokemon.pokemon)));
     });
-
+    //Adds a id object to the pokemon object for getting images
     pokeList.map(poke => {
       let id = poke.url.match(regexPat)[1];
-      poke["id"] = id;
+      return (poke["id"] = id);
     });
+    //Slice pokeList to handle pagination
     let cutPokemon = pokeList.slice(startNum, endNum);
     this.setState({ newPokemonList: cutPokemon, sorted: true });
   };
@@ -83,9 +84,9 @@ class PokeCalls extends Component {
     let currentUrlParams = new URLSearchParams(window.location.search);
     let currentPageNum = currentUrlParams.get("page");
     currentPageNum = parseInt(currentPageNum);
+
     if (!currentPageNum) {
       currentPageNum = 1;
-      this.setState({ offset: 0 });
     }
     if (direction === "next") {
       currentPageNum = currentPageNum + 1;
@@ -96,14 +97,15 @@ class PokeCalls extends Component {
     }
     currentUrlParams.set("page", currentPageNum);
     this.props.history.push(`?page=${currentPageNum}`);
+    //If filterList array is empty fetch pokemon normally else fetch the typed pokemon with handlefilterlist
     if (this.props.filterList.length < 1) {
-      this.Picture();
+      this.fetchPokemon();
     } else {
       this.handleFilterList();
     }
   };
 
-  Picture = async () => {
+  fetchPokemon = async () => {
     let offsetNum = 0;
     let regexPat = /\/pokemon\/(\d+)\//;
     let currentUrlParams = new URLSearchParams(window.location.search);
@@ -117,13 +119,15 @@ class PokeCalls extends Component {
       offsetNum = currentPageNum * 30 - 30;
     }
     this.setState({ sorted: false, pokemonList: [] });
+    //Fetches pokemon
     const res = await axios.get(
       `https://pokeapi.co/api/v2/pokemon/?limit=30&offset=${offsetNum}`
     );
     let pokemon = res.data.results;
     pokemon.map(pokemon => {
       let id = pokemon.url.match(regexPat)[1];
-      pokemon["id"] = id;
+      return (pokemon["id"] = id);
+      //Adds id to pokemon object
     });
     this.setState({ pokemonList: pokemon, sorted: true });
   };
