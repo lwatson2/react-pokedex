@@ -29,35 +29,34 @@ class Detail extends Component {
       this.fetchPokeName();
     }
   };
-  fetchPokeName = () => {
+  fetchPokeName = async () => {
     this.setState({
       isLoaded: false,
       error: false
     });
     const pokeName = this.props.match.params.name;
     const lowerCasePokeName = pokeName.toLowerCase();
-    axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${lowerCasePokeName}/`)
-      .then(all =>
-        this.setState(
-          {
-            pokeData: all.data,
-            isLoaded: true
-          },
-          this.handleWeightChange()
-        )
-      )
-      .catch(error => {
-        this.setState({
-          errorCode: error.request.status,
-          error: true,
+    try {
+      const res = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/${lowerCasePokeName}/`
+      );
+      this.setState(
+        {
+          pokeData: res.data,
           isLoaded: true
-        });
+        },
+        this.handleWeightChange(res.data.weight)
+      );
+    } catch (error) {
+      this.setState({
+        errorCode: error.request.status,
+        error: true,
+        isLoaded: true
       });
+    }
   };
-  handleWeightChange = () => {
+  handleWeightChange = weight => {
     //Fixes weight to better show weight
-    let weight = this.state.pokeData.weight;
     let weight1 = weight.toString();
     let newWeight = weight1.slice(0, -1) + "." + weight1.slice(-1);
     this.setState({ weight: newWeight });
