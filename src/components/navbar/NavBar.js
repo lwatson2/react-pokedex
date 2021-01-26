@@ -12,6 +12,7 @@ class NavBar extends Component {
   }
 
   render() {
+    const generations = [1, 2, 3, 4, 5, 6, 7, 8];
     const { showNav } = this.state;
     return (
       <nav className="navBar">
@@ -49,41 +50,13 @@ class NavBar extends Component {
             <li className="generationsListItem">
               <button className="nav-links">Generations</button>
               <ul className="generationsListContainer">
-                <Link to="/generations/1">
-                  <li onClick={() => this.setState({ showNav: !showNav })}>
-                    Generation 1
-                  </li>
-                </Link>
-                <Link to="/generations/2">
-                  <li onClick={() => this.setState({ showNav: !showNav })}>
-                    Generation 2
-                  </li>
-                </Link>
-                <Link to="/generations/3">
-                  <li onClick={() => this.setState({ showNav: !showNav })}>
-                    Generation 3
-                  </li>
-                </Link>
-                <Link to="/generations/4">
-                  <li onClick={() => this.setState({ showNav: !showNav })}>
-                    Generation 4
-                  </li>
-                </Link>
-                <Link to="/generations/5">
-                  <li onClick={() => this.setState({ showNav: !showNav })}>
-                    Generation 5
-                  </li>
-                </Link>
-                <Link to="/generations/6">
-                  <li onClick={() => this.setState({ showNav: !showNav })}>
-                    Generation 6
-                  </li>
-                </Link>
-                <Link to="/generations/7">
-                  <li onClick={() => this.setState({ showNav: !showNav })}>
-                    Generation 7
-                  </li>
-                </Link>
+                {generations.map(generationNum => (
+                  <Link to={`/generations/${generationNum}`}>
+                    <li onClick={() => this.setState({ showNav: !showNav })}>
+                      Generation {generationNum}
+                    </li>
+                  </Link>
+                ))}
               </ul>
             </li>
             <li>
