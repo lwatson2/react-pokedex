@@ -287,7 +287,7 @@
   .topBoxWrapper {
     grid-gap: 20px;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-template-rows: repeat(2, 200px);
+    grid-template-rows: repeat(2, minmax(200px, auto));
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
@@ -354,7 +354,6 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    height: 100%;
     padding-top: 30px;
     margin: 0;
     -webkit-box-orient: vertical;
@@ -376,6 +375,8 @@
   }
   .ability {
     padding: 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
   }
   .weightTypeContainer {
     display: -webkit-box;
