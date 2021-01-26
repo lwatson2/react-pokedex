@@ -69,6 +69,7 @@ const Generations = props => {
     let currentUrlParams = new URLSearchParams(window.location.search);
     let currentPageNum = currentUrlParams.get("page");
     let stopNum = currentPageNum * 31;
+    console.log(typeof currentPageNum);
     currentPageNum = parseInt(currentPageNum);
     if (!currentPageNum || (stopNum > arrayLength && direction === "next")) {
       currentPageNum = 1;

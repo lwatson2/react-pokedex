@@ -100,9 +100,9 @@ export default class DetailsCalls extends Component {
     if (this.props.abilityUrl) {
       return (
         <div className="abilityDesc">
-          {abilitesList.effect_entries.map(({ short_effect }, i) => (
-            <span key={i}>{short_effect}</span>
-          ))}
+          {abilitesList.effect_entries.map(({ short_effect, language }, i) =>
+            language.name === "en" ? <span key={i}>{short_effect}</span> : null
+          )}
         </div>
       );
     } else if (this.props.moveUrl) {
