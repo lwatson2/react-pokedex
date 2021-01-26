@@ -139,14 +139,26 @@ class Detail extends Component {
       return (
         <div className="pokeDetail">
           <div className="topBoxWrapper">
-            <div className="pokePicture">
-              <div className="pokeNameContainer">
-                <h3 className="pokeDetailName">{pokeData.name}</h3>
-                <p>#{pokeData.id}</p>
-              </div>
-              <img src={pokeData.sprites.front_default} alt="pokemon icon" />
+            <div className="pokeNameContainer">
+              <h3 className="pokeDetailName">{pokeData.name}</h3>
+              <p>#{pokeData.id}</p>
             </div>
-            <div>
+            <div className="pokePicture">
+              <img
+                src={pokeData.sprites.front_default}
+                alt={`${pokeData.name} sprite`}
+              />
+            </div>
+            <div className="shiny">
+              <p className="p-Shiny">Shiny Sprite </p>
+            </div>
+            <div className="shinySprite">
+              <img
+                src={pokeData.sprites.front_shiny}
+                alt={`shiny ${pokeData.name} sprite`}
+              />
+            </div>
+            <div className="weightTypeContainer">
               <div className="typeContainer">
                 <h4 style={{ gridColumn: "1 / -1" }}>Types</h4>
                 {pokeData.types.map(({ type }, i) => (
@@ -163,23 +175,17 @@ class Detail extends Component {
                   <p> {weight} kg </p>
                 </div>
               </div>
-              <div className="abilityContainer">
-                <h3 className="p-Abilites">Abilities</h3>
-                <div className="pokeAbilities">
-                  {pokeData.abilities.map(({ ability }, i) => (
-                    <AbilityDetail
-                      key={i}
-                      name={ability.name}
-                      url={ability.url}
-                    />
-                  ))}
-                </div>
-              </div>
             </div>
-            <div className="shiny">
-              <p className="p-Shiny">Shiny Version </p>
-              <div className="shinySprite">
-                <img src={pokeData.sprites.front_shiny} alt="shiny version" />
+            <div className="abilityContainer">
+              <h3 className="p-Abilites">Abilities</h3>
+              <div className="pokeAbilities">
+                {pokeData.abilities.map(({ ability }, i) => (
+                  <AbilityDetail
+                    key={i}
+                    name={ability.name}
+                    url={ability.url}
+                  />
+                ))}
               </div>
             </div>
           </div>
