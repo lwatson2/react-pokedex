@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import "./Filter.css";
 import { Checkbox, CheckboxGroup, Grid, Button} from "@chakra-ui/react"
 
-const Filter = props => {
+const Filter = ({filter, showFilter, handleSearchClick}) => {
   const [filterBoxes, setFilterBoxes] = useState([]);
   const handleFilterChange = (checkboxValues = []) => {
     
@@ -11,13 +11,16 @@ const Filter = props => {
   const submitFilters = event => {
     event.preventDefault();
     const typeFilters = filterBoxes;
-    props.filter(typeFilters);
-    props.showFilter();
+    filter(typeFilters);
+    showFilter();
+    handleSearchClick()
   };
 
   const handleClearFilters = () => {
     setFilterBoxes([])
-    props.showFilter()
+    filter([]);
+    showFilter();
+    handleSearchClick()
   }
 
   const types = [

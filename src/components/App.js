@@ -26,9 +26,7 @@ class App extends Component {
     return (
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div>
-          <NavBar />
-
-          <SearchBar filter={this.handleFilters} />
+          <NavBar props={this.props} filter={this.handleFilters} />
           <Switch>
             <Route
               exact

@@ -1,76 +1,105 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import MenuIcon from "@material-ui/icons/Menu";
 import "./NavBar.css";
+import {
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  Select, 
+  Button
+} from "@chakra-ui/react"
+import {HamburgerIcon } from '@chakra-ui/icons'
+import { withRouter } from "react-router";
+import SearchBar from "../searchBar/SearchBar";
 
-class NavBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showNav: false
-    };
+
+
+ const NavBar = ({history, filter}) => {
+  const generations = [1, 2, 3, 4, 5, 6, 7, 8];
+  const [showNav, setShowNav] = useState()
+  const handleGenerationChange =(e) => {
+    console.log('e', e.target.value)
+    history.push(`/generations/${e.target.value}`)
   }
 
-  render() {
-    const generations = [1, 2, 3, 4, 5, 6, 7, 8];
-    const { showNav } = this.state;
-    return (
-      <nav className="navBar">
-        {showNav ? (
-          <button
-            className="navbar-toggle-btn"
-            onClick={() => this.setState({ showNav: !showNav })}
-          >
-            X
-          </button>
-        ) : (
-          <button
-            className="navbar-toggle-btn"
-            onClick={() => this.setState({ showNav: !showNav })}
-          >
-            <MenuIcon style={{ fontSize: 17, color: "#fff" }} />
-          </button>
-        )}
-        <div className={showNav ? "main-nav show-main-nav" : "main-nav"}>
-          <ul
-            className={
-              showNav ? "main-nav-list show-main-nav" : "main-nav-list"
-            }
-          >
-            <li>
-              <Link to={"/"}>
-                <button
-                  className="nav-links"
-                  onClick={() => this.setState({ showNav: !showNav })}
-                >
-                  Home
-                </button>
-              </Link>
-            </li>
-            <li className="generationsListItem">
-              <button className="nav-links">Generations</button>
-              <ul className="generationsListContainer">
-                {generations.map(generationNum => (
-                  <Link to={`/generations/${generationNum}`}>
-                    <li onClick={() => this.setState({ showNav: !showNav })}>
-                      Generation {generationNum}
-                    </li>
-                  </Link>
-                ))}
-              </ul>
-            </li>
-            <li>
+  const handleSearchClick = () => {
+    console.log('true', true)
+    setShowNav(false)
+  }
+  return (
+    <nav className="navBar">
+        <button
+          className="navbar-toggle-btn"
+          onClick={() => setShowNav(true) }
+        >
+          <HamburgerIcon />
+        </button>
+      <div className={ "main-nav"}>
+        <ul
+          className={
+            "main-nav-list"
+          }
+        >
+          <li>
+            <Link to={"/"}>
               <button
                 className="nav-links"
-                onClick={() => this.setState({ showNav: !showNav })}
+                onClick={() => setShowNav(!showNav)}
               >
-                <a href="https://github.com/lwatson2/react-pokedex"> About </a>
+                Home
               </button>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    );
-  }
+            </Link>
+          </li>
+          <li className="generationsListItem">
+            <button className="nav-links">Generations</button>
+            <ul className="generationsListContainer">
+              {generations.map(generationNum => (
+                <Link to={`/generations/${generationNum}`}>
+                  <li onClick={() =>setShowNav(!showNav)}>
+                    Generation {generationNum}
+                  </li>
+                </Link>
+              ))}
+            </ul>
+          </li>
+          <li>
+            <button
+              className="nav-links"
+              onClick={() => setShowNav(!showNav)}
+            >
+              <a href="https://github.com/lwatson2/react-pokedex"> About </a>
+            </button>
+          </li>
+        </ul>
+      </div>
+      <Drawer isOpen={showNav} placement="right" onClose={() =>  setShowNav(false)}>
+          <DrawerOverlay>
+            <DrawerCloseButton />
+            <DrawerContent>
+            <DrawerBody>
+              <Link to='/'>
+              <Button colorScheme='facebook' mb='2' variant='ghost' onClick={() => setShowNav(!showNav)}>
+                Home
+              </Button>
+              </Link>
+              <Select onChange={handleGenerationChange} >
+                {generations.map(genNum => (
+                    <option value={genNum}onClick={() => setShowNav(!showNav)}>
+                     Generation {genNum}
+                  </option>
+                ))}
+              </Select>
+            </DrawerBody>
+            <DrawerFooter>
+              <SearchBar filter={filter} handleSearchClick={handleSearchClick} />
+            </DrawerFooter>
+            </DrawerContent>
+          </DrawerOverlay>
+      </Drawer>
+    </nav>
+  );
 }
-export default NavBar;
+export default withRouter(NavBar)

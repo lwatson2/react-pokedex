@@ -37,6 +37,7 @@ class SearchBar extends Component {
     const value = this.state.searchQuery;
     this.setState({ searchQuery: "" });
     if (value) {
+      this.props.handleSearchClick()
       return this.props.history.push(`/detail/${searchQuery}`);
     }
   };
@@ -47,13 +48,14 @@ class SearchBar extends Component {
   render() {
     const { searchQuery, showFilters } = this.state;
     return (
-      <div className="searchBar">
+      <div className="searchBarContainer">
           <Input
             placeholder="Search Pokemon"
             value={searchQuery}
             onChange={this.handleChange}
             variant='flushed'
             colorScheme='pink'
+            className='searchBar'
             focusBorderColor='red.700'
             maxW='250px'
             onKeyDown={(e) => e.key === 'Enter' ? this.handleSubmit(e) : null}
@@ -77,7 +79,7 @@ class SearchBar extends Component {
         )}
         <PopoverContent w='fit-content' color='white' bgColor='red.700' borderColor='red.700'>
         <PopoverBody>
-          <Filter showFilter={this.handleFilter} filter={this.props.filter} />
+          <Filter showFilter={this.handleFilter} filter={this.props.filter} handleSearchClick={this.props.handleSearchClick}/>
         </PopoverBody>
         </PopoverContent>
         </Popover>
