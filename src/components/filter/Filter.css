@@ -1,6 +1,7 @@
 .typeList {
   position: absolute;
-  top: 110px;
+  top: 50px;
+  right: 0;
   z-index: 1;
   background-color: #8b0000;
   border-radius: 5px;
@@ -10,7 +11,6 @@
   width: 200px;
   -ms-flex-item-align: end;
   align-self: end;
-  margin-left: 31px;
 }
 .typesContainer {
   display: grid;
@@ -58,9 +58,4 @@
   border: 10px solid transparent;
   border-bottom: 10px solid #8b0000;
   bottom: 99%;
-}
-@media only screen and (min-width: 700px) {
-  .typeList {
-    top: 125px;
-  }
 }

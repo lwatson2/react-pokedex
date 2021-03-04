@@ -1,43 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./Filter.css";
+import { Checkbox, CheckboxGroup, Grid, Button} from "@chakra-ui/react"
 
 const Filter = props => {
   const [filterBoxes, setFilterBoxes] = useState([]);
-  const node = useRef();
-  const handleClickOutside = e => {
-    if (node.current.contains(e.target)) {
-      // inside click
-      return;
-    }
-    // outside click
-    props.showFilter();
-  };
-  useEffect(() => {
-    if (props.showFilter) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-  const onChanges = event => {
-    const newv = event.target;
-    const value = newv.value;
-    if (newv.checked === true) {
-      if (!filterBoxes.includes(value)) {
-        setFilterBoxes([...filterBoxes, value]);
-      }
-    }
-    if (newv.checked === false) {
-      if (filterBoxes.includes(newv.value)) {
-        let newArray = filterBoxes;
-        let filtered = newArray.filter(e => e !== value);
-        setFilterBoxes(filtered);
-      }
-    }
+  const handleFilterChange = (checkboxValues = []) => {
+    
+    setFilterBoxes(checkboxValues)
   };
   const submitFilters = event => {
     event.preventDefault();
@@ -45,6 +14,11 @@ const Filter = props => {
     props.filter(typeFilters);
     props.showFilter();
   };
+
+  const handleClearFilters = () => {
+    setFilterBoxes([])
+    props.showFilter()
+  }
 
   const types = [
     "fire",
@@ -67,31 +41,31 @@ const Filter = props => {
     "psychic"
   ];
   return (
-    <div ref={node} className="typeList">
-      <div className="typesContainer">
-        {types.map((types, i) => {
+    <React.Fragment>
+      <CheckboxGroup value={filterBoxes}  onChange={handleFilterChange}>
+        <Grid templateColumns='repeat(2, 1fr)' gap='4px'>
+        {types.map((type, i) => {
           return (
-            <label key={types} className="typeNames">
-              <input
-                type="checkbox"
-                onChange={e => onChanges(e)}
-                value={types}
-              />{" "}
-              {types}
-            </label>
-          );
-        })}
-      </div>
+            <Checkbox 
+              style={{textTransform: 'capitalize'}}
+              value={type}
+            >
+              {type}
+            </Checkbox>
+            );
+          })}
+          </Grid>
+      </CheckboxGroup>
       <div className="filter-btn-container">
-        <button className="filter-btn" onClick={submitFilters}>
+        <Button colorScheme='facebook' onClick={submitFilters}>
           {" "}
           Done{" "}
-        </button>
-        <button className="filter-btn" onClick={submitFilters}>
+        </Button>
+        <Button colorScheme='facebook' onClick={handleClearFilters}>
           Clear
-        </button>
+        </Button>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

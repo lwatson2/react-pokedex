@@ -1,15 +1,22 @@
 .searchBar {
-  width: 245px;
   margin: 40px auto;
   color: hsl(210, 24%, 16%);
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 1rem;
+  justify-items: center;
+  align-items: center;
+  max-width: 400px;
 }
 .searchForm {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 5px;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: auto auto;
+  gap: 1rem;
+  margin-right: 1rem;
 }
 .submitButton {
   border-radius: 12px;
@@ -19,19 +26,4 @@
   cursor: pointer;
   color: #dadad9;
   font-size: 16px;
-}
-.inputField {
-  background: transparent;
-  border: 0;
-  outline: 0;
-  border-bottom: 2px solid #8b0000;
-  color: hsl(210, 24%, 16%);
-}
-.filterButton {
-  border-radius: 12px;
-  border: none;
-  text-decoration: none;
-  background-color: #8b0000;
-  cursor: pointer;
-  color: #dadad9;
 }

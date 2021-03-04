@@ -3,8 +3,16 @@ import Detail from "./../detail/Detail";
 import { Route } from "react-router-dom";
 import Filter from "./../filter/Filter";
 import { withRouter } from "react-router";
-import Search from "@material-ui/icons/Search";
 import "./SearchBar.css";
+import {
+  Button, 
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverBody,
+  Input
+} from "@chakra-ui/react"
+import { SearchIcon, ArrowForwardIcon } from '@chakra-ui/icons'
 
 class SearchBar extends Component {
   constructor(props) {
@@ -23,6 +31,7 @@ class SearchBar extends Component {
     if (!inputValue) return "";
   };
   handleSubmit = event => {
+    console.log('event', event)
     const { searchQuery } = this.state;
     event.preventDefault();
     const value = this.state.searchQuery;
@@ -39,31 +48,40 @@ class SearchBar extends Component {
     const { searchQuery, showFilters } = this.state;
     return (
       <div className="searchBar">
-        <form className="searchForm" onSubmit={this.handleSubmit}>
-          <input
+          <Input
             placeholder="Search Pokemon"
             value={searchQuery}
             onChange={this.handleChange}
-            className="inputField"
+            variant='flushed'
+            colorScheme='pink'
+            focusBorderColor='red.700'
+            maxW='250px'
+            onKeyDown={(e) => e.key === 'Enter' ? this.handleSubmit(e) : null}
           />
-
-          <button className="submitButton">
-            <Search style={{ fontSize: 13 }} />
-          </button>
-        </form>
+          <Button rightIcon={<SearchIcon />} colorScheme="red" onClick={this.handleSubmit}>
+            Search
+          </Button>
+        <div className='filter-container'>
+          <Popover isOpen={showFilters}>
         {this.props.location.pathname === "/" && (
-          <button
-            className="filterButton"
-            onClick={() => {
-              this.setState({ showFilters: !showFilters });
-            }}
+        <PopoverTrigger>
+          <Button
+          colorScheme="red"
+          onClick={() => {
+            this.setState({ showFilters: !showFilters });
+          }}
           >
             Filter
-          </button>
+          </Button>
+        </PopoverTrigger>
         )}
-        {showFilters && (
+        <PopoverContent w='fit-content' color='white' bgColor='red.700' borderColor='red.700'>
+        <PopoverBody>
           <Filter showFilter={this.handleFilter} filter={this.props.filter} />
-        )}
+        </PopoverBody>
+        </PopoverContent>
+        </Popover>
+          </div>
         <Route exact path="detail/:name" component={Detail} />
       </div>
     );
