@@ -37,7 +37,7 @@ import SearchBar from "../searchBar/SearchBar";
         >
           <HamburgerIcon />
         </button>
-      <div className={ "main-nav"}>
+      <div className={"main-nav"}>
         <ul
           className={
             "main-nav-list"
