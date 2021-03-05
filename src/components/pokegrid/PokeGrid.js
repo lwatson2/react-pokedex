@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
 import "./pokegrid.css";
 import Detail from "./../detail/Detail";
-import { Image } from "@chakra-ui/react";
+import { Image, Text } from "@chakra-ui/react";
 
 export default class PokeGrid extends Component {
   render() {
@@ -17,9 +17,9 @@ export default class PokeGrid extends Component {
                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
                 alt="pokemon"
               />
-              <span className="pokeName">
+              <Text color="gray.800" className="pokeName">
                 {name} #{id}
-              </span>
+              </Text>
             </div>
           </Link>
         ))}

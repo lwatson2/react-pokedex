@@ -36,7 +36,7 @@ const NavBar = ({ history, handleFilter, location }) => {
   };
   return (
     <nav className="navBar">
-      <Box bg="gray.700" h="60px">
+      <Box bg="gray.800" h="60px">
         <div className="hamburger-menu-container">
           <IconButton
             aria-label="menu"
@@ -59,7 +59,7 @@ const NavBar = ({ history, handleFilter, location }) => {
             <li>
               <Menu>
                 <MenuButton
-                  bgColor="gray.700"
+                  bgColor="gray.800"
                   color="white"
                   colorScheme="blackAlpha"
                   as={Button}
