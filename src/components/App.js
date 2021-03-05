@@ -11,11 +11,11 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      typeFilters: []
+      typeFilters: [],
     };
   }
 
-  handleFilters = typeFilters => {
+  handleFilters = (typeFilters) => {
     if (!typeFilters) {
       this.setState({ typeFilters: [] });
     }
@@ -26,7 +26,7 @@ class App extends Component {
     return (
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div>
-          <NavBar props={this.props} filter={this.handleFilters} />
+          <NavBar props={this.props} handleFilter={this.handleFilters} />
           <Switch>
             <Route
               exact

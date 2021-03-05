@@ -1,24 +1,30 @@
 import React from "react";
-import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
-import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import "./Pages.css";
+import { IconButton } from "@chakra-ui/react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
 const Pages = ({ handlePagesClick }) => {
   return (
     <div className="pokeButtons">
-      <button
+      <IconButton
         onClick={() => handlePagesClick("prev")}
+        icon={<ChevronLeftIcon />}
         className="paginationBtn"
-      >
-        <KeyboardArrowLeft style={{ fontSize: 20 }} />
-      </button>
+        colorScheme="red"
+        size="lg"
+        borderRadius="16px"
+        aria-label="previous button"
+      />
 
-      <button
+      <IconButton
         onClick={() => handlePagesClick("next")}
         className="paginationBtn"
-      >
-        <KeyboardArrowRight style={{ fontSize: 20 }} />
-      </button>
+        icon={<ChevronRightIcon />}
+        colorScheme="red"
+        borderRadius="16px"
+        size="lg"
+        aria-label="next button"
+      />
     </div>
   );
 };

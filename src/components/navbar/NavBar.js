@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link as ReactRouterLink } from "react-router-dom";
 import "./NavBar.css";
 import {
   Drawer,
@@ -8,98 +8,124 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  Select, 
-  Button
-} from "@chakra-ui/react"
-import {HamburgerIcon } from '@chakra-ui/icons'
+  Select,
+  Button,
+  Box,
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Link,
+} from "@chakra-ui/react";
+import { HamburgerIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { withRouter } from "react-router";
 import SearchBar from "../searchBar/SearchBar";
+import Filter from "../filter/Filter";
 
-
-
- const NavBar = ({history, filter}) => {
+const NavBar = ({ history, handleFilter, location }) => {
   const generations = [1, 2, 3, 4, 5, 6, 7, 8];
-  const [showNav, setShowNav] = useState()
-  const handleGenerationChange =(e) => {
-    console.log('e', e.target.value)
-    history.push(`/generations/${e.target.value}`)
-  }
+  const [showNav, setShowNav] = useState();
+  const handleGenerationChange = (e) => {
+    console.log("e", e.target.value);
+    history.push(`/generations/${e.target.value}`);
+  };
 
-  const handleSearchClick = () => {
-    console.log('true', true)
-    setShowNav(false)
-  }
+  const handleClick = () => {
+    setShowNav(false);
+  };
   return (
     <nav className="navBar">
-        <button
-          className="navbar-toggle-btn"
-          onClick={() => setShowNav(true) }
-        >
-          <HamburgerIcon />
-        </button>
-      <div className={"main-nav"}>
-        <ul
-          className={
-            "main-nav-list"
-          }
-        >
-          <li>
-            <Link to={"/"}>
-              <button
-                className="nav-links"
-                onClick={() => setShowNav(!showNav)}
-              >
+      <Box bg="gray.700" h="60px">
+        <div className="hamburger-menu-container">
+          <IconButton
+            aria-label="menu"
+            icon={<HamburgerIcon />}
+            variant={"ghost"}
+            size="lg"
+            colorScheme="blackAlpha"
+            color="white"
+            className="navbar-toggle-btn"
+            onClick={() => setShowNav(true)}
+          />
+        </div>
+        <div className={"main-nav"}>
+          <ul className={"main-nav-list"}>
+            <li>
+              <Link fontWeight="600" color="white" as={ReactRouterLink} to="/">
                 Home
-              </button>
-            </Link>
-          </li>
-          <li className="generationsListItem">
-            <button className="nav-links">Generations</button>
-            <ul className="generationsListContainer">
-              {generations.map(generationNum => (
-                <Link to={`/generations/${generationNum}`}>
-                  <li onClick={() =>setShowNav(!showNav)}>
-                    Generation {generationNum}
-                  </li>
-                </Link>
-              ))}
-            </ul>
-          </li>
-          <li>
-            <button
-              className="nav-links"
-              onClick={() => setShowNav(!showNav)}
-            >
-              <a href="https://github.com/lwatson2/react-pokedex"> About </a>
-            </button>
-          </li>
-        </ul>
-      </div>
-      <Drawer isOpen={showNav} placement="right" onClose={() =>  setShowNav(false)}>
+              </Link>
+            </li>
+            <li>
+              <Menu>
+                <MenuButton
+                  bgColor="gray.700"
+                  color="white"
+                  colorScheme="blackAlpha"
+                  as={Button}
+                  rightIcon={<ChevronDownIcon />}
+                >
+                  Generations
+                </MenuButton>
+                <MenuList>
+                  {generations.map((genNum) => (
+                    <Link to={`/generations/${genNum}`}>
+                      <MenuItem color="gray.700">Generation {genNum}</MenuItem>
+                    </Link>
+                  ))}
+                </MenuList>
+              </Menu>
+            </li>
+            <li>
+              <div className="searchBarContainer">
+                <SearchBar handleSearchClick={handleClick} />
+                <Filter
+                  handleFilter={handleFilter}
+                  handleFilterClick={handleClick}
+                  location={location}
+                />
+              </div>
+            </li>
+          </ul>
+        </div>
+        <Drawer
+          isOpen={showNav}
+          placement="right"
+          onClose={() => setShowNav(false)}
+        >
           <DrawerOverlay>
             <DrawerCloseButton />
             <DrawerContent>
-            <DrawerBody>
-              <Link to='/'>
-              <Button colorScheme='facebook' mb='2' variant='ghost' onClick={() => setShowNav(!showNav)}>
-                Home
-              </Button>
-              </Link>
-              <Select onChange={handleGenerationChange} >
-                {generations.map(genNum => (
-                    <option value={genNum}onClick={() => setShowNav(!showNav)}>
-                     Generation {genNum}
-                  </option>
-                ))}
-              </Select>
-            </DrawerBody>
-            <DrawerFooter>
-              <SearchBar filter={filter} handleSearchClick={handleSearchClick} />
-            </DrawerFooter>
+              <DrawerBody>
+                <Link to="/">
+                  <Button
+                    colorScheme="facebook"
+                    mb="2"
+                    variant="ghost"
+                    onClick={() => setShowNav(!showNav)}
+                  >
+                    Home
+                  </Button>
+                </Link>
+                <Select onChange={handleGenerationChange}>
+                  {generations.map((genNum) => (
+                    <option value={genNum} onClick={() => setShowNav(!showNav)}>
+                      Generation {genNum}
+                    </option>
+                  ))}
+                </Select>
+              </DrawerBody>
+              <DrawerFooter>
+                <div className="searchBarContainer">
+                  <SearchBar handleSearchClick={handleClick} />
+                  {/* <Filter filter={filter} handleFilterClick={handleClick} /> */}
+                </div>
+              </DrawerFooter>
             </DrawerContent>
           </DrawerOverlay>
-      </Drawer>
+        </Drawer>
+      </Box>
     </nav>
   );
-}
-export default withRouter(NavBar)
+};
+export default withRouter(NavBar);

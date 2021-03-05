@@ -20,7 +20,7 @@ class PokeCalls extends Component {
       newPokemonList: [],
       pokeFilter: [],
       sliceEndNum: 50,
-      pageNum: 1
+      pageNum: 1,
     };
   }
   componentDidMount() {
@@ -48,7 +48,7 @@ class PokeCalls extends Component {
     const { filterList } = this.props;
     this.setState({
       sorted: false,
-      newPokemonList: []
+      newPokemonList: [],
     });
 
     if (this.props.filterList.length < 1) {
@@ -62,15 +62,17 @@ class PokeCalls extends Component {
       startNum = endNum - 31;
     }
     //Gathers filter data from pokeapi
-    let filterPromises = filterList.map(filter =>
+    let filterPromises = filterList.map((filter) =>
       axios.get(`https://pokeapi.co/api/v2/type/${filter}/`)
     );
-    await Promise.all(filterPromises).then(all => {
-      const data = all.map(result => result.data.pokemon);
-      data.forEach(poke => poke.map(pokemon => pokeList.push(pokemon.pokemon)));
+    await Promise.all(filterPromises).then((all) => {
+      const data = all.map((result) => result.data.pokemon);
+      data.forEach((poke) =>
+        poke.map((pokemon) => pokeList.push(pokemon.pokemon))
+      );
     });
     //Adds a id object to the pokemon object for getting images
-    pokeList.map(poke => {
+    pokeList.map((poke) => {
       let id = poke.url.match(regexPat)[1];
       return (poke["id"] = id);
     });
@@ -79,7 +81,7 @@ class PokeCalls extends Component {
     this.setState({ newPokemonList: cutPokemon, sorted: true });
   };
 
-  handlePagesClick = direction => {
+  handlePagesClick = (direction) => {
     this.setState({ sorted: false });
     let currentUrlParams = new URLSearchParams(window.location.search);
     let currentPageNum = currentUrlParams.get("page");
@@ -124,7 +126,7 @@ class PokeCalls extends Component {
       `https://pokeapi.co/api/v2/pokemon/?limit=30&offset=${offsetNum}`
     );
     let pokemon = res.data.results;
-    pokemon.map(pokemon => {
+    pokemon.map((pokemon) => {
       let id = pokemon.url.match(regexPat)[1];
       return (pokemon["id"] = id);
       //Adds id to pokemon object

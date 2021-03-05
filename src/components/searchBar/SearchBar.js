@@ -4,40 +4,33 @@ import { Route } from "react-router-dom";
 import Filter from "./../filter/Filter";
 import { withRouter } from "react-router";
 import "./SearchBar.css";
-import {
-  Button, 
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverBody,
-  Input
-} from "@chakra-ui/react"
-import { SearchIcon, ArrowForwardIcon } from '@chakra-ui/icons'
+import { Button, Input } from "@chakra-ui/react";
+import { SearchIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 
 class SearchBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
       searchQuery: "",
-      showFilters: false
+      showFilters: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     const inputValue = event.target.value;
     this.setState({ searchQuery: inputValue });
 
     if (!inputValue) return "";
   };
-  handleSubmit = event => {
-    console.log('event', event)
+  handleSubmit = (event) => {
+    console.log("event", event);
     const { searchQuery } = this.state;
     event.preventDefault();
     const value = this.state.searchQuery;
     this.setState({ searchQuery: "" });
     if (value) {
-      this.props.handleSearchClick()
+      this.props.handleSearchClick();
       return this.props.history.push(`/detail/${searchQuery}`);
     }
   };
@@ -48,44 +41,25 @@ class SearchBar extends Component {
   render() {
     const { searchQuery, showFilters } = this.state;
     return (
-      <div className="searchBarContainer">
-          <Input
-            placeholder="Search Pokemon"
-            value={searchQuery}
-            onChange={this.handleChange}
-            variant='flushed'
-            colorScheme='pink'
-            className='searchBar'
-            focusBorderColor='red.700'
-            maxW='250px'
-            onKeyDown={(e) => e.key === 'Enter' ? this.handleSubmit(e) : null}
-          />
-          <Button rightIcon={<SearchIcon />} colorScheme="red" onClick={this.handleSubmit}>
-            Search
-          </Button>
-        <div className='filter-container'>
-          <Popover isOpen={showFilters}>
-        {this.props.location.pathname === "/" && (
-        <PopoverTrigger>
-          <Button
+      <React.Fragment>
+        <Input
+          placeholder="Search Pokemon"
+          value={searchQuery}
+          onChange={this.handleChange}
+          variant="flushed"
+          className="searchBar"
+          maxW="250px"
+          onKeyDown={(e) => (e.key === "Enter" ? this.handleSubmit(e) : null)}
+        />
+        <Button
+          rightIcon={<SearchIcon />}
           colorScheme="red"
-          onClick={() => {
-            this.setState({ showFilters: !showFilters });
-          }}
-          >
-            Filter
-          </Button>
-        </PopoverTrigger>
-        )}
-        <PopoverContent w='fit-content' color='white' bgColor='red.700' borderColor='red.700'>
-        <PopoverBody>
-          <Filter showFilter={this.handleFilter} filter={this.props.filter} handleSearchClick={this.props.handleSearchClick}/>
-        </PopoverBody>
-        </PopoverContent>
-        </Popover>
-          </div>
+          onClick={this.handleSubmit}
+        >
+          Search
+        </Button>
         <Route exact path="detail/:name" component={Detail} />
-      </div>
+      </React.Fragment>
     );
   }
 }

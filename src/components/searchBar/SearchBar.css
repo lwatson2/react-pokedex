@@ -1,15 +1,3 @@
-.searchBarContainer {
-  margin: 40px auto;
-  color: hsl(210, 24%, 16%);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  gap: 1rem;
-  justify-items: center;
-  align-items: center;
-  max-width: 400px;
-}
 .searchForm {
   display: grid;
   justify-items: center;
@@ -26,6 +14,9 @@
   cursor: pointer;
   color: #dadad9;
   font-size: 16px;
+}
+.searchBarContainer input {
+  color: white;
 }
 @media only screen and (max-width: 700px) {
   .searchBarContainer {

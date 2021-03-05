@@ -1,27 +1,36 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./Filter.css";
-import { Checkbox, CheckboxGroup, Grid, Button} from "@chakra-ui/react"
+import {
+  Checkbox,
+  CheckboxGroup,
+  Grid,
+  Button,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverBody,
+} from "@chakra-ui/react";
 
-const Filter = ({filter, showFilter, handleSearchClick}) => {
+const Filter = ({ handleFilter, showFilter, handleFilterClick, location }) => {
   const [filterBoxes, setFilterBoxes] = useState([]);
+  const [showFilters, setShowFilters] = useState(false);
   const handleFilterChange = (checkboxValues = []) => {
-    
-    setFilterBoxes(checkboxValues)
+    setFilterBoxes(checkboxValues);
   };
-  const submitFilters = event => {
+  const submitFilters = (event) => {
     event.preventDefault();
     const typeFilters = filterBoxes;
-    filter(typeFilters);
+    handleFilter(typeFilters);
     showFilter();
-    handleSearchClick()
+    handleFilterClick();
   };
 
   const handleClearFilters = () => {
-    setFilterBoxes([])
-    filter([]);
+    setFilterBoxes([]);
+    handleFilter([]);
     showFilter();
-    handleSearchClick()
-  }
+    handleFilterClick();
+  };
 
   const types = [
     "fire",
@@ -41,34 +50,55 @@ const Filter = ({filter, showFilter, handleSearchClick}) => {
     "steel",
     "bug",
     "normal",
-    "psychic"
+    "psychic",
   ];
   return (
-    <React.Fragment>
-      <CheckboxGroup value={filterBoxes}  onChange={handleFilterChange}>
-        <Grid templateColumns='repeat(2, 1fr)' gap='4px'>
-        {types.map((type, i) => {
-          return (
-            <Checkbox 
-              style={{textTransform: 'capitalize'}}
-              value={type}
+    <div className="filter-container">
+      <Popover isOpen={showFilters}>
+        {location.pathname === "/" && (
+          <PopoverTrigger>
+            <Button
+              colorScheme="red"
+              onClick={() => setShowFilters(!showFilters)}
             >
-              {type}
-            </Checkbox>
-            );
-          })}
-          </Grid>
-      </CheckboxGroup>
-      <div className="filter-btn-container">
-        <Button colorScheme='facebook' onClick={submitFilters}>
-          {" "}
-          Done{" "}
-        </Button>
-        <Button colorScheme='facebook' onClick={handleClearFilters}>
-          Clear
-        </Button>
-      </div>
-    </React.Fragment>
+              Filter
+            </Button>
+          </PopoverTrigger>
+        )}
+        <PopoverContent
+          w="fit-content"
+          color="white"
+          bgColor="red.700"
+          borderColor="red.700"
+        >
+          <PopoverBody>
+            <CheckboxGroup value={filterBoxes} onChange={handleFilterChange}>
+              <Grid templateColumns="repeat(2, 1fr)" gap="4px">
+                {types.map((type, i) => {
+                  return (
+                    <Checkbox
+                      style={{ textTransform: "capitalize" }}
+                      value={type}
+                    >
+                      {type}
+                    </Checkbox>
+                  );
+                })}
+              </Grid>
+            </CheckboxGroup>
+            <div className="filter-btn-container">
+              <Button colorScheme="facebook" onClick={submitFilters}>
+                {" "}
+                Done{" "}
+              </Button>
+              <Button colorScheme="facebook" onClick={handleClearFilters}>
+                Clear
+              </Button>
+            </div>
+          </PopoverBody>
+        </PopoverContent>
+      </Popover>
+    </div>
   );
 };
 
