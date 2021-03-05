@@ -14,7 +14,8 @@ import {
   Tab,
   TabPanel,
 } from "@chakra-ui/react";
-import DetailAbout from "../detailAbout/DetailAbout";
+import DetailAbout from "./detailAbout/DetailAbout";
+import DetailStats from "./detailStats/DetailStats";
 
 export const Detail = ({ location, match }) => {
   const [pokeData, setPokeData] = useState([]);
@@ -130,7 +131,9 @@ export const Detail = ({ location, match }) => {
                 weight={pokeData.weight}
               />
             </TabPanel>
-            <TabPanel>hi 2</TabPanel>
+            <TabPanel>
+              <DetailStats stats={pokeData.stats} />
+            </TabPanel>
             <TabPanel>hi 3</TabPanel>
             <TabPanel>hi 4</TabPanel>
           </TabPanels>

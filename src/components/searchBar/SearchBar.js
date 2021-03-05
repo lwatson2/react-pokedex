@@ -47,6 +47,7 @@ class SearchBar extends Component {
           value={searchQuery}
           onChange={this.handleChange}
           variant="flushed"
+          color="gray.700"
           className="searchBar"
           maxW="250px"
           onKeyDown={(e) => (e.key === "Enter" ? this.handleSubmit(e) : null)}
