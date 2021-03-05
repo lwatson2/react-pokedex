@@ -6,7 +6,7 @@
   transform: translate(-50%, -50%);
 }
 .pokeDetail {
-  background: hsl(209, 18%, 30%);
+  background: #f7fafc;
   color: hsl(214, 33%, 97%);
   border-radius: 10px;
   max-width: 350px;
@@ -133,19 +133,33 @@
   -ms-flex-align: center;
   align-items: center;
 }
-.pokeNameContainer {
+.pokeDetailHeader {
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: grid;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
-  justify-content: center;
+  justify-items: center;
   grid-column: 1;
   grid-row: 1;
   margin-top: 1rem;
+  padding: 0 1rem;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+}
+.shinySwitchContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.pokeSpriteContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .abilityContainer {
   display: -webkit-box;
@@ -296,7 +310,7 @@
     align-items: center;
     grid-column: 1 / -1;
   }
-  .pokeNameContainer {
+  .pokeDetailHeader {
     margin-top: 0;
   }
   .pokePicture {
