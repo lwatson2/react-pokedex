@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import DetailAbout from "./detailAbout/DetailAbout";
 import DetailStats from "./detailStats/DetailStats";
+import DetailEvolutions from "./detailTyping/DetailTyping";
 
 export const Detail = ({ location, match }) => {
   const [pokeData, setPokeData] = useState([]);
@@ -96,21 +97,15 @@ export const Detail = ({ location, match }) => {
       <Box bgColor="gray.50" color="gray.800" m="24px">
         <div className="pokeDetailHeader">
           <Text className="pokeDetailName">{pokeData.name}</Text>
-          <div className="shinySwitchContainer">
-            <Text mr="1rem">View Shiny</Text>
-            <Switch onChange={(e) => setShowShiny(e.target.checked)} />
-          </div>
           <Text>#{pokeData.id}</Text>
         </div>
         <div className="pokeSpriteContainer">
           <Image
             objectFit="cover"
             boxSize="250px"
-            src={
-              showShiny
-                ? pokeData.sprites.front_shiny
-                : pokeData.sprites.front_default
-            }
+            src={`https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${pokeData.id
+              .toString()
+              .padStart(3, "0")}.png`}
             alt={`${pokeData.name} sprite`}
           />
         </div>
@@ -118,8 +113,7 @@ export const Detail = ({ location, match }) => {
           <TabList>
             <Tab>About</Tab>
             <Tab>Stats</Tab>
-            <Tab>Moves</Tab>
-            <Tab>Evolutions</Tab>
+            <Tab>Types / Abilites</Tab>
           </TabList>
           <TabPanels>
             <TabPanel>
@@ -134,8 +128,12 @@ export const Detail = ({ location, match }) => {
             <TabPanel>
               <DetailStats stats={pokeData.stats} />
             </TabPanel>
-            <TabPanel>hi 3</TabPanel>
-            <TabPanel>hi 4</TabPanel>
+            <TabPanel>
+              <DetailEvolutions
+                types={pokeData.types}
+                abilities={pokeData.abilities}
+              />
+            </TabPanel>
           </TabPanels>
         </Tabs>
         {/* <div className="topBoxWrapper">

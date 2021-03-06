@@ -12,12 +12,14 @@ export default class PokeGrid extends Component {
           <Link key={id} to={`/detail/${name}`}>
             <div className="pokeGridItemContainer" key={id}>
               <Image
-                boxSize="150px"
+                boxSize={{ sm: "200px", md: "250px", lg: "300px" }}
                 objectFit="cover"
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
+                src={`https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${id
+                  .toString()
+                  .padStart(3, "0")}.png`}
                 alt="pokemon"
               />
-              <Text color="gray.800" className="pokeName">
+              <Text color="gray.800" fontSize="lg" className="pokeName">
                 {name} #{id}
               </Text>
             </div>

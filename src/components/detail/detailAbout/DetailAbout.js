@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Text } from "@chakra-ui/react";
 import "./DetailAbout.css";
 
@@ -18,7 +18,7 @@ const DetailAbout = ({ flavorText, height, weight }) => {
         <Text>Height</Text>
         <Text>{heightInFeet.toFixed(2)} ft</Text>
         <Text>Weight</Text>
-        <Text>{weightInPounds.toFixed(2)} pounds</Text>
+        <Text>{weightInPounds.toFixed(2)} lb</Text>
       </div>
     </div>
   );

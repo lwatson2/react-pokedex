@@ -12,3 +12,5 @@ run `npm start` to start the website
 visit localhost:3000 to see the website
 
 Pokeball loading animation found from https://codepen.io/vinztt/pen/XjEyvk
+
+Pokemon images found at https://github.com/HybridShivam/Pokemon
