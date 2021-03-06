@@ -53,6 +53,12 @@ export const Detail = ({ location, match }) => {
       setErrorCode(error.request.status);
     }
   };
+  const getFlavorText = () => {
+    const flavorText = pokeSpeciesData.flavor_text_entries.find(
+      ({ language }) => language.name === "en"
+    );
+    return flavorText.flavor_text;
+  };
 
   if (!isLoaded) {
     return (
@@ -87,7 +93,9 @@ export const Detail = ({ location, match }) => {
                   variant="solid"
                   borderRadius="full"
                 >
-                  <TagLabel textTransform="capitalize">{type.name}</TagLabel>
+                  <TagLabel overflow="initial" textTransform="capitalize">
+                    {type.name}
+                  </TagLabel>
                 </Tag>
               );
             })}
@@ -106,6 +114,7 @@ export const Detail = ({ location, match }) => {
             alt={`${pokeData.name} sprite`}
           />
         </div>
+        <Text p="1rem">{getFlavorText()}</Text>
         <Tabs variant="soft-rounded" mt="1rem" colorScheme="cyan">
           <TabList>
             <Tab>About</Tab>
@@ -114,13 +123,7 @@ export const Detail = ({ location, match }) => {
           </TabList>
           <TabPanels>
             <TabPanel>
-              <DetailAbout
-                flavorText={pokeSpeciesData.flavor_text_entries.find(
-                  ({ language }) => language.name === "en"
-                )}
-                height={pokeData.height}
-                weight={pokeData.weight}
-              />
+              <DetailAbout height={pokeData.height} weight={pokeData.weight} />
             </TabPanel>
             <TabPanel>
               <DetailStats stats={pokeData.stats} />

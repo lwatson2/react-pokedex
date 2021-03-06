@@ -2,24 +2,20 @@ import React from "react";
 import { Text } from "@chakra-ui/react";
 import "./DetailAbout.css";
 
-const DetailAbout = ({ flavorText, height, weight }) => {
-  //   useEffect(() => {
-  //     const fetch = async () => {
-  //       console.log("data", data);
-  //     };
-  //     fetch();
-  //   }, [pokeID]);
-  const heightInFeet = height / 3.048;
+const DetailAbout = ({ height, weight }) => {
+  const getHeight = () => {
+    const heightInInches = height * 3.937;
+    const heightInFeet = heightInInches.toFixed(0) / 12;
+    const remainingInches = heightInInches.toFixed(0) % 12;
+    return `${heightInFeet.toFixed(0)}.${remainingInches.toFixed(0)}`;
+  };
   const weightInPounds = weight / 4.536;
   return (
-    <div>
-      <Text>{flavorText.flavor_text}</Text>
-      <div className="about-weight-height-container">
-        <Text>Height</Text>
-        <Text>{heightInFeet.toFixed(2)} ft</Text>
-        <Text>Weight</Text>
-        <Text>{weightInPounds.toFixed(2)} lb</Text>
-      </div>
+    <div className="about-weight-height-container">
+      <Text>Height</Text>
+      <Text>{getHeight()} ft</Text>
+      <Text>Weight</Text>
+      <Text>{weightInPounds.toFixed(2)} lb</Text>
     </div>
   );
 };
