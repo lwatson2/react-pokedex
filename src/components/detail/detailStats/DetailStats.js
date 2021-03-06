@@ -1,7 +1,8 @@
 import React from "react";
-import { Progress } from "@chakra-ui/react";
+import { Progress, Text } from "@chakra-ui/react";
+import "./DetailStats.css";
+
 const DetailStats = ({ stats }) => {
-  console.log("stats", stats);
   return (
     <div>
       {stats.map(({ base_stat, stat }, i) => (
@@ -10,12 +11,15 @@ const DetailStats = ({ stats }) => {
             {" "}
             {stat.name}{" "}
           </span>
-          <Progress
-            borderRadius="8px"
-            colorScheme="cyan"
-            max={256}
-            value={base_stat}
-          />
+          <div className="stat-container">
+            <Text color="cyan.600">{base_stat}</Text>
+            <Progress
+              borderRadius="8px"
+              colorScheme="cyan"
+              max={256}
+              value={base_stat}
+            />
+          </div>
         </div>
       ))}
     </div>

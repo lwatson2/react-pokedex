@@ -7,12 +7,13 @@ import ErrorMessage from "./../errorMessage/ErrorMessage";
 import { Box, Text } from "@chakra-ui/layout";
 import {
   Image,
-  Switch,
   Tabs,
   TabList,
   TabPanels,
   Tab,
   TabPanel,
+  Tag,
+  TagLabel,
 } from "@chakra-ui/react";
 import DetailAbout from "./detailAbout/DetailAbout";
 import DetailStats from "./detailStats/DetailStats";
@@ -22,21 +23,13 @@ export const Detail = ({ location, match }) => {
   const [pokeData, setPokeData] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [showAbility, setShowAbility] = useState(false);
-  const [abilityURL, setAbilityURL] = useState("");
-  const [weight, setWeight] = useState("");
   const [pokeSpeciesData, setPokeSpeciesData] = useState({});
-  const [key, setKey] = useState("");
   const [error, setError] = useState(false);
-  const [showShiny, setShowShiny] = useState(false);
   const [errorCode, setErrorCode] = useState(null);
 
   useEffect(() => {
     fetchPokeName();
   }, [location.pathname]);
-
-  const renderType = (params) => {
-    return params;
-  };
 
   const fetchPokeName = async () => {
     setError(false);
@@ -54,7 +47,6 @@ export const Detail = ({ location, match }) => {
       setPokeSpeciesData(speciesData);
       setPokeData(data);
       setIsLoaded(true);
-      handleWeightChange(data.weight);
     } catch (error) {
       setIsLoaded(true);
       setError(true);
@@ -62,22 +54,6 @@ export const Detail = ({ location, match }) => {
     }
   };
 
-  const handleWeightChange = (weight) => {
-    //Fixes weight to better show weight
-    let weight1 = weight.toString();
-    let newWeight = weight1.slice(0, -1) + "." + weight1.slice(-1);
-    setWeight(newWeight);
-  };
-
-  const handleChange = (name, url, key) => {
-    if (name === "ability") {
-      setAbilityURL(url);
-      setShowAbility(!showAbility);
-      setKey(key);
-    } else {
-      setKey("");
-    }
-  };
   if (!isLoaded) {
     return (
       <div className="loadingContainer">
@@ -94,10 +70,31 @@ export const Detail = ({ location, match }) => {
   }
   if (isLoaded) {
     return (
-      <Box bgColor="gray.50" color="gray.800" m="24px">
+      <Box bgColor="gray.50" color="gray.800" m="24px" borderRadius="8px">
         <div className="pokeDetailHeader">
-          <Text className="pokeDetailName">{pokeData.name}</Text>
-          <Text>#{pokeData.id}</Text>
+          <Text fontSize="3xl" className="pokeDetailName">
+            {pokeData.name}
+          </Text>
+          <div className="pokedetail-header-types-container">
+            {pokeData.types.map(({ type }) => {
+              return (
+                <Tag
+                  bgColor={`type.${type.name}`}
+                  key={type.name}
+                  size="lg"
+                  mr="8px"
+                  ml="8px"
+                  variant="solid"
+                  borderRadius="full"
+                >
+                  <TagLabel textTransform="capitalize">{type.name}</TagLabel>
+                </Tag>
+              );
+            })}
+          </div>
+          <Text fontSize="3xl" ml="auto">
+            #{pokeData.id}
+          </Text>
         </div>
         <div className="pokeSpriteContainer">
           <Image
@@ -109,7 +106,7 @@ export const Detail = ({ location, match }) => {
             alt={`${pokeData.name} sprite`}
           />
         </div>
-        <Tabs variant="soft-rounded">
+        <Tabs variant="soft-rounded" mt="1rem" colorScheme="cyan">
           <TabList>
             <Tab>About</Tab>
             <Tab>Stats</Tab>
