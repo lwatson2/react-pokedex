@@ -11,6 +11,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  flex-wrap: wrap;
 }
 .abilities-container {
   margin-top: 1rem;

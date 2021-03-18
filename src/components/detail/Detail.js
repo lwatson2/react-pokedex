@@ -81,6 +81,9 @@ export const Detail = ({ location, match }) => {
           <Text fontSize="3xl" className="pokeDetailName">
             {pokeData.name}
           </Text>
+          <Text fontSize="3xl" ml="auto">
+            #{pokeData.id}
+          </Text>
           <div className="pokedetail-header-types-container">
             {pokeData.types.map(({ type }) => {
               return (
@@ -100,9 +103,6 @@ export const Detail = ({ location, match }) => {
               );
             })}
           </div>
-          <Text fontSize="3xl" ml="auto">
-            #{pokeData.id}
-          </Text>
         </div>
         <div className="pokeSpriteContainer">
           <Image

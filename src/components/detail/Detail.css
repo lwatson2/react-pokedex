@@ -32,11 +32,7 @@
   text-transform: capitalize;
   padding-right: 1rem;
 }
-.pokedetail-header-types-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 .pokemonName {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -145,20 +141,11 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-items: center;
   grid-column: 1;
   grid-row: 1;
-  padding: 1rem 1rem 0 1rem;
-  grid-template-columns: auto auto 1fr;
+  padding: 1rem;
+  grid-template-columns: auto auto;
   align-items: center;
-}
-.shinySwitchContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
 }
 .pokeSpriteContainer {
   display: flex;

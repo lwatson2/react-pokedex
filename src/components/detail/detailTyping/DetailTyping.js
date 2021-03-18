@@ -17,7 +17,6 @@ import "./DetailTyping.css";
 import Card from "../../card/Card";
 
 const DetailTyping = ({ types, abilities }) => {
-  console.log("types", types);
   const [typesData, setTypesData] = useState();
   const [abilitiesData, setAbilitiesData] = useState();
   const [loading, setLoading] = useState(false);
@@ -32,7 +31,6 @@ const DetailTyping = ({ types, abilities }) => {
       const { data } = await axios.get(type.url);
       typesArray.push(data);
     }
-    console.log("typesArray", typesArray);
     const totalEffectives = getEffectives(typesArray);
     setTypesData(totalEffectives);
     const abilitiesArray = [];
@@ -43,16 +41,13 @@ const DetailTyping = ({ types, abilities }) => {
     }
     setAbilitiesData(abilitiesArray);
     setLoading(false);
-    console.log("abilitiesArray", abilitiesArray);
   };
 
   const buildAbility = (data, is_hidden) => {
-    console.log("data", data);
     const { effect_entries } = data;
     const englishAbility = effect_entries.find(
       ({ language }) => language.name === "en"
     );
-    console.log("englishAbility", englishAbility);
     return {
       hiddenAbility: is_hidden,
       abilityText: englishAbility.short_effect,
@@ -60,7 +55,12 @@ const DetailTyping = ({ types, abilities }) => {
     };
   };
 
+  const covertToArrayOfNames = (array) => {
+    return array.map(({ name }) => name);
+  };
+
   const getEffectives = (types) => {
+    console.log(`types`, types);
     const typeEffectives = types.reduce((acc, type) => {
       // group all effectives together
       const { damage_relations } = type;
@@ -69,50 +69,58 @@ const DetailTyping = ({ types, abilities }) => {
         double_damage_from,
         half_damage_from,
         half_damage_to,
+        no_damage_from,
       } = damage_relations;
       acc.superEffective = acc.superEffective
-        ? acc.superEffective.concat(double_damage_to)
-        : double_damage_to;
+        ? acc.superEffective.concat(covertToArrayOfNames(double_damage_to))
+        : covertToArrayOfNames(double_damage_to);
 
       acc.superWeak = acc.superWeak
-        ? acc.superWeak.concat(double_damage_from)
-        : double_damage_from;
+        ? acc.superWeak.concat(covertToArrayOfNames(double_damage_from))
+        : covertToArrayOfNames(double_damage_from);
 
       acc.halfWeak = acc.halfWeak
-        ? acc.halfWeak.concat(half_damage_from)
-        : half_damage_from;
+        ? acc.halfWeak.concat(covertToArrayOfNames(half_damage_from))
+        : covertToArrayOfNames(half_damage_from);
 
       acc.halfEffective = acc.halfEffective
-        ? acc.halfEffective.concat(half_damage_to)
-        : half_damage_to;
-
+        ? acc.halfEffective.concat(covertToArrayOfNames(half_damage_to))
+        : covertToArrayOfNames(half_damage_to);
+      acc.noDamageTo = acc.noDamageTo
+        ? acc.noDamageTo.concat(covertToArrayOfNames(no_damage_from))
+        : covertToArrayOfNames(no_damage_from);
       return acc;
     }, {});
 
-    types.superEffective = typeEffectives.superEffective.filter(({ name }) => {
-      return !typeEffectives.halfEffective.find(
-        (half_damage) => half_damage.name === name
-      );
-    });
-    typeEffectives.superWeak = typeEffectives.superWeak.filter(({ name }) => {
-      return !typeEffectives.halfWeak.find((half_weak) => {
-        return half_weak.name === name;
-      });
-    });
-
-    types.halfEffective = typeEffectives.halfEffective.filter(({ name }) => {
-      return !typeEffectives.superEffective.find(
-        (half_damage) => half_damage.name === name
+    typeEffectives.superEffective = typeEffectives.superEffective.filter(
+      (name) => {
+        return !typeEffectives.halfEffective.includes(name);
+      }
+    );
+    typeEffectives.superWeak = typeEffectives.superWeak.filter((name) => {
+      return (
+        !typeEffectives.halfWeak.includes(name) &&
+        !typeEffectives.noDamageTo.includes(name)
       );
     });
 
-    types.halfWeak = typeEffectives.halfWeak.filter(({ name }) => {
-      return !typeEffectives.superWeak.find(
-        (half_damage) => half_damage.name === name
-      );
-    });
+    typeEffectives.halfEffective = typeEffectives.halfEffective.filter(
+      (name) => {
+        return !typeEffectives.superEffective.includes(name);
+      }
+    );
 
-    return typeEffectives;
+    typeEffectives.halfWeak = typeEffectives.halfWeak.filter((name) => {
+      return !typeEffectives.superWeak.includes(name);
+    });
+    const typeEffectivesWithoutDupes = Object.entries(typeEffectives).reduce(
+      (acc, [key, item]) => {
+        acc[key] = [...new Set(item)];
+        return acc;
+      },
+      {}
+    ); // removes dupes from array
+    return typeEffectivesWithoutDupes;
   };
   if (loading || !typesData) {
     return <Loading />;
@@ -123,7 +131,7 @@ const DetailTyping = ({ types, abilities }) => {
         <div>
           <Text mb="1rem">2x weak against</Text>
           <div className="types-list-container">
-            {typesData.superWeak.map(({ name }) => {
+            {typesData.superWeak.map((name) => {
               return (
                 <Tag
                   bgColor={`type.${name}`}
