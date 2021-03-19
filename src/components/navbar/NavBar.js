@@ -24,7 +24,7 @@ import SearchBar from "../searchBar/SearchBar";
 import Filter from "../filter/Filter";
 
 const NavBar = ({ history, handleFilter, location }) => {
-  const generations = [1, 2, 3, 4, 5, 6, 7, 8];
+  const generations = [1, 2, 3, 4, 5, 6, 7];
   const [showNav, setShowNav] = useState();
   const handleGenerationChange = (e) => {
     console.log("e", e.target.value);
@@ -69,7 +69,7 @@ const NavBar = ({ history, handleFilter, location }) => {
                 </MenuButton>
                 <MenuList>
                   {generations.map((genNum) => (
-                    <Link to={`/generations/${genNum}`}>
+                    <Link to={`/generations/${genNum}`} as={ReactRouterLink}>
                       <MenuItem color="gray.700">Generation {genNum}</MenuItem>
                     </Link>
                   ))}
@@ -118,7 +118,6 @@ const NavBar = ({ history, handleFilter, location }) => {
               <DrawerFooter>
                 <div className="searchBarContainer">
                   <SearchBar handleSearchClick={handleClick} />
-                  {/* <Filter filter={filter} handleFilterClick={handleClick} /> */}
                 </div>
               </DrawerFooter>
             </DrawerContent>
