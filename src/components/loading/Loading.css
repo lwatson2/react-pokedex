@@ -13,8 +13,8 @@
   position: relative;
   overflow: hidden;
   border: 3px solid #000000;
-  -webkit-animation: frames 0.8s linear 0s infinite;
-  animation: frames 0.8s linear 0s infinite;
+  -webkit-animation: frames 2s infinite;
+  animation: frames 2s infinite;
 }
 
 .loading:after {
@@ -24,40 +24,29 @@
   height: 30px;
   background-color: red;
   border-bottom: 4px solid #000000;
-  top: -4px;
 }
 
 .loading:before {
   content: "";
   position: absolute;
   background-color: #fff;
-  width: 10px;
-  height: 10px;
+  width: 16px;
+  height: 16px;
   border: 4px solid #000000;
   border-radius: 50%;
-  bottom: 21px;
-  right: 21px;
+  bottom: 18px;
+  right: 20px;
   z-index: 1;
 }
 
 /* AnimationFrames */
 @-webkit-keyframes frames {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+  50% {
+    transform: rotate(0.7);
   }
 }
 @keyframes frames {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+  50% {
+    transform: scale(0.7);
   }
 }
