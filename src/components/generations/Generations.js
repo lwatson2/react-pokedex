@@ -5,7 +5,7 @@ import Loading from "../loading/Loading";
 import PokeGrid from "../pokegrid/PokeGrid";
 import Pages from "../pages/Pages";
 
-const Generations = props => {
+const Generations = (props) => {
   const [data, setData] = useState();
   const [genPokemonList, setGenPokemonList] = useState();
   const [loaded, setLoaded] = useState(false);
@@ -35,7 +35,7 @@ const Generations = props => {
     let Bid = b.url.match(regexPat)[1];
     return Aid - Bid;
   };
-  const FetchGenPokemon = async pokemon => {
+  const FetchGenPokemon = async (pokemon) => {
     let regexPat = /\/pokemon-species\/(\d+)\//;
     let endNum;
     let startNum;
@@ -57,7 +57,7 @@ const Generations = props => {
     } else {
       cutPokemon = genPokemonList.slice(startNum, endNum);
     }
-    cutPokemon.map(pokemon => {
+    cutPokemon.map((pokemon) => {
       let id = pokemon.url.match(regexPat)[1];
       return (pokemon["id"] = id);
     });
@@ -65,11 +65,11 @@ const Generations = props => {
     setData(cutPokemon);
     setLoaded(true);
   };
-  const handlePageClick = direction => {
+  const handlePageClick = (direction) => {
     let currentUrlParams = new URLSearchParams(window.location.search);
     let currentPageNum = currentUrlParams.get("page");
     let stopNum = currentPageNum * 31;
-    console.log(typeof currentPageNum);
+
     currentPageNum = parseInt(currentPageNum);
     if (!currentPageNum || (stopNum > arrayLength && direction === "next")) {
       currentPageNum = 1;

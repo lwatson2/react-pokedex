@@ -60,7 +60,6 @@ const DetailTyping = ({ types, abilities }) => {
   };
 
   const getEffectives = (types) => {
-    console.log(`types`, types);
     const typeEffectives = types.reduce((acc, type) => {
       // group all effectives together
       const { damage_relations } = type;
@@ -140,7 +139,9 @@ const DetailTyping = ({ types, abilities }) => {
                   variant="solid"
                   borderRadius="full"
                 >
-                  <TagLabel textTransform="capitalize">{name}</TagLabel>
+                  <TagLabel key={name} textTransform="capitalize">
+                    {name}
+                  </TagLabel>
                 </Tag>
               );
             })}
@@ -169,7 +170,7 @@ const DetailTyping = ({ types, abilities }) => {
         <Accordion allowMultiple>
           {abilitiesData.map(({ abilityText, hiddenAbility, name }) => {
             return (
-              <AccordionItem>
+              <AccordionItem key={name}>
                 <h2>
                   <AccordionButton>
                     <Box textTransform="capitalize" flex="1" textAlign="left">

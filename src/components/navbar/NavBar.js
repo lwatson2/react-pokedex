@@ -69,7 +69,11 @@ const NavBar = ({ history, handleFilter, location }) => {
                 </MenuButton>
                 <MenuList>
                   {generations.map((genNum) => (
-                    <Link to={`/generations/${genNum}`} as={ReactRouterLink}>
+                    <Link
+                      key={genNum}
+                      to={`/generations/${genNum}`}
+                      as={ReactRouterLink}
+                    >
                       <MenuItem color="gray.700">Generation {genNum}</MenuItem>
                     </Link>
                   ))}
@@ -109,7 +113,11 @@ const NavBar = ({ history, handleFilter, location }) => {
                 </Link>
                 <Select onChange={handleGenerationChange}>
                   {generations.map((genNum) => (
-                    <option value={genNum} onClick={() => setShowNav(!showNav)}>
+                    <option
+                      key={genNum}
+                      value={genNum}
+                      onClick={() => setShowNav(!showNav)}
+                    >
                       Generation {genNum}
                     </option>
                   ))}

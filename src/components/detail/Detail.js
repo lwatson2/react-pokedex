@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Detail.css";
-import AbilityDetail from "../abilityDetail/AbilityDetails";
 import Loading from "./../loading/Loading";
 import ErrorMessage from "./../errorMessage/ErrorMessage";
 import { Box, Text } from "@chakra-ui/layout";
@@ -44,7 +43,7 @@ export const Detail = ({ location, match }) => {
       const { data: speciesData } = await axios.get(
         `https://pokeapi.co/api/v2/pokemon-species/${data.id}/`
       );
-      console.log("speciesData", speciesData);
+
       setPokeSpeciesData(speciesData);
       setPokeData(data);
       setIsLoaded(true);

@@ -6,7 +6,7 @@ const DetailStats = ({ stats }) => {
   return (
     <div>
       {stats.map(({ base_stat, stat }, i) => (
-        <div>
+        <div key={stat.name}>
           <span style={{ textTransform: "capitalize" }} key={i}>
             {" "}
             {stat.name}{" "}

@@ -79,6 +79,7 @@ const Filter = ({ handleFilter, showFilter, handleFilterClick, location }) => {
                     <Checkbox
                       style={{ textTransform: "capitalize" }}
                       value={type}
+                      key={type}
                     >
                       {type}
                     </Checkbox>
