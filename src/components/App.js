@@ -6,6 +6,7 @@ import NavBar from "./navbar/NavBar";
 import Generations from "./generations/Generations";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ErrorMessage from "./errorMessage/ErrorMessage";
+import Loading from "./loading/Loading";
 
 class App extends Component {
   constructor(props) {
@@ -41,6 +42,7 @@ class App extends Component {
             />
             <Route exact path="/detail/:name" component={Detail} />
             <Route exact path="/generations/:num" component={Generations} />
+            <Route exact path="/loadTest" component={Loading} />
             <Route component={ErrorMessage} />
           </Switch>
         </div>

@@ -18,9 +18,7 @@ export default class PokeGrid extends Component {
                   .toString()
                   .padStart(3, "0")}.png`}
                 alt={`${name} sprite`}
-                fallbackSrc={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id
-                  .toString()
-                  .padStart(3, "0")}.png`}
+                fallbackSrc={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
               />
               <Text color="gray.800" fontSize="lg" className="pokeName">
                 {name} #{id}
