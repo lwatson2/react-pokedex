@@ -129,6 +129,11 @@ const NavBar = ({ history, handleFilter, location }) => {
               <DrawerFooter>
                 <div className="searchBarContainer">
                   <SearchBar handleSearchClick={handleClick} />
+                  <Filter
+                    handleFilter={handleFilter}
+                    handleFilterClick={handleClick}
+                    location={location}
+                  />
                 </div>
               </DrawerFooter>
             </DrawerContent>
