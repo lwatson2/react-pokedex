@@ -76,7 +76,13 @@ export const Detail = ({ location, match }) => {
   }
   if (isLoaded) {
     return (
-      <Box bgColor="gray.50" color="gray.800" m="24px" borderRadius="8px">
+      <Box
+        className="detailContainer"
+        bgColor="gray.50"
+        color="gray.800"
+        borderRadius="8px"
+        maxW="800px"
+      >
         <div className="pokeDetailHeader">
           <div className="detail-name-type-container">
             <Text fontSize="3xl" className="pokeDetailName">

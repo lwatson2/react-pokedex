@@ -12,7 +12,7 @@ export default class PokeGrid extends Component {
           <Link key={id} to={`/detail/${name}`}>
             <div className="pokeGridItemContainer" key={id}>
               <Image
-                boxSize={{ sm: "200px", md: "250px", lg: "300px" }}
+                boxSize={{ sm: "200px", md: "200px", lg: "200px" }}
                 objectFit="cover"
                 src={`https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${id
                   .toString()
