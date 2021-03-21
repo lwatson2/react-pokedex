@@ -16,6 +16,7 @@ class App extends Component {
   }
 
   handleFilters = (typeFilters) => {
+    console.log("yuh");
     if (!typeFilters) {
       this.setState({ typeFilters: [] });
     }
@@ -31,7 +32,12 @@ class App extends Component {
             <Route
               exact
               path="/"
-              render={() => <PokeCalls filterList={this.state.typeFilters} />}
+              render={() => (
+                <PokeCalls
+                  filterList={this.state.typeFilters}
+                  handleFilter={this.handleFilters}
+                />
+              )}
             />
             <Route exact path="/detail/:name" component={Detail} />
             <Route exact path="/generations/:num" component={Generations} />

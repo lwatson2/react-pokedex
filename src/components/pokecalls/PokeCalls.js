@@ -1,43 +1,39 @@
 import PokeGrid from "./../pokegrid/PokeGrid";
 import Pages from "./../pages/Pages";
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Loading from "./../loading/Loading";
 import ErrorMessage from "./../errorMessage/ErrorMessage";
 import { withRouter } from "react-router";
+import { createStandaloneToast, Box, Text, Button } from "@chakra-ui/react";
 import "./PokeCalls.css";
 
-class PokeCalls extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      pokemon: [],
-      pokemonList: [],
-      loading: false,
-      sorted: false,
-      sliceNum: 0,
-      error: null,
-      newPokemonList: [],
-      pokeFilter: [],
-      sliceEndNum: 50,
-      pageNum: 1,
-    };
-  }
-  componentDidMount() {
-    this.fetchPokemon();
-  }
-  componentDidUpdate = (prevProps, prevState) => {
-    if (this.props.filterList !== prevProps.filterList) {
-      this.handleFilterList();
+const PokeCalls = ({ filterList, history, handleFilter }) => {
+  const toast = createStandaloneToast();
+  const [pokemon, setPokemon] = useState([]);
+  const [pokemonList, setPokemonList] = useState([]);
+  const [sorted, setSorted] = useState(false);
+  const [sliceNum, setSliceNum] = useState(0);
+  const [error, setError] = useState(null);
+  const [newPokemonList, setNewPokemonList] = useState([]);
+
+  useEffect(() => {
+    fetchPokemon();
+  }, []);
+
+  useEffect(() => {
+    if (filterList.length > 0) {
+      handleFilterList();
+    } else {
+      fetchPokemon();
     }
-    if (this.state.startNum !== prevState.startNum) {
-      this.fetchPokemon();
-    }
-    if (this.state.sliceNum !== prevState.sliceNum) {
-      this.fetchPokemon();
-    }
-  };
-  handleFilterList = async () => {
+  }, [filterList]);
+
+  useEffect(() => {
+    fetchPokemon();
+  }, [sliceNum]);
+
+  const handleFilterList = async () => {
     let regexPat = /\/pokemon\/(\d+)\//;
     let endNum;
     let startNum;
@@ -45,14 +41,11 @@ class PokeCalls extends Component {
     let currentPageNum = currentUrlParams.get("page");
     currentPageNum = parseInt(currentPageNum);
     let pokeList = [];
-    const { filterList } = this.props;
-    this.setState({
-      sorted: false,
-      newPokemonList: [],
-    });
+    setSorted(false);
+    setNewPokemonList([]);
 
-    if (this.props.filterList.length < 1) {
-      this.fetchPokemon();
+    if (filterList.length < 1) {
+      fetchPokemon();
     }
     if (!currentPageNum) {
       endNum = 31;
@@ -76,17 +69,86 @@ class PokeCalls extends Component {
       let id = poke.url.match(regexPat)[1];
       return (poke["id"] = id);
     });
+    let cutPokemon;
     //Slice pokeList to handle pagination
-    let cutPokemon = pokeList.slice(startNum, endNum);
-    this.setState({ newPokemonList: cutPokemon, sorted: true });
+    if (startNum > pokeList.length) {
+      cutPokemon = pokeList.slice(0, 31);
+      renderToast();
+      console.log("yooooooooo");
+    } else {
+      cutPokemon = pokeList.slice(startNum, endNum);
+      setNewPokemonList(cutPokemon);
+      setSorted(true);
+    }
   };
 
-  handlePagesClick = (direction) => {
-    this.setState({ sorted: false });
+  const handleBackToBeginning = () => {
+    let currentUrlParams = new URLSearchParams(window.location.search);
+    currentUrlParams.set("page", 1);
+    history.push(`?page=1`);
+    if (filterList.length < 1) {
+      console.log("ouibacobcbcb");
+      fetchPokemon();
+    } else {
+      handleFilterList();
+    }
+    toast.closeAll();
+  };
+
+  const renderToast = () => {
+    return toast({
+      position: "top-right",
+      variant: "right-accent",
+      isClosable: true,
+      render: () => (
+        <Box borderRadius="16px" color="gray.800" p={3} bgColor="gray.200">
+          <Text pb="1rem">Oops! You've reached the end of the line!</Text>
+          <Button colorScheme="facebook" onClick={handleBackToBeginning}>
+            {" "}
+            Go back to beginning
+          </Button>
+        </Box>
+      ),
+    });
+  };
+
+  const getEndOfFilterList = (currentPageNum) => {
+    let endNum;
+    let startNum;
+    if (!currentPageNum) {
+      endNum = 31;
+      startNum = 0;
+    } else {
+      endNum = currentPageNum * 31;
+      startNum = endNum - 31;
+    }
+    console.log(startNum);
+    console.log(newPokemonList.length);
+    console.log(startNum > newPokemonList.length);
+    return startNum > newPokemonList.length;
+  };
+
+  const handlePagesClick = (direction) => {
     let currentUrlParams = new URLSearchParams(window.location.search);
     let currentPageNum = currentUrlParams.get("page");
     currentPageNum = parseInt(currentPageNum);
+    console.log(currentPageNum);
+    console.log(direction);
+    if (currentPageNum === 27 && direction === "next") {
+      console.log("indci");
+      return renderToast();
+    }
 
+    if (
+      filterList.length > 0 &&
+      currentPageNum >= 1 &&
+      getEndOfFilterList(currentPageNum)
+    ) {
+      console.log("filter list");
+      return renderToast();
+    }
+
+    setSorted(false);
     if (!currentPageNum) {
       currentPageNum = 1;
     }
@@ -98,29 +160,32 @@ class PokeCalls extends Component {
       currentPageNum = 1;
     }
     currentUrlParams.set("page", currentPageNum);
-    this.props.history.push(`?page=${currentPageNum}`);
+    history.push(`?page=${currentPageNum}`);
     //If filterList array is empty fetch pokemon normally else fetch the typed pokemon with handlefilterlist
-    if (this.props.filterList.length < 1) {
-      this.fetchPokemon();
+    if (filterList.length < 1) {
+      console.log("ouibacobcbcb");
+      fetchPokemon();
+      console.log(`true`, true);
     } else {
-      this.handleFilterList();
+      handleFilterList();
     }
   };
 
-  fetchPokemon = async () => {
+  const fetchPokemon = async () => {
     let offsetNum = 0;
     let regexPat = /\/pokemon\/(\d+)\//;
     let currentUrlParams = new URLSearchParams(window.location.search);
     let currentPageNum = currentUrlParams.get("page");
-    if (currentPageNum > 26) {
-      this.props.history.push("/404");
+    if (currentPageNum > 27) {
     }
     if (!currentPageNum) {
       offsetNum = 0;
     } else {
       offsetNum = currentPageNum * 30 - 30;
     }
-    this.setState({ sorted: false, pokemonList: [] });
+    setSorted(false);
+    setPokemonList([]);
+    setNewPokemonList([]);
     //Fetches pokemon
     const res = await axios.get(
       `https://pokeapi.co/api/v2/pokemon/?limit=30&offset=${offsetNum}`
@@ -131,40 +196,38 @@ class PokeCalls extends Component {
       return (pokemon["id"] = id);
       //Adds id to pokemon object
     });
-    this.setState({ pokemonList: pokemon, sorted: true });
+
+    setSorted(true);
+    setPokemonList(pokemon);
   };
 
-  render() {
-    const { newPokemonList, pokemonList, sorted, error } = this.state;
-
-    if (!sorted) {
-      return (
-        <div className="loadingContainer">
-          <Loading />
-        </div>
-      );
-    }
-    if (error) {
-      return (
-        <div className="error">
-          <ErrorMessage />
-        </div>
-      );
-    }
-    if (newPokemonList.length > 0) {
-      return (
-        <div>
-          <PokeGrid pokemonList={newPokemonList} />
-          <Pages handlePagesClick={this.handlePagesClick} />
-        </div>
-      );
-    }
+  if (!sorted) {
     return (
-      <div>
-        <PokeGrid pokemonList={pokemonList} />
-        <Pages handlePagesClick={this.handlePagesClick} />
+      <div className="loadingContainer">
+        <Loading />
       </div>
     );
   }
-}
+  if (error) {
+    return (
+      <div className="error">
+        <ErrorMessage />
+      </div>
+    );
+  }
+  if (newPokemonList.length > 0) {
+    return (
+      <div>
+        <PokeGrid pokemonList={newPokemonList} />
+        <Pages handlePagesClick={handlePagesClick} />
+      </div>
+    );
+  }
+  return (
+    <div>
+      <PokeGrid pokemonList={pokemonList} />
+      <Pages handlePagesClick={handlePagesClick} />
+    </div>
+  );
+};
 export default withRouter(PokeCalls);

@@ -32,6 +32,9 @@ const NavBar = ({ history, handleFilter, location }) => {
   };
 
   const handleClick = () => {
+    let currentUrlParams = new URLSearchParams(window.location.search);
+    currentUrlParams.set("page", 1);
+    history.push(`?page=1`);
     setShowNav(false);
   };
   return (

@@ -11,7 +11,7 @@ import {
   PopoverBody,
 } from "@chakra-ui/react";
 
-const Filter = ({ handleFilter, showFilter, handleFilterClick, location }) => {
+const Filter = ({ handleFilter, handleFilterClick, location }) => {
   const [filterBoxes, setFilterBoxes] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
   const handleFilterChange = (checkboxValues = []) => {
@@ -21,14 +21,14 @@ const Filter = ({ handleFilter, showFilter, handleFilterClick, location }) => {
     event.preventDefault();
     const typeFilters = filterBoxes;
     handleFilter(typeFilters);
-    showFilter();
+    setShowFilters(false);
     handleFilterClick();
   };
 
   const handleClearFilters = () => {
     setFilterBoxes([]);
     handleFilter([]);
-    showFilter();
+    setShowFilters(false);
     handleFilterClick();
   };
 

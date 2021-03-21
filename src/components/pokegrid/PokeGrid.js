@@ -17,7 +17,7 @@ export default class PokeGrid extends Component {
                 src={`https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${id
                   .toString()
                   .padStart(3, "0")}.png`}
-                alt="pokemon"
+                alt={`${name} sprite`}
               />
               <Text color="gray.800" fontSize="lg" className="pokeName">
                 {name} #{id}
