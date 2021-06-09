@@ -59,10 +59,15 @@
 }
 @media only screen and (min-width: 960px) {
   .pokeGridContainer {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
   .pokeGridItemContainer {
     width: 350px;
     height: 350px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .pokeGridContainer {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
